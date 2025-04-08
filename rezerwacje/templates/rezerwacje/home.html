@@ -10,37 +10,41 @@
 
 <body>
     <header>
-        <section class="data">
+        <section class="date">
             <img src="{% static 'img/left_arrow.svg'%}">
             <p>29.03.2002</p>
             <img src="{% static 'img/right_arrow.svg'%}">
         </section>
-        <section class="hotbar"></section>
+
+        <div class="add_reservation">
+            <img src="{% static '/img/plus.svg' %}">
+            <p>Dodaj rezerwację</p>
+        </div>
     </header>
 
     <main>
-        <section class="godziny">
-            <div class="godzina">12:00</div>
-            <div class="godzina">13:00</div>
-            <div class="godzina">14:00</div>
-            <div class="godzina">15:00</div>
-            <div class="godzina">16:00</div>
-            <div class="godzina">17:00</div>
-            <div class="godzina">18:00</div>
-            <div class="godzina">19:00</div>
-            <div class="godzina">20:00</div>
-            <div class="godzina">21:00</div>
+        <section class="hours">
+            <p class="time">12:00</p>
+            <p class="time">13:00</p>
+            <p class="time">14:00</p>
+            <p class="time">15:00</p>
+            <p class="time">16:00</p>
+            <p class="time">17:00</p>
+            <p class="time">18:00</p>
+            <p class="time">19:00</p>
+            <p class="time">20:00</p>
+            <p class="time">21:00</p>
         </section>
-        <section class="terminarz">
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
-            <div class="podzial"></div>
+        <section class="timetable">
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
         </section>
     </main>
     <footer></footer>
