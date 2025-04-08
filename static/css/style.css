@@ -1,15 +1,84 @@
-body {
-    width: 100vw;
-    height: auto;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    height: 32px;
 }
 
 header {
     width: 100%;
     height: 100px;
-    background-color: red;
+    background-color: #BDD9ED;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
 }
+
+    .data {
+        height: 80%;
+        width: 18%;
+        background-color: white;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 28px;
+    }
+
+    .hotbar {
+
+    }
+main {
+    height: calc(100vh - 100px);
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+}
+
+.godziny {
+    height: 1009px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .godzina {
+        font-size: 28px;
+        margin-bottom: 69px;
+    }
+
+.terminarz {
+    height: 1009px;
+    width: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+}
+
+    .podzial {
+        width: 100%;
+        margin-top: 100px;
+        height: 1px;
+        background-color: #BDD9ED;
+    }
+
+    footer {
+        height: 1109px;
+        width: 16%;
+        background-color: #96c6e9;
+        position: absolute;
+        align-self: flex-end;
+    }
