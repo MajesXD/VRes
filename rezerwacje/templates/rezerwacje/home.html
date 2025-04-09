@@ -5,10 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_reservation.css' %}">
     <title>VRes</title>
 </head>
 
 <body>
+    <section class="separator_field">
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+        <div class="separator"></div>
+    </section>
     <header>
         <section class="date">
             <img src="{% static 'img/left_arrow.svg'%}">
@@ -34,20 +46,63 @@
             <p class="time">19:00</p>
             <p class="time">20:00</p>
             <p class="time">21:00</p>
+            <div class="time-blocker"></div>
         </section>
         <section class="timetable">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
+
+
+            <section class="reservation_field">
+                <div class="reservation-vr reservation reservation-2x xd reservation-12h"></div>
+                <div class="reservation-calendar reservation reservation-2x xd reservation-14h"></div>
+                <div class="reservation-street reservation reservation-2x xd reservation-17h"></div>
+                <div class="reservation-vr reservation reservation-2x xd reservation-21h"></div>
+            </section>
         </section>
     </main>
-    <footer></footer>
-    
+
+    <footer>
+        <section class="summary_top">
+            <img src="{% static 'img/equals.svg' %}"><p>Podsumowanie</p> 
+        </section>
+        <section class="summary_bottom">
+
+            <div class="payment_summary">
+                <img src="{% static 'img/transfer_black.svg' %}">
+                <p id="transfer_sum"></p>
+            </div>
+
+            <div class="payment_summary">
+                <img src="{% static 'img/card_black.svg' %}">
+                <p id="card_sum"></p>
+            </div>
+
+            <div class="payment_summary">
+                <img src="{% static 'img/coin_black.svg' %}">
+                <p id="cash_sum"></p>
+            </div>
+
+            <div class="payment_summary">
+                <img class="voucher_img" src="{% static 'img/voucher_mbkm_black.svg' %}">
+                <p id="voucher_mbkm_sum">200zł</p>
+            </div>
+
+            <div class="payment_summary">
+                <img class="voucher_img" src="{% static 'img/voucher_vr_black.svg' %}">
+                <p id="voucher_vr_sum"></p>
+            </div>
+
+            <div class="payment_summary">
+                <p>Razem:</p>
+                <p id="summary_sum"></p>
+            </div>
+            
+            <div class="summary_note">
+                <p class="note">Notka:</p>
+                <p class="note">asdsadsadsadsadada</p>
+            </div>
+
+        </section>
+    </footer>
+
 </body>
 </html>

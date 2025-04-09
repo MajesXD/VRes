@@ -1,0 +1,86 @@
+.reservation_field {
+    position: absolute;
+    height: 1009px;
+    width: calc(84% - 100px);
+}
+
+.reservation {
+    position: absolute;
+    height: 90px;
+    margin-top: 5px;
+    margin-right: 5px;
+    border-radius: 30px;
+    border: 1px solid black;
+    --base-margin-top: 5px;
+    --half_margin: 50px;
+}
+    .reservation-1x {
+        width: calc(12.5% - 5px);
+    }
+    .reservation-2x {
+        width: calc(25% - 5px);
+    }
+    .reservation-3x {
+        width: calc(37.5% - 5px);
+    }
+    .reservation-4x {
+        width: calc(50% - 5px);
+    }
+    .reservation-5x {
+        width: calc(62.5% - 5px);
+    }
+    .reservation-6x {
+        width: calc(75% - 5px);
+    }
+    .reservation-7x {
+        width: calc(87.5% - 5px);
+    }
+    .reservation-8x {
+        width: calc(100% - 5px);
+    }
+
+    .reservation-12h {
+        margin-top: 5px;
+    }
+    .reservation-13h {
+        margin-top: 106px;
+    }
+    .reservation-14h {
+        margin-top: 207px;
+    }
+    .reservation-15h {
+        margin-top: 308px;
+    }
+    .reservation-16h {
+        margin-top: 409px;
+    }
+    .reservation-17h {
+        margin-top: 510px;
+    }
+    .reservation-18h {
+        margin-top: 611px;
+    }
+    .reservation-19h {
+        margin-top: 712px;
+    }
+    .reservation-20h {
+        margin-top: 813px;
+    }
+    .reservation-21h {
+        margin-top: 914px;
+    }
+    .reservation-half {
+        margin-top: calc(var(--base-margin-top) + var(--half_margin));
+    }
+    
+    .reservation-vr {
+        background-color: #7166D8;
+    }
+
+    .reservation-calendar {
+        background-color: #DF5D5D;
+    }
+
+    .reservation-street {
+        background-color: #3BAB68;
+    }
