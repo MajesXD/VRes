@@ -69,6 +69,13 @@
         background-color: #3BAB68;
     }
 
+    .reservation-block  {
+        background-color: white;
+        border: 0;
+    }
+
+
+
     /* .reservation-12h {
         margin-top: 5px;
     }
