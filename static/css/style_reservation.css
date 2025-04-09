@@ -14,6 +14,13 @@
     --base-margin-top: 5px;
     --half_margin: 50px;
 }
+
+.reservation:hover {
+    width: calc(50% - 5px);
+    height: 300px;
+    z-index: 9999
+}
+
     .reservation-1x {
         width: calc(12.5% - 5px);
     }
