@@ -102,7 +102,8 @@ main {
 }
 
 footer {
-    height: 1109px;
+    height: 1009px;
+    margin-top: 100px;
     width: 16%;
     background-color: #d7d7d7;
     position: absolute;
@@ -110,16 +111,18 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 9999;
 }
 
     .summary_top {
-        width: 75%;
+        width: 16%;
         height: 100px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
+        position: absolute;
+        right: 0;
+        background-color: #b1b1b1;
     }
 
     .summary_bottom {

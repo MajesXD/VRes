@@ -33,6 +33,9 @@
             <img src="{% static '/img/plus.svg' %}">
             <p>Dodaj rezerwację</p>
         </div>
+        <section class="summary_top">
+            <img src="{% static 'img/equals.svg' %}"><p>Podsumowanie</p> 
+        </section>
     </header>
 
     <main>
@@ -53,15 +56,10 @@
             <section class="reservation_field">
 
                 <div class="reservation_field-hour" id="reservation_field-12">
-                    <div class="reservation reservation_field-12 reservation-vr reservation-2x"></div>
-                    <div class="reservation reservation_field-12 reservation-calendar reservation-2x"></div>
-                    <div class="reservation reservation_field-12 reservation-street reservation-2x"></div>
-                    <div class="reservation reservation_field-12 reservation-vr reservation-2x"></div>
+                    <div class="reservation reservation_field-12 reservation-vr reservation-2x" onclick="this.classList.toggle('reservation-clicked')"></div>
                 </div>
 
                 <div class="reservation_field-hour" id="reservation_field-13">
-                    <div class="reservation reservation_field-12 reservation-vr reservation-2x"></div>
-                    <div class="reservation reservation_field-12 reservation-vr reservation-2x"></div>
                 </div>
 
                 <div class="reservation_field-hour" id="reservation_field-14">
@@ -93,9 +91,6 @@
     </main>
 
     <footer>
-        <section class="summary_top">
-            <img src="{% static 'img/equals.svg' %}"><p>Podsumowanie</p> 
-        </section>
         <section class="summary_bottom">
 
             <div class="payment_summary">
