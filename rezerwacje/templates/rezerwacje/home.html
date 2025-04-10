@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_reservation.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
     <title>VRes</title>
 </head>
 
@@ -52,7 +53,7 @@
             <section class="reservation_field">
 
                 <div class="reservation_field-hour" id="reservation_field-12">
-                    <div class="reservation reservation_field-12 reservation-vr reservation-2x"></div>
+                    <div class="reservation reservation_field-12 reservation-vr reservation-2x" onclick="this.classList.toggle('reservation-clicked')"></div>
                     <div class="reservation reservation_field-12 reservation-calendar reservation-2x"></div>
                     <div class="reservation reservation_field-12 reservation-street reservation-2x"></div>
                     <div class="reservation reservation_field-12 reservation-vr reservation-2x"></div>

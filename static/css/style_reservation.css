@@ -23,9 +23,13 @@
 }
 
 .reservation:hover {
+    cursor: pointer;
+}
+
+.reservation-clicked {
     width: calc(50% - 5px);
-    height: 300px;
-    z-index: 9999
+    height: 400px;
+    z-index: 999;
 }
 
     .reservation-1x {
