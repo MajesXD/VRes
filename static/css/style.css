@@ -9,14 +9,23 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #0e0e0e;
 }
 
 p {
-    font-size: 28px;
+    font-size: 26px;
+}
+
+.text-pink {
+    color: #FF217A;
+}
+
+.text-blue {
+    color: #088EB4;
 }
 
 img {
-    width: 24px;
+    width: 20px;
 }
 
 .voucher_img {
@@ -25,10 +34,17 @@ img {
     width: 50px;
 }
 
+.clickable {
+    cursor: pointer;
+    user-select: none;
+}
+
 header {
     width: 100%;
     height: 100px;
-    background-color: #BDD9ED;
+    background-color: rgba(48, 48, 48, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,30 +54,43 @@ header {
 }
 
     .date {
-        height: 55px;
-        width: 280px;
-        background-color: white;
-        border-radius: 30px;
+        width: 240px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
+        color: #088EB4;
     }
 
     .add_reservation {
         height: 50px;
-        width: 240px;
+        width: 215px;
         margin-left: 2%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        color: #FF217A;
+    }
+
+    .show_summary {
+        width: 12%;
+        margin-right: 2%;
+        height: 60px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        right: 0;
+        color: #FF217A;
     }
 
 main {
-    height: calc(100vh - 100px);
+    height: 1009px;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: #0e0e0e;
     display: flex;
     flex-direction: row;
     margin-top: 100px;
@@ -72,18 +101,19 @@ main {
     height: 1009px;
     width: calc(84% - 20px);
     margin-left: 20px;
-    margin-top: 100px;
+
 }
 
     .separator {
         width: 100%;
         margin-top: 100px;
         height: 1px;
-        background-color: #BDD9ED;
+        background-color: #FF217A;
     }
 .hours {
     height: 1009px;
     width: 100px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,7 +122,9 @@ main {
 
     .time {
         font-size: 28px;
+        color: #088EB4;
     }
+
 
 .timetable {
     height: 1009px;
@@ -102,28 +134,22 @@ main {
 }
 
 footer {
-    height: 1009px;
-    margin-top: 100px;
-    width: 16%;
-    background-color: #d7d7d7;
+    height: 969px;
+    margin-top: 120px;
+    width: 15%;
+    margin-right: 0.5%;
+    background-color: #088fb4b5;
     position: absolute;
     align-self: flex-end;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 30px;
 }
 
-    .summary_top {
-        width: 16%;
-        height: 100px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        position: absolute;
-        right: 0;
-        background-color: #b1b1b1;
-    }
+.summary-active {
+    display: none;
+}
 
     .summary_bottom {
         width: 100%;
@@ -131,7 +157,7 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 100px;
+
     }
 
         .payment_summary {
@@ -150,7 +176,7 @@ footer {
             content: "";
             width: 100%;
             height: 1px;
-            background-color: rgb(0, 0, 0);
+            background-color: #000000;
             position: absolute;
             margin-top: 100px;
         }

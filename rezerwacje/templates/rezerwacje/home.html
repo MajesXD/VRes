@@ -21,20 +21,21 @@
         <div class="separator"></div>
         <div class="separator"></div>
         <div class="separator"></div>
+        <div class="separator"></div>
     </section>
     <header>
-        <section class="date">
-            <img src="{% static 'img/left_arrow.svg'%}">
+        <section class="date clickable">
+            <img src="{% static 'img/left_arrow-pink.svg'%}">
             <p>29.03.2002</p>
-            <img src="{% static 'img/right_arrow.svg'%}">
+            <img src="{% static 'img/right_arrow-pink.svg'%}">
         </section>
 
-        <div class="add_reservation">
-            <img src="{% static '/img/plus.svg' %}">
-            <p>Dodaj rezerwację</p>
+        <div class="add_reservation clickable">
+            <img src="{% static '/img/plus-pink.svg' %}">
+            <p class="text-pink">Dodaj rezerwację</p>
         </div>
-        <section class="summary_top">
-            <img src="{% static 'img/equals.svg' %}"><p>Podsumowanie</p> 
+        <section class="show_summary clickable" onclick="summary_active()">
+            <img src="{% static 'img/equals-pink.svg' %}"><p>Podsumowanie</p> 
         </section>
     </header>
 
@@ -90,7 +91,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer id="summary" class="summary-active">
         <section class="summary_bottom">
 
             <div class="payment_summary">
