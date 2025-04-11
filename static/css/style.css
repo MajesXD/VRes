@@ -34,14 +34,6 @@ img {
     width: 50px;
 }
 
-.logo {
-    margin-left: 20%;
-}
-
-.logo-img {
-    width: 150px;
-}
-
 .clickable {
     cursor: pointer;
     user-select: none;
@@ -62,16 +54,15 @@ header {
 }
 
     .date {
-        width: 240px;
+        width: 190px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
         color: #32BCE0;
     }
 
     .add_reservation {
-        height: 50px;
         width: 215px;
         margin-left: 2%;
         display: flex;
@@ -81,17 +72,23 @@ header {
         color: #EE379F;
     }
 
+    .logo {
+        margin-left: 25%;
+    }
+    
+    .logo-img {
+        width: 150px;
+    }
+
     .show_summary {
         width: 12%;
         margin-right: 2%;
-        height: 60px;
-        border-radius: 30px;
+        right: 0;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
         position: absolute;
-        right: 0;
+        justify-content: space-evenly;
         color: #EE379F;
     }
 
@@ -107,9 +104,7 @@ main {
 .separator_field {
     position: absolute;
     height: 1009px;
-    width: calc(84% - 20px);
-    margin-left: 20px;
-
+    width: 84%;
 }
 
     .separator {
@@ -118,10 +113,10 @@ main {
         height: 1px;
         background-color: #EE379F;
     }
+
 .hours {
     height: 1009px;
     width: 100px;
-    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,10 +124,13 @@ main {
 }
 
     .time {
+        width: 100px;
+        height: 101px;
         font-size: 28px;
         color: #32BCE0;
+        margin-top: 5px;
+        margin-left: 10px;
     }
-
 
 .timetable {
     height: 1009px;
@@ -144,15 +142,16 @@ main {
 footer {
     height: 969px;
     margin-top: 120px;
-    width: 15%;
-    margin-right: 0.5%;
-    background-color: #32bde0d1;
+    width: 14%;
+    margin-right: 1%;
+    background-color: rgba(48, 48, 48, 0.5);
     position: absolute;
     align-self: flex-end;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
+    color: #EE379F;
 }
 
 .summary-active {
@@ -184,9 +183,14 @@ footer {
             content: "";
             width: 100%;
             height: 1px;
-            background-color: #000000;
+            background-color: #32BCE0;
             position: absolute;
             margin-top: 100px;
+        }
+
+        .summary_all {
+            font-size: 24px;
+            color: #32BCE0;
         }
 
         .summary_note {
@@ -198,8 +202,10 @@ footer {
 
         .note {
             font-size: 24px;
+            color: #32BCE0;
         }
 
         .note:nth-of-type(2) {
             font-size: 18px;
+            color: #EE379F;
         }

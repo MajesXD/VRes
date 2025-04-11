@@ -9,6 +9,7 @@
         height: 101px;
         display: flex;
         flex-direction: row;
+        position: relative;
     }
 
 .reservation {
