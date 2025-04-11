@@ -17,7 +17,7 @@ p {
 }
 
 .text-pink {
-    color: #FF217A;
+    color: #EE379F;
 }
 
 .text-blue {
@@ -35,12 +35,11 @@ img {
 }
 
 .logo {
-    position: absolute;
-    left: calc(50% - 50px);
+    margin-left: 20%;
 }
 
 .logo-img {
-    width: 100px;
+    width: 150px;
 }
 
 .clickable {
@@ -79,7 +78,7 @@ header {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        color: #FF217A;
+        color: #EE379F;
     }
 
     .show_summary {
@@ -93,7 +92,7 @@ header {
         justify-content: space-evenly;
         position: absolute;
         right: 0;
-        color: #FF217A;
+        color: #EE379F;
     }
 
 main {
@@ -117,7 +116,7 @@ main {
         width: 100%;
         margin-top: 100px;
         height: 1px;
-        background-color: #FF217A;
+        background-color: #EE379F;
     }
 .hours {
     height: 1009px;
