@@ -21,7 +21,7 @@ p {
 }
 
 .text-blue {
-    color: #088EB4;
+    color: #32BCE0;
 }
 
 img {
@@ -36,7 +36,7 @@ img {
 
 .logo {
     position: absolute;
-    left: calc(50% - 100px);
+    left: calc(50% - 50px);
 }
 
 .logo-img {
@@ -68,7 +68,7 @@ header {
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
-        color: #088EB4;
+        color: #32BCE0;
     }
 
     .add_reservation {
@@ -131,7 +131,7 @@ main {
 
     .time {
         font-size: 28px;
-        color: #088EB4;
+        color: #32BCE0;
     }
 
 
@@ -147,7 +147,7 @@ footer {
     margin-top: 120px;
     width: 15%;
     margin-right: 0.5%;
-    background-color: #ec8eb4b5;
+    background-color: #32bde0d1;
     position: absolute;
     align-self: flex-end;
     display: flex;
