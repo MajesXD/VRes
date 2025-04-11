@@ -152,10 +152,11 @@ footer {
     align-items: center;
     border-radius: 30px;
     color: #EE379F;
+    display: none;
 }
 
 .summary-active {
-    display: none;
+    display: flex;
 }
 
     .summary_bottom {
@@ -164,9 +165,8 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-
     }
-
+    
         .payment_summary {
             height: 60px;
             width: 60%;

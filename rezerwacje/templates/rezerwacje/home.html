@@ -56,7 +56,7 @@
             <section class="reservation_field">
 
                 <div class="reservation_field-hour" id="reservation_field-12">
-                    <div class="reservation reservation_field-12 reservation-vr reservation-2x" onclick="this.classList.toggle('reservation-clicked')"></div>
+                    <div class="reservation reservation_field-12 reservation-vr reservation-1x" onclick="reservation_clicked(this)"></div>
                 </div>
 
                 <div class="reservation_field-hour" id="reservation_field-13">
@@ -90,45 +90,41 @@
         </section>
     </main>
 
-    <footer id="summary" class="summary-active">
-        <section class="summary_bottom">
+    <footer id="summary">
+        <div class="payment_summary">
+            <img src="{% static 'img/transfer-blue.svg' %}">
+            <p id="transfer_sum"></p>
+        </div>
 
-            <div class="payment_summary">
-                <img src="{% static 'img/transfer-blue.svg' %}">
-                <p id="transfer_sum"></p>
-            </div>
+        <div class="payment_summary">
+            <img src="{% static 'img/card-blue.svg' %}">
+            <p id="card_sum"></p>
+        </div>
 
-            <div class="payment_summary">
-                <img src="{% static 'img/card-blue.svg' %}">
-                <p id="card_sum"></p>
-            </div>
+        <div class="payment_summary">
+            <img src="{% static 'img/coin-blue.svg' %}">
+            <p id="cash_sum"></p>
+        </div>
 
-            <div class="payment_summary">
-                <img src="{% static 'img/coin-blue.svg' %}">
-                <p id="cash_sum"></p>
-            </div>
+        <div class="payment_summary">
+            <img class="voucher-img" src="{% static 'img/voucher_mbkm-blue.svg' %}">
+            <p id="voucher_mbkm_sum">200zł</p>
+        </div>
 
-            <div class="payment_summary">
-                <img class="voucher-img" src="{% static 'img/voucher_mbkm-blue.svg' %}">
-                <p id="voucher_mbkm_sum">200zł</p>
-            </div>
+        <div class="payment_summary">
+            <img class="voucher-img" src="{% static 'img/voucher_vr-blue.svg' %}">
+            <p id="voucher_vr_sum"></p>
+        </div>
 
-            <div class="payment_summary">
-                <img class="voucher-img" src="{% static 'img/voucher_vr-blue.svg' %}">
-                <p id="voucher_vr_sum"></p>
-            </div>
-
-            <div class="payment_summary">
-                <p class="summary_all">Razem:</p>
-                <p id="summary_sum"></p>
-            </div>
-            
-            <div class="summary_note">
-                <p class="note">Notka:</p>
-                <p class="note">asdsadsadsadsadada</p>
-            </div>
-
-        </section>
+        <div class="payment_summary">
+            <p class="summary_all">Razem:</p>
+            <p id="summary_sum"></p>
+        </div>
+        
+        <div class="summary_note">
+            <p class="note">Notka:</p>
+            <p class="note">asdsadsadsadsadada</p>
+        </div>
     </footer>
 
 </body>
