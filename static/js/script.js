@@ -1,9 +1,9 @@
 function summary_active() {
     document.getElementById('summary').classList.toggle('summary-active');
+    document.getElementById('reservation_window').classList.remove('reservation-active')
 }
 
-function reservation_clicked(clicked) {
+function reservation_clicked() {
     document.getElementById('summary').classList.remove('summary-active');
-    clicked.classList.add('reservation-active')
-    clicked.classList.remove('reservation')
+    document.getElementById('reservation_window').classList.toggle('reservation-active')
 }
