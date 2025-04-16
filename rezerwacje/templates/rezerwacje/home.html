@@ -96,7 +96,8 @@
         <div class="add_reservation_window-top">
             <p class="text-pink">Dodaj rezerwację</p>
         </div>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <div class="add_reservation_window-mid">
 
                 <div class="add_reservation_row">
@@ -104,7 +105,7 @@
                         <p>Rodzaj rezerwacji</p>
                     </div>
                     <div class="add_reservation_row-right">
-                        <select id="typ_rezerwacji" name="typ_rezerwacji" required>
+                        <select id="typ_rezerwacji" name="rodzaj_rezerwacji" required>
                           <option value="1">VR Warsaw</option>
                           <option value="2">Kalendarz Google</option>
                           <option value="3">Spontaniczna</option>
@@ -117,7 +118,7 @@
                         <p>Rezerwujący</p>
                     </div>
                     <div class="add_reservation_row-right">
-                        <input>
+                        <input name="osoba">
                     </div>
                 </div>
 
@@ -126,7 +127,7 @@
                         <p>Data</p>
                     </div>
                     <div class="add_reservation_row-right">
-                        <input type="date" required>
+                        <input name="data" type="date" required>
                     </div>
                 </div>
 
@@ -135,7 +136,7 @@
                         <p>Godzina</p>
                     </div>
                     <div class="add_reservation_row-right">
-                        <select class="select_godzina" name="godzina_h">
+                        <select class="select_godzina" name="godzina_h" required>
                             <option value="10">10</option>
                             <option value="11">11</option>
                             <option value="12">12</option>
@@ -151,7 +152,7 @@
                             <option value="22">22</option>
                         </select>
                         <p class="text-white">:</p>
-                        <select class="select_godzina"">
+                        <select name="godzina_min" class="select_godzina" required>
                             <option value=":00">00</option>
                             <option value=":15">15</option>
                             <option value=":30">30</option>
@@ -165,7 +166,7 @@
                         <p>Czas</p>
                     </div>
                     <div class="add_reservation_row-right">
-                        <select class="select_godzina" name="czas_h">
+                        <select class="select_godzina" name="czas_h" required>
                             <option value="01">1</option>
                             <option value="02">2</option>
                             <option value="03">3</option>
@@ -178,7 +179,7 @@
                             <option value="10">10</option>
                         </select>
                         <p class="text-white">h</p>
-                        <select style="width: 50px; name="czas_min">
+                        <select class="select_godzina" name="czas_min" required>
                             <option value=":00">00</option>
                             <option value=":15">15</option>
                             <option value=":30">30</option>
