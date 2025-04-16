@@ -10,9 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #0e0e0e;
-}
-
-p {
     font-size: 26px;
 }
 
@@ -24,6 +21,9 @@ p {
     color: #32BCE0;
 }
 
+.text-white {
+    color: white;
+}
 img {
     width: 20px;
 }
