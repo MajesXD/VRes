@@ -26,9 +26,9 @@
     </section>
     <header>
         <section class="date clickable">
-            <img src="{% static 'img/arrow_left-pink.svg'%}">
-            <p>29.03.2002</p>
-            <img src="{% static 'img/arrow_right-pink.svg'%}">
+            <img src="{% static 'img/arrow_left-pink.svg'%}" id="previous_day">
+            <input type="date" id="selected_day" value="{{ today|date:'Y-m-d' }}">
+            <img src="{% static 'img/arrow_right-pink.svg'%}" id="next_day">
         </section>
 
         <div class="add_reservation clickable" onclick="add_reservation(event)">
@@ -57,7 +57,9 @@
             <section class="reservation_field">
 
                 <div class="reservation_field-hour" id="reservation_field-12">
-                    <div class="reservation reservation_field-12 reservation-vr reservation-1x" onclick="reservation_active(this)"></div>
+                    <div class="reservation reservation_field-12 reservation-vr reservation-1x" onclick="reservation_active(this)">
+                        
+                    </div>
                 </div>
 
                 <div class="reservation_field-hour" id="reservation_field-13">
@@ -96,7 +98,7 @@
         <div class="add_reservation_window-top">
             <p class="text-pink">Dodaj rezerwację</p>
         </div>
-        <form method="POST">
+        <form method="POST" action="{% url 'dodaj_rezerwacje' %}">
             {% csrf_token %}
             <div class="add_reservation_window-mid">
 
@@ -153,10 +155,10 @@
                         </select>
                         <p class="text-white">:</p>
                         <select name="godzina_min" class="select_godzina" required>
-                            <option value=":00">00</option>
-                            <option value=":15">15</option>
-                            <option value=":30">30</option>
-                            <option value=":45">45</option>
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
                         </select>
                     </div>
                 </div>
@@ -180,10 +182,10 @@
                         </select>
                         <p class="text-white">h</p>
                         <select class="select_godzina" name="czas_min" required>
-                            <option value=":00">00</option>
-                            <option value=":15">15</option>
-                            <option value=":30">30</option>
-                            <option value=":45">45</option>
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
                         </select>
                         <p class="text-white">min</p>
                     </div>

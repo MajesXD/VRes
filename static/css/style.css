@@ -57,7 +57,7 @@ header {
 }
 
     .date {
-        width: 190px;
+        width: 220px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -65,6 +65,14 @@ header {
         color: #32BCE0;
         grid-column: 1;
     }
+
+        #selected_day {
+            background-color: transparent;
+            color: #32BCE0;
+            border: 0;
+            font-size: 22px;
+            width: 155px;
+        }
 
     .add_reservation {
         width: 215px;

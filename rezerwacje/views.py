@@ -6,6 +6,7 @@ def home(request):
     return render(request, 'rezerwacje/home.html')
 
 def dodaj_rezerwacje(request):
+    print("Widok dodaj_rezerwacje został wywołany.")
     if request.method == 'POST':
         rodzaj_rezerwacji = request.POST.get('rodzaj_rezerwacji')
         osoba = request.POST.get('osoba')
@@ -32,5 +33,6 @@ def dodaj_rezerwacje(request):
         print(godzina)
         print(czas)
         return redirect('home')
-
+    else:
+        print("To nie jest żądanie POST")
     return render(request, 'dodaj_rezerwacje.html')
