@@ -73,7 +73,7 @@ function showReservations(reservations) {
         div.dataset.zatwierdzony = r.zatwierdzony;
 
         div.innerHTML = `
-            <div class="reservation">
+            <div class="reservation reservation-12clock reservation-vr reservation-4x">
                 <div class="reservation_info">
                     <img src="{% static 'img/person-white.svg' %}">
                     <p>{r.ilosc_osob}</p>
