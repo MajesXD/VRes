@@ -1,5 +1,11 @@
 {% load static %}
 
+{% if messages %}
+{% for message in messages %}
+    <div class="alert">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -77,9 +83,8 @@
         </section>
         <section class="timetable">
             <section class="reservation_field">
-
-                <div class="reservation_field-hour" id="reservation_field-12">
-                    <div class="reservation reservation_field-12 reservation-vr reservation-3x" onclick="reservation_active(this)">
+<!-- BLOK Z REZERWACJA -->
+                    <div class="reservation reservation-12clock reservation-vr reservation-4x" onclick="reservation_active(this)">
                         <div class="reservation_info">
                             <img src="{% static 'img/person-white.svg' %}">
                             <p>4</p>
@@ -96,34 +101,26 @@
                             <p>zł</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="reservation_field-hour" id="reservation_field-13">
-                </div>
+                    <div class="reservation reservation-13clock reservation-vr reservation-2x" onclick="reservation_active(this)">
+                        <div class="reservation_info">
+                            <img src="{% static 'img/person-white.svg' %}">
+                            <p>4</p>
+                            <img src="{% static 'img/clock-white.svg' %}" class="reservation_info-gap">
+                            <p>01:00</p>
+                        </div>
 
-                <div class="reservation_field-hour" id="reservation_field-14">
-                </div>
+                        <div class="reservation_info">
+                            <p>majewski</p>
+                        </div>
+                        <div class="reservation_info">
+                            <img src="{% static 'img/card-white.svg' %}">
+                            <p class="reservation_info-gap">123</p>
+                            <p>zł</p>
+                        </div>
+                    </div>
 
-                <div class="reservation_field-hour" id="reservation_field-15">
-                </div>
 
-                <div class="reservation_field-hour" id="reservation_field-16">
-                </div>
-
-                <div class="reservation_field-hour" id="reservation_field-17">
-                </div>
-
-                <div class="reservation_field-hour" id="reservation_field-18">
-                </div>
-
-                <div class="reservation_field-hour" id="reservation_field-19">
-                </div>
-
-                <div class="reservation_field-hour" id="reservation_field-20">
-                </div>
-
-                <div class="reservation_field-hour" id="reservation_field-21">
-                </div>
 
             </section>
         </section>
@@ -158,6 +155,25 @@
                     </div>
                     <div class="add_reservation_row-right">
                         <input name="osoba">
+                    </div>
+                </div>
+
+                <div class="add_reservation_row">
+                    <div class="add_reservation_row-left">
+                        <p>Ilość osób</p>
+                    </div>
+                    <div class="add_reservation_row-right">
+                        <select class="select_godzina" name="ilosc_osob" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="8">>8</option>
+                        </select>
                     </div>
                 </div>
 

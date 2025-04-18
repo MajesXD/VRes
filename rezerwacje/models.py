@@ -4,6 +4,7 @@ from django.db import models
 class rezerwacje(models.Model):
     rodzaj_rezerwacji = models.CharField(max_length=100, null=True, blank=True)
     osoba = models.CharField(max_length=100)
+    ilosc_osob = models.IntegerField(null=True, blank=True)
     data = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     godzina = models.TimeField(auto_now=False, auto_now_add=False)
     czas = models.TimeField(auto_now=False, auto_now_add=False)
@@ -11,7 +12,8 @@ class rezerwacje(models.Model):
     rodzaj_platnosci = models.IntegerField(null=True, blank=True)
     notatka = models.CharField(max_length=200, null=True, blank=True)
     zatwierdzony = models.BooleanField(null=True, blank=True)
-    
+
+
 class produkty(models.Model):
     rezerwacja = models.ForeignKey(rezerwacje, on_delete=models.CASCADE, related_name="produkty")
     woda = models.IntegerField(null=True, blank=True)

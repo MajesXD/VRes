@@ -2,14 +2,12 @@
     position: absolute;
     height: 1009px;
     width: calc(84% - 100px);
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 101px);
 }
-
-    .reservation_field-hour {
-        width: 100%;
-        height: 101px;
-        display: flex;
-        flex-direction: row;
-    }
 
 .reservation {
     margin-top: 50px;
@@ -24,6 +22,22 @@
     justify-content: space-evenly;
     color: white;
     font-size: 18px;
+}
+
+.reservation-vr {
+    background-color: #4F3EE3;
+}
+
+.reservation-calendar {
+    background-color: #D72B2B;
+}
+
+.reservation-street {
+    background-color: #0E733A;
+}
+
+.reservation-block  {
+    background-color: white;
 }
 
 .reservation img {
@@ -48,49 +62,79 @@
 }
 
     .reservation-1x {
-        width: calc(12.5% - 5px);
+        grid-column: span 1;
     }
     .reservation-2x {
-        width: calc(25% - 5px);
+        grid-column: span 2;
     }
     .reservation-3x {
-        width: calc(37.5% - 5px);
+        grid-column: span 3;
     }
     .reservation-4x {
-        width: calc(50% - 5px);
+        grid-column: span 4;
     }
     .reservation-5x {
-        width: calc(62.5% - 5px);
+        grid-column: span 5;
     }
     .reservation-6x {
-        width: calc(75% - 5px);
+        grid-column: span 6;
     }
     .reservation-7x {
-        width: calc(87.5% - 5px);
+        grid-column: span 7;
     }
     .reservation-8x {
-        width: calc(100% - 5px);
+        grid-column: span 8;
     }
 
-    .reservation-half {
-        margin-top: calc(var(--base-margin-top) + var(--half_margin));
-    }
-    
-    .reservation-vr {
-        background-color: #4F3EE3;
-    }
 
-    .reservation-calendar {
-        background-color: #D72B2B;
+    /* .reservation-10clock {
+        margin-top: 5px;
     }
+    .reservation-11clock {
+        margin-top: 5px;
+    } */
+    .reservation-12clock {
+        grid-row: 1;
+    }
+    .reservation-13clock {
+        grid-row: 2;
+    }
+    .reservation-14clock {
+        grid-row: 3;
+    }
+    .reservation-15clock {
+        grid-row: 4;
+    }
+    .reservation-16clock {
+        grid-row: 5;
+    }
+    .reservation-17clock {
+        grid-row: 6;
+    }
+    .reservation-18clock {
+        grid-row: 7;
+    }
+    .reservation-19clock {
+        grid-row: 8;
+    }
+    .reservation-20clock {
+        grid-row: 9;
+    }
+    .reservation-21clock {
+        grid-row: 10;
+    }
+    /* .reservation-22clock {
+        margin-top: 914px;
+    } */
 
-    .reservation-street {
-        background-color: #0E733A;
-    }
 
-    .reservation-block  {
-        background-color: white;
-    }
+
+
+
+
+
+
+
 
 .reservation-full {
     height: 969px;
@@ -108,33 +152,3 @@
 }
 
 
-    /* .reservation-12h {
-        margin-top: 5px;
-    }
-    .reservation-13h {
-        margin-top: 106px;
-    }
-    .reservation-14h {
-        margin-top: 207px;
-    }
-    .reservation-15h {
-        margin-top: 308px;
-    }
-    .reservation-16h {
-        margin-top: 409px;
-    }
-    .reservation-17h {
-        margin-top: 510px;
-    }
-    .reservation-18h {
-        margin-top: 611px;
-    }
-    .reservation-19h {
-        margin-top: 712px;
-    }
-    .reservation-20h {
-        margin-top: 813px;
-    }
-    .reservation-21h {
-        margin-top: 914px;
-    } */
