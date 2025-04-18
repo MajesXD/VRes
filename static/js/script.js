@@ -22,4 +22,34 @@ function add_reservation_exit() {
     document.getElementById('add_reservation_window').classList.remove('active');
 }
 
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
+function fetchReservations(date) {
+    fetch('/get-reservations/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify({ date: date })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log("Rezerwacje z bazy:", data.reservations);
+        // Tutaj później dodamy generowanie HTML
+    })
+    .catch(err => console.error('Błąd pobierania rezerwacji:', err));
+}

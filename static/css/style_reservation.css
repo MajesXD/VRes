@@ -19,7 +19,29 @@
     border-radius: 30px;
     --base-margin-top: 5px;
     --half_margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    font-size: 18px;
 }
+
+.reservation img {
+    height: 15px;
+}
+
+    .reservation_info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80%;
+        height: 20px;
+        margin-left: 20px;
+    }
+
+    .reservation_info-gap {
+        margin-left: 10px;
+    }
 
 .reservation:hover {
     cursor: pointer;

@@ -1,6 +1,8 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import rezerwacje
 from datetime import datetime, time
+import json
 
 def home(request):
     return render(request, 'rezerwacje/home.html')
@@ -15,7 +17,6 @@ def dodaj_rezerwacje(request):
         godzina_min = request.POST.get('godzina_min')
         czas_h = request.POST.get('czas_h')
         czas_min = request.POST.get('czas_min')
-
         godzina = time(int(godzina_h), int(godzina_min))
         czas = time(int(czas_h), int(czas_min))
 
@@ -34,5 +35,32 @@ def dodaj_rezerwacje(request):
         print(czas)
         return redirect('home')
     else:
-        print("To nie jest żądanie POST")
+        print("POST failed")
     return render(request, 'dodaj_rezerwacje.html')
+
+def get_reservations(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        date_str = body.get("date")
+
+        try:
+            date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        except ValueError:
+            return JsonResponse({'error': 'Nieprawidłowa data'}, status=400)
+
+        reservations = rezerwacje.objects.filter(data=date)
+
+        result = []
+        for r in reservations:
+            result.append({
+                'id': r.id,
+                'osoba': r.osoba,
+                'godzina': r.godzina.strftime('%H:%M'),
+                'czas': r.czas.strftime('%H:%M'),
+                'kwota': r.kwota,
+                'rodzaj': r.rodzaj_rezerwacji,
+                'notatka': r.notatka,
+                'zatwierdzony': r.zatwierdzony,
+            })
+
+        return JsonResponse({'reservations': result})
