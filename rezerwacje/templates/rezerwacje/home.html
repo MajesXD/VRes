@@ -1,11 +1,5 @@
 {% load static %}
 
-{% if messages %}
-{% for message in messages %}
-    <div class="alert">{{ message }}</div>
-{% endfor %}
-{% endif %}
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -82,45 +76,11 @@
             <p class="time">21:00</p>
         </section>
         <section class="timetable">
-            <section class="reservation_field">
-<!-- BLOK Z REZERWACJA -->
-                    <div class="reservation reservation-12clock reservation-vr reservation-4x" onclick="reservation_active(this)">
-                        <div class="reservation_info">
-                            <img src="{% static 'img/person-white.svg' %}">
-                            <p>4</p>
-                            <img src="{% static 'img/clock-white.svg' %}" class="reservation_info-gap">
-                            <p>01:00</p>
-                        </div>
+            <section class="reservation_field" id="reservation_field">
 
-                        <div class="reservation_info">
-                            <p>majewski</p>
-                        </div>
-                        <div class="reservation_info">
-                            <img src="{% static 'img/card-white.svg' %}">
-                            <p class="reservation_info-gap">123</p>
-                            <p>zł</p>
-                        </div>
-                    </div>
+<!-- BLOK Z REZERWACJAMI -->
 
-                    <div class="reservation reservation-13clock reservation-vr reservation-2x" onclick="reservation_active(this)">
-                        <div class="reservation_info">
-                            <img src="{% static 'img/person-white.svg' %}">
-                            <p>4</p>
-                            <img src="{% static 'img/clock-white.svg' %}" class="reservation_info-gap">
-                            <p>01:00</p>
-                        </div>
-
-                        <div class="reservation_info">
-                            <p>majewski</p>
-                        </div>
-                        <div class="reservation_info">
-                            <img src="{% static 'img/card-white.svg' %}">
-                            <p class="reservation_info-gap">123</p>
-                            <p>zł</p>
-                        </div>
-                    </div>
-
-
+<!-- KONIEC BLOKU Z REZERWACJAMI -->
 
             </section>
         </section>
@@ -192,8 +152,8 @@
                     </div>
                     <div class="add_reservation_row-right">
                         <select class="select_godzina" name="godzina_h" required>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
+                            <!-- <option value="10">10</option>
+                            <option value="11">11</option> -->
                             <option value="12">12</option>
                             <option value="13">13</option>
                             <option value="14">14</option>
@@ -204,7 +164,7 @@
                             <option value="19">19</option>
                             <option value="20">20</option>
                             <option value="21">21</option>
-                            <option value="22">22</option>
+                            <!-- <option value="22">22</option> -->
                         </select>
                         <p class="text-white">:</p>
                         <select name="godzina_min" class="select_godzina" required>
@@ -291,5 +251,12 @@
         </section>
     </footer>
 
+    {% if messages %}
+        {% for message in messages %}
+            <script type="text/javascript">
+                alert("{{ message|escapejs }}");
+            </script>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

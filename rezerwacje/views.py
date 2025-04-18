@@ -42,23 +42,25 @@ def dodaj_rezerwacje(request):
 
         if sum_osob + ilosc_osob > 8:
             messages.error(request, "Zbyt dużo osób w tym przedziale czasowym!")
-
-        rezerwacja = rezerwacje(
-            rodzaj_rezerwacji = rodzaj_rezerwacji,
-            osoba=osoba,
-            ilosc_osob=ilosc_osob,
-            data=data,
-            godzina=godzina,
-            czas=czas,
-        )
-        rezerwacja.save()
-        print(rodzaj_rezerwacji)
-        print(osoba)
-        print(ilosc_osob)
-        print(data)
-        print(godzina)
-        print(czas)
-        return redirect('home')
+            return redirect('home') 
+             
+        else:
+            rezerwacja = rezerwacje(
+                rodzaj_rezerwacji = rodzaj_rezerwacji,
+                osoba=osoba,
+                ilosc_osob=ilosc_osob,
+                data=data,
+                godzina=godzina,
+                czas=czas,
+            )
+            rezerwacja.save()
+            print(rodzaj_rezerwacji)
+            print(osoba)
+            print(ilosc_osob)
+            print(data)
+            print(godzina)
+            print(czas)
+            return redirect('home')
     else:
         print("POST failed")
     return render(request, 'dodaj_rezerwacje.html')
