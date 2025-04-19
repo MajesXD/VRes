@@ -98,31 +98,31 @@
         grid-row: 1 / 4;
     }
     .reservation-13clock {
-        grid-row: 4 / 8;
+        grid-row: 4 / 7;
     }
     .reservation-14clock {
-        grid-row: 7 / 11;
+        grid-row: 7 / 10;
     }
     .reservation-15clock {
-        grid-row: 10 / 14;
+        grid-row: 10 / 13;
     }
     .reservation-16clock {
-        grid-row: 13 / 17;
+        grid-row: 13 / 16;
     }
     .reservation-17clock {
-        grid-row: 16 / 20;
+        grid-row: 16 / 19;
     }
     .reservation-18clock {
-        grid-row: 19 / 23;
+        grid-row: 19 / 22;
     }
     .reservation-19clock {
-        grid-row: 22 / 26;
+        grid-row: 22 / 25;
     }
     .reservation-20clock {
-        grid-row: 25 / 29;
+        grid-row: 25 / 28;
     }
     .reservation-21clock {
-        grid-row: 28 / 32;
+        grid-row: 28 / 31;
     }
 
     .reservation-15part {
