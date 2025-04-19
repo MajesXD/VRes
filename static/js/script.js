@@ -49,7 +49,7 @@ function fetchReservations(date) {
     .then(res => res.json())
     .then(data => {
         console.log("Rezerwacje z bazy:", data.reservations);
-        renderReservations(data.reservations);
+        showReservations(data.reservations);
     })
     .catch(err => console.error('Błąd pobierania rezerwacji:', err));
 }
@@ -60,7 +60,18 @@ function showReservations(reservations) {
 
     reservations.forEach(r => {
         const div = document.createElement('div');
-        div.className = 'reservation';
+        div.classList.add('reservation');
+        div.classList.add(`reservation-${r.rodzaj}`);
+        div.classList.add(`reservation-${r.ilosc_osob}x`);
+        const godzina_h = r.godzina.split(':')[0];
+        const godzina_min = r.godzina.split(':')[1];
+        div.classList.add(`reservation-${godzina_h}clock`);
+        div.classList.add(`reservation-${godzina_min}part`);
+
+
+
+
+
         div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;
         div.dataset.osoba = r.osoba;
@@ -73,20 +84,20 @@ function showReservations(reservations) {
         div.dataset.zatwierdzony = r.zatwierdzony;
 
         div.innerHTML = `
-            <div class="reservation reservation-12clock reservation-vr reservation-4x">
+            <div class="reservation">
                 <div class="reservation_info">
-                    <img src="{% static 'img/person-white.svg' %}">
-                    <p>{r.ilosc_osob}</p>
-                    <img src="{% static 'img/clock-white.svg' %}" class="reservation_info-gap">
-                    <p>{r.czas}</p>
+                    <img src="static/img/person-white.svg"}">
+                    <p>${r.ilosc_osob}</p>
+                    <img src="static/img/clock-white.svg" class="reservation_info-gap">
+                    <p>${r.czas}</p>
                 </div>
 
                 <div class="reservation_info">
-                    <p>{r.osoba}</p>
+                    <p>${r.osoba}</p>
                 </div>
                 <div class="reservation_info">
-                    <img src="{% static 'img/card-white.svg' %}">
-                    <p class="reservation_info-gap">{r.kwota}</p>
+                    <img src="/static/img/card-white.svg">
+                    <p class="reservation_info-gap">${r.kwota}</p>
                     <p>zł</p>
                 </div>
             </div>
