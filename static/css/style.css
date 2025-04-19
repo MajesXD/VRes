@@ -57,7 +57,7 @@ header {
 }
 
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+header input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(36%) sepia(99%) saturate(746%) hue-rotate(297deg) brightness(96%) contrast(93%);
   }
