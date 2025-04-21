@@ -139,7 +139,7 @@ function showReservations(reservations) {
             rodzaj_platnosci = '/static/img/voucher_kp-white.svg';
         }
         else if (r.rodzaj_platnosci === 8) {
-            rodzaj_platnosci = '/static/img/voucher_sp_kp-white.svg';
+            rodzaj_platnosci = '/static/img/voucher_sp-white.svg';
         }
 
         let symbol_platnosci = '';
