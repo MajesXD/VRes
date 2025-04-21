@@ -4,7 +4,7 @@
     margin-top: 150px;
     z-index: 9999;
     width: 800px;
-    height: 600px;
+    height: 700px;
     border: solid 5px;
     border-color: #EE379F;
     border-radius: 30px;
@@ -45,7 +45,7 @@
  }
 
  .add_reservation_window-mid {
-    height: 400px;
+    height: 500px;
     width: 500px;
     display: flex;
     flex-direction: column;

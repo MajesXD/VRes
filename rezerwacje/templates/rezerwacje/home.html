@@ -11,7 +11,7 @@
     <title>VRes</title>
 </head>
 
-<body>
+<body onload="fetchReservations(today)">
     <section class="separator_field">
         <div class="separator"></div>
         <div class="separator"></div>
@@ -29,28 +29,6 @@
             <img src="{% static 'img/arrow_left-pink.svg'%}" id="previous_day">
             <input type="date" id="selected_day" value="{{ today|date:'Y-m-d' }}">
             <img src="{% static 'img/arrow_right-pink.svg'%}" id="next_day">
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const selectedDay = document.getElementById('selected_day');
-                    const prevDay = document.getElementById('previous_day');
-                    const nextDay = document.getElementById('next_day');
-                
-                    function changeDateBy(days) {
-                        const currentDate = new Date(selectedDay.value);
-                        currentDate.setDate(currentDate.getDate() + days);
-                        const newDate = currentDate.toISOString().split('T')[0];
-                        selectedDay.value = newDate;
-                        fetchReservations(newDate);
-                    }
-                
-                    prevDay.addEventListener('click', () => changeDateBy(-1));
-                    nextDay.addEventListener('click', () => changeDateBy(1));
-                
-                    selectedDay.addEventListener('change', function () {
-                        fetchReservations(this.value);
-                    });
-                });
-            </script>
         </section>
 
         <div class="add_reservation clickable" onclick="add_reservation(event)">
@@ -131,7 +109,7 @@
                             <option value="6">6</option>
                             <option value="7">7</option>
                             <option value="8">8</option>
-                            <option value="8">>8</option>
+                            <option value="100">>8</option>
                         </select>
                     </div>
                 </div>
@@ -141,7 +119,7 @@
                         <p>Data</p>
                     </div>
                     <div class="add_reservation_row-right">
-                        <input name="data" type="date" required>
+                        <input id="reservation_add_date" name="data" type="date" required>
                     </div>
                 </div>
 
@@ -202,6 +180,36 @@
                         <p class="text-white">min</p>
                     </div>
                 </div>
+
+                <div class="add_reservation_row">
+                    <div class="add_reservation_row-left">
+                        <p>Kwota</p>
+                    </div>
+                    <div class="add_reservation_row-right">
+                        <input name="kwota" type="number" value="0">
+                    </div>
+                </div>
+
+                <div class="add_reservation_row">
+                    <div class="add_reservation_row-left">
+                        <p>Płatność</p>
+                    </div>
+                    <div class="add_reservation_row-right">
+                        <select name="rodzaj_platnosci">
+                            <option value="1">Przelew</option>
+                            <option value="2">Karta</option>
+                            <option value="3">Gotówka</option>
+                            <option value="4">Voucher VR</option>
+                            <option value="5">Voucher MyBenefit</option>
+                            <option value="6">Voucher Katalog Marzeń</option>
+                            <option value="7">Voucher Katalog Prezentów</option>
+                            <option value="8">Voucher SuperPrezenty</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                
             </div>
             <div class="add_reservation_window-bottom">
                 <button class="submit_button clickable" type="submit">Dodaj</button>

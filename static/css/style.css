@@ -76,8 +76,9 @@ header input[type="date"]::-webkit-calendar-picker-indicator {
             background-color: transparent;
             color: #32BCE0;
             border: 0;
-            font-size: 22px;
+            font-size: 26px;
             width: 155px;
+            font-family: serif;
         }
 
     .add_reservation {

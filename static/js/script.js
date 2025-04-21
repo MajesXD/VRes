@@ -1,3 +1,5 @@
+
+// Onclicki active
 function summary_active() {
     document.getElementById('summary').classList.toggle('active');
     document.getElementById('reservation_window').classList.remove('active')
@@ -22,6 +24,36 @@ function add_reservation_exit() {
     document.getElementById('add_reservation_window').classList.remove('active');
 }
 
+// Wyśiwetlanie obecnej daty w inputach z datą
+const today = new Date().toISOString().split('T')[0];
+
+document.addEventListener('DOMContentLoaded', function () {
+    const selectedDay = document.getElementById('selected_day');
+    const prevDay = document.getElementById('previous_day');
+    const nextDay = document.getElementById('next_day');
+    selectedDay.value = today;
+    // data w dodawnaniu rezerwacji
+    const reservation_add_date = document.getElementById('reservation_add_date');
+    reservation_add_date.value = today;
+
+    function changeDateBy(days) {
+        const currentDate = new Date(selectedDay.value);
+        currentDate.setDate(currentDate.getDate() + days);
+        const newDate = currentDate.toISOString().split('T')[0];
+        selectedDay.value = newDate;
+        fetchReservations(newDate);
+    }
+
+    prevDay.addEventListener('click', () => changeDateBy(-1));
+    nextDay.addEventListener('click', () => changeDateBy(1));
+
+    selectedDay.addEventListener('change', function () {
+        fetchReservations(this.value);
+    });
+});
+
+
+// Pobieranie rezerwacji
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -68,20 +100,56 @@ function showReservations(reservations) {
         div.classList.add(`reservation-${godzina_h}clock`);
         div.classList.add(`reservation-${godzina_min}part`);
 
-
-
-
-
         div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;
         div.dataset.osoba = r.osoba;
-        div.dataset.iosc = r.ilosc_osob
+        div.dataset.ilosc = r.ilosc_osob
         div.dataset.godzina = r.godzina;
         div.dataset.czas = r.czas;
         div.dataset.kwota = r.kwota;
-        div.dataset.rodzaj = r.rodzaj;
+        div.dataset.rodzaj_platnosci = r.rodzaj_platnosci;
         div.dataset.notatka = r.notatka;
         div.dataset.zatwierdzony = r.zatwierdzony;
+
+        if (r.ilosc_osob > 8) {
+            r.ilosc_osob = ">8";
+        }
+        
+        let rodzaj_platnosci ='';
+        if (r.rodzaj_platnosci === 1) {
+            rodzaj_platnosci = '/static/img/transfer-white.svg';
+        }
+        else if (r.rodzaj_platnosci === 2) {
+            rodzaj_platnosci = '/static/img/card-white.svg';
+        }
+
+        else if (r.rodzaj_platnosci === 3) {
+            rodzaj_platnosci = '/static/img/coin-white.svg';
+        }
+        else if (r.rodzaj_platnosci === 4) {
+            rodzaj_platnosci = '/static/img/voucher_vr-white.svg';
+        }
+        else if (r.rodzaj_platnosci === 5) {
+            rodzaj_platnosci = '/static/img/voucher_mb-white.svg';
+        }
+        else if (r.rodzaj_platnosci === 6) {
+            rodzaj_platnosci = '/static/img/voucher_km-white.svg';
+        }
+        else if (r.rodzaj_platnosci === 7) {
+            rodzaj_platnosci = '/static/img/voucher_kp-white.svg';
+        }
+        else if (r.rodzaj_platnosci === 8) {
+            rodzaj_platnosci = '/static/img/voucher_sp_kp-white.svg';
+        }
+
+        let symbol_platnosci = '';
+
+        if (r.rodzaj_platnosci === 4) {
+            symbol_platnosci = 'x';
+        }
+        else {
+            symbol_platnosci = 'zł';
+        }
 
         div.innerHTML = `
             <div class="reservation">
@@ -96,9 +164,9 @@ function showReservations(reservations) {
                     <p>${r.osoba}</p>
                 </div>
                 <div class="reservation_info">
-                    <img src="/static/img/card-white.svg">
+                    <img src="${rodzaj_platnosci}">
                     <p class="reservation_info-gap">${r.kwota}</p>
-                    <p>zł</p>
+                    <p>${symbol_platnosci}</p>
                 </div>
             </div>
     `;

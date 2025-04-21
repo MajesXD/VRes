@@ -20,6 +20,8 @@ def dodaj_rezerwacje(request):
         godzina_min = request.POST.get('godzina_min')
         czas_h = request.POST.get('czas_h')
         czas_min = request.POST.get('czas_min')
+        kwota = request.POST.get('kwota')
+        rodzaj_platnosci = request.POST.get('rodzaj_platnosci')
 
         godzina = time(int(godzina_h), int(godzina_min))
         czas = time(int(czas_h), int(czas_min))
@@ -40,7 +42,7 @@ def dodaj_rezerwacje(request):
             if (res_start < r_end) and (res_end > r_start):
                 sum_osob += r.ilosc_osob
 
-        if sum_osob + ilosc_osob > 8:
+        if sum_osob + ilosc_osob > 8 and (sum_osob + ilosc_osob < 100 or sum_osob + ilosc_osob > 100):
             messages.error(request, "Zbyt dużo osób w tym przedziale czasowym!")
             return redirect('home') 
              
@@ -52,6 +54,8 @@ def dodaj_rezerwacje(request):
                 data=data,
                 godzina=godzina,
                 czas=czas,
+                kwota = kwota,
+                rodzaj_platnosci = rodzaj_platnosci,
             )
             rezerwacja.save()
             print(rodzaj_rezerwacji)
@@ -60,6 +64,8 @@ def dodaj_rezerwacje(request):
             print(data)
             print(godzina)
             print(czas)
+            print(kwota)
+            print(rodzaj_platnosci)
             return redirect('home')
     else:
         print("POST failed")
@@ -86,6 +92,7 @@ def get_reservations(request):
                 'godzina': r.godzina.strftime('%H:%M'),
                 'czas': r.czas.strftime('%H:%M'),
                 'kwota': r.kwota,
+                'rodzaj_platnosci': r.rodzaj_platnosci,
                 'rodzaj': r.rodzaj_rezerwacji,
                 'notatka': r.notatka,
                 'zatwierdzony': r.zatwierdzony,

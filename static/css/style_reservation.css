@@ -42,7 +42,8 @@
 }
 
 .reservation img {
-    height: 15px;
+    height: 18px;
+    width: auto;
 }
 
     .reservation_info {
@@ -83,7 +84,7 @@
     .reservation-7x {
         grid-column: span 7;
     }
-    .reservation-8x {
+    .reservation-8x, .reservation-100x {
         grid-column: span 8;
     }
 
