@@ -174,3 +174,11 @@ function showReservations(reservations) {
     container.appendChild(div);
     })
 }
+
+// Podsumowanie
+const transfer_sum = ''; 
+const card_sum = '';
+const cash_sum = '';
+const voucher_kmmb_sum = '';
+const voucher_vr_sum = '';
+const summary_sum = '';
