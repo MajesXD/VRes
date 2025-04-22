@@ -35,6 +35,10 @@
             <img src="{% static '/img/plus-pink.svg' %}">
             <p class="text-pink">Dodaj rezerwację</p>
         </div>
+        <div class="add_note clickable" onclick="add_note(event)">
+            <img src="{% static '/img/plus-pink.svg' %}">
+            <p class="text-pink">Dodaj notatkę</p>
+        </div>
         <section class="logo"><img class="logo-img" src="{% static 'img/logo.svg' %}"></section>
         <section class="show_summary clickable" onclick="summary_active()">
             <img src="{% static 'img/equals-pink.svg' %}"><p>Podsumowanie</p> 
@@ -57,12 +61,23 @@
             <section class="reservation_field" id="reservation_field">
 
 <!-- BLOK Z REZERWACJAMI -->
-<!-- KONIEC BLOKU Z REZERWACJAMI -->
 
             </section>
         </section>
     </main>
 
+
+    <!-- Okno dodawania notatki -->
+    <section id="add_note_window" class="add_note_window">
+        <img class="exit clickable" src="{% static '/img/cross-pink.svg' %}" onclick="(add_note_exit())">
+        <div class="add_reservation_window-top">
+            <p class="text-pink">Dodaj notatkę</p>
+        </div>
+        <div>
+            <textarea id="add_note-text"></textarea>
+        </div>
+    </section>
+    <!-- Okno dodawania rezerwacji -->
     <section id="add_reservation_window" class="add_reservation_window">
         <img class="exit clickable" src="{% static '/img/cross-pink.svg' %}" onclick="add_reservation_exit()">
         <div class="add_reservation_window-top">
@@ -220,32 +235,32 @@
         <section id="summary" class="summary">
             <div class="payment_summary">
                 <img src="{% static 'img/transfer-blue.svg' %}">
-                <p id="transfer_sum">${transfer_sum}</p>
+                <p id="transfer_sum"></p>
             </div>
 
             <div class="payment_summary">
                 <img src="{% static 'img/card-blue.svg' %}">
-                <p id="card_sum">${card_sum}</p>
+                <p id="card_sum"></p>
             </div>
 
             <div class="payment_summary">
                 <img src="{% static 'img/coin-blue.svg' %}">
-                <p id="cash_sum">${cash_sum}</p>
+                <p id="cash_sum"></p>
             </div>
 
             <div class="payment_summary">
-                <img class="voucher-img" src="{% static 'img/voucher_kmmb-blue.svg' %}">
-                <p id="voucher_kmmb_sum">${voucher_kmmb_sum}</p>
+                <img src="{% static 'img/voucher_kmmb-blue.svg' %}">
+                <p id="voucher_kmmb_sum"></p>
             </div>
 
             <div class="payment_summary">
-                <img class="voucher-img" src="{% static 'img/voucher_vr-blue.svg' %}">
-                <p id="voucher_vr_sum">${voucher_vr_sum}</p>
+                <img src="{% static 'img/voucher_vr-blue.svg' %}">
+                <p id="voucher_vr_sum"></p>
             </div>
 
             <div class="payment_summary">
                 <p class="summary_all">Razem:</p>
-                <p id="summary_sum">${summary_sum}</p>
+                <p id="summary_sum"></p>
             </div>
             
             <div class="summary_note">

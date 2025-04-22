@@ -12,6 +12,7 @@ function reservation_active() {
 
 function add_reservation(event) {
     document.getElementById('add_reservation_window').classList.add('active');
+    document.getElementById('add_note_window').classList.remove('active');
     event.stopPropagation();
     document.addEventListener('click', function(event) {
         if (!document.getElementById('add_reservation_window').contains(event.target)) {
@@ -22,6 +23,21 @@ function add_reservation(event) {
 
 function add_reservation_exit() {
     document.getElementById('add_reservation_window').classList.remove('active');
+}
+
+function add_note_exit() {
+    document.getElementById('add_note_window').classList.remove('active');
+}
+
+function add_note(event) {
+    document.getElementById('add_note_window').classList.add('active');
+    document.getElementById('add_reservation_window').classList.remove('active');
+    event.stopPropagation();
+    document.addEventListener('click', function(event) {
+        if (!document.getElementById('add_note_window').contains(event.target)) {
+            document.getElementById('add_note_window').classList.remove('active');
+        }
+    });
 }
 
 // Wyśiwetlanie obecnej daty w inputach z datą
@@ -82,6 +98,12 @@ function fetchReservations(date) {
     .then(data => {
         console.log("Rezerwacje z bazy:", data.reservations);
         showReservations(data.reservations);
+        document.getElementById('transfer_sum').textContent = data.transfer_sum + 'zł';
+        document.getElementById('card_sum').textContent = data.card_sum + 'zł';
+        document.getElementById('cash_sum').textContent = data.cash_sum + 'zł';
+        document.getElementById('voucher_kmmb_sum').textContent = data.voucher_kmmb_sum + 'zł';
+        document.getElementById('voucher_vr_sum').textContent = data.voucher_vr_sum + 'x';
+        document.getElementById('summary_sum').textContent = data.summary_sum + 'zł';
     })
     .catch(err => console.error('Błąd pobierania rezerwacji:', err));
 }
@@ -176,9 +198,3 @@ function showReservations(reservations) {
 }
 
 // Podsumowanie
-const transfer_sum = ''; 
-const card_sum = '';
-const cash_sum = '';
-const voucher_kmmb_sum = '';
-const voucher_vr_sum = '';
-const summary_sum = '';

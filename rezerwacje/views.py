@@ -84,6 +84,11 @@ def get_reservations(request):
         reservations = rezerwacje.objects.filter(data=date)
 
         result = []
+        transfer_sum = 0
+        card_sum = 0
+        cash_sum = 0
+        voucher_kmmb_sum = 0
+        voucher_vr_sum = 0
         for r in reservations:
             result.append({
                 'id': r.id,
@@ -98,4 +103,29 @@ def get_reservations(request):
                 'zatwierdzony': r.zatwierdzony,
             })
 
-        return JsonResponse({'reservations': result})
+            if r.rodzaj_platnosci == 1:
+                transfer_sum = transfer_sum + r.kwota
+            elif r.rodzaj_platnosci == 2:
+                card_sum = card_sum + r.kwota
+            elif r.rodzaj_platnosci == 3:
+                cash_sum = cash_sum + r.kwota
+            elif r.rodzaj_platnosci == 4:
+                voucher_vr_sum = voucher_vr_sum + r.kwota
+            elif r.rodzaj_platnosci == 5:
+                voucher_kmmb_sum = voucher_kmmb_sum + r.kwota
+            elif r.rodzaj_platnosci == 6:
+                voucher_kmmb_sum = voucher_kmmb_sum + r.kwota * 1.23
+            elif r.rodzaj_platnosci == 7:
+                transfer_sum = transfer_sum + r.kwota                
+            elif r.rodzaj_platnosci == 8:
+                transfer_sum = transfer_sum + r.kwota  
+        summary_sum = transfer_sum + card_sum + cash_sum + voucher_kmmb_sum                               
+        return JsonResponse({
+            'reservations': result,
+            'transfer_sum': transfer_sum,
+            'card_sum': card_sum,
+            'cash_sum': cash_sum,
+            'voucher_vr_sum': voucher_vr_sum,
+            'voucher_kmmb_sum': voucher_kmmb_sum,
+            'summary_sum': summary_sum,
+            })

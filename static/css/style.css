@@ -28,12 +28,6 @@ img {
     width: 20px;
 }
 
-.voucher-img {
-    width: auto;
-    height: 24px;
-    width: 50px;
-}
-
 .clickable {
     cursor: pointer;
     user-select: none;
@@ -52,7 +46,7 @@ header {
     position: fixed;
     z-index: 9998;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 200px 1fr 1fr 1fr;
     gap: 20px;
 }
 
@@ -91,8 +85,18 @@ header input[type="date"]::-webkit-calendar-picker-indicator {
         grid-column: 2;
     }
 
+    .add_note {
+        width: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: #EE379F;
+        grid-column: 3;
+    }
+
     .logo {
-        grid-column: 3 / 5;
+        grid-column: 4;
         display: flex;
         justify-content: center;
     }
@@ -109,7 +113,7 @@ header input[type="date"]::-webkit-calendar-picker-indicator {
         justify-content: center;
         color: #EE379F;
         gap: 10px;
-        grid-column: 6;
+        grid-column: 7;
     }
 
 main {
@@ -171,6 +175,12 @@ footer {
 footer img {
     height: 20px;
     width: auto;
+}
+
+.vrkmmb_img {
+    height: 25px;
+    width: 150px;
+
 }
 
 .summary {
