@@ -160,18 +160,18 @@
     }
 
     .reservation-15part {
-        grid-row-start: calc(var(--start) + 1);
-
+        grid-row-start: calc(var(--start) + 2);
+        grid-row-end: calc(var(--end) + 2);
     }
 
     .reservation-30part {
         grid-row-start: calc(var(--start) + 2);
-
+        grid-row-end: calc(var(--end) + 2);
     }
 
     .reservation-45part {
         grid-row-start: calc(var(--start) + 3);
-
+        grid-row-end: calc(var(--end) + 3);
     }
 
     .reservation-01h {
