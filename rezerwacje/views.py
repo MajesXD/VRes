@@ -43,9 +43,23 @@ def dodaj_rezerwacje(request):
                 sum_osob += r.ilosc_osob
 
         if sum_osob + ilosc_osob > 8 and (sum_osob + ilosc_osob < 100 or sum_osob + ilosc_osob > 100):
-            messages.error(request, "Zbyt dużo osób w tym przedziale czasowym!")
+            messages.error(request, "Za dużo osób na jedną godzinę.")
             return redirect('home') 
-             
+        
+        elif timedelta(hours=int(godzina_h), minutes=int(godzina_min)) + timedelta(hours=int(czas_h), minutes=int(czas_min)) > timedelta(hours=22):
+            messages.error(request, "Zbyt długa rezerwacja.")
+            print(godzina_h)
+            print(godzina_min)
+            print(czas_h)
+            print(czas_min)
+            print(timedelta(hours=int(godzina_h), minutes=int(godzina_min)) + timedelta(hours=int(czas_h), minutes=int(czas_min)))
+            return redirect('home')
+        elif timedelta(hours=int(czas_h)) == timedelta(hours=0) and timedelta(minutes=int(czas_min)) == timedelta(minutes=0) :
+            messages.error(request, "Nie wybrano czasu rezerwacji.")
+            return redirect('home')
+        elif timedelta(hours=int(czas_h)) == timedelta(hours=0) and timedelta(minutes=int(czas_min)) == timedelta(minutes=15) :
+            messages.error(request, "Za krótki czas rezerwacji.")
+            return redirect('home')
         else:
             rezerwacja = rezerwacje(
                 rodzaj_rezerwacji = rodzaj_rezerwacji,

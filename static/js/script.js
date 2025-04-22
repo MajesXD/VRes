@@ -119,8 +119,12 @@ function showReservations(reservations) {
         div.classList.add(`reservation-${r.ilosc_osob}x`);
         const godzina_h = r.godzina.split(':')[0];
         const godzina_min = r.godzina.split(':')[1];
+        const czas_h = r.czas.split(':')[0];
+        const czas_min = r.czas.split(':')[1];
         div.classList.add(`reservation-${godzina_h}clock`);
         div.classList.add(`reservation-${godzina_min}part`);
+        div.classList.add(`reservation-${czas_h}h`)
+        div.classList.add(`reservation-${czas_min}min`)
 
         div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;

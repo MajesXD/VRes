@@ -26,7 +26,7 @@
 .add_reservation_window {
     position: fixed;
     align-self: center;
-    margin-top: 150px;
+    margin-top: 120px;
     z-index: 9999;
     width: 800px;
     height: 700px;
@@ -46,8 +46,6 @@
    from{opacity: 0; transform: translateY(-20px);}
    to{opacity: 1; transform: translateY(0px);}
 }
-
-
 
 .active {
     display: flex;

@@ -11,16 +11,12 @@
 }
 
 .reservation {
-    margin-top: 50px;
-    height: 90px;
+    --res_height: 0px;
     margin-top: 5px;
     margin-right: 5px;
     border-radius: 30px;
-    --base-margin-top: 5px;
-    --half_margin: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     color: white;
     font-size: 18px;
 }
@@ -52,6 +48,7 @@
         align-items: center;
         width: 80%;
         height: 20px;
+        margin-top: 5px;
         margin-left: 20px;
     }
 
@@ -96,45 +93,151 @@
         margin-top: 5px;
     } */
     .reservation-12clock {
-        grid-row: 1 / 4;
+        --start: 1;
+        --end: 4;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-13clock {
-        grid-row: 4 / 7;
+        --start: 4;
+        --end: 7;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-14clock {
-        grid-row: 7 / 10;
+        --start: 7;
+        --end: 10;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-15clock {
-        grid-row: 10 / 13;
+        --start: 10;
+        --end: 13;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-16clock {
-        grid-row: 13 / 16;
+        --start: 13;
+        --end: 16;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-17clock {
-        grid-row: 16 / 19;
+        --start: 16;
+        --end: 19;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
+      
     }
     .reservation-18clock {
-        grid-row: 19 / 22;
+        --start: 19;
+        --end: 22;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-19clock {
-        grid-row: 22 / 25;
+        --start: 22;
+        --end: 25;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-20clock {
-        grid-row: 25 / 28;
+        --start: 25;
+        --end: 28;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
     .reservation-21clock {
-        grid-row: 28 / 31;
+        --start: 28;
+        --end: 31;
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
+    }
+    
+    .reservation-00part {
+        grid-row-start: var(--start);
+        grid-row-end: var(--end);
     }
 
     .reservation-15part {
+        grid-row-start: calc(var(--start) + 1);
 
     }
 
     .reservation-30part {
+        grid-row-start: calc(var(--start) + 2);
 
     }
 
     .reservation-45part {
+        grid-row-start: calc(var(--start) + 3);
+
+    }
+
+    .reservation-01h {
+        grid-row-end: calc(var(--end) + 0) ;
+        height: 91px;
+    }
+
+    .reservation-02h {
+        grid-row-end: calc(var(--end) + 3) ;
+        height: 192px;
+    }
+
+    .reservation-03h {
+        grid-row-end: calc(var(--end) + 6) ;
+        height: 293px;
+    }
+
+    .reservation-04h {
+        grid-row-end: calc(var(--end) + 9) ;
+        height: 394px;
+    }
+
+    .reservation-05h {
+        grid-row-end: calc(var(--end) + 12) ;
+        height: 495px;
+    }
+
+    .reservation-06h {
+        grid-row-end: calc(var(--end) + 15) ;
+        height: 596px;
+    }
+
+    .reservation-07h {
+        grid-row-end: calc(var(--end) + 18) ;
+        height: 697px;
+    }
+
+    .reservation-08h {
+        grid-row-end: calc(var(--end) + 21) ;
+        height: 798px;
+    }
+
+    .reservation-09h {
+        grid-row-end: calc(var(--end) + 24) ;
+        height: 899px;
+    }
+
+    .reservation-10h {
+        
+        grid-row-end: calc(var(--end) + 27) ;
+        height: 1000px;
+    }
+
+    .reservation-00min {
+        
+    }
+
+    .reservation-15min {
+        
+    }
+
+    .reservation-30min {
+
+    }
+
+    .reservation-45min {
 
     }
 
