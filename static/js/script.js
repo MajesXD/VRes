@@ -122,9 +122,7 @@ function showReservations(reservations) {
         const czas_h = r.czas.split(':')[0];
         const czas_min = r.czas.split(':')[1];
         div.classList.add(`reservation-${godzina_h}clock`);
-        div.classList.add(`reservation-${godzina_min}part`);
         div.classList.add(`reservation-${czas_h}h`)
-        div.classList.add(`reservation-${czas_min}min`)
 
         div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;
@@ -198,7 +196,96 @@ function showReservations(reservations) {
     `;
 
     container.appendChild(div);
+
+    // Przesunięcie rezerwacji w dół w zależności od minuty zaczęcia
+    const part_move = getComputedStyle(div);
+    let start = parseInt(part_move.getPropertyValue('--start'));
+    let end = parseInt(part_move.getPropertyValue('--end'));
+
+    if (godzina_min == '00'){
+        div.style.gridRowStart = start + 0;
+        div.style.gridRowEnd = end + 0;
+    }
+    else if (godzina_min == '15'){
+        div.style.gridRowStart = start + 1;
+        div.style.gridRowEnd = end + 1;
+    }
+    else if (godzina_min == '30'){
+        div.style.gridRowStart = start + 2;
+        div.style.gridRowEnd = end + 2;
+    }
+    else if (godzina_min == '45'){
+        div.style.gridRowStart = start + 3;
+        div.style.gridRowEnd = end + 3;
+    }
+
+    // Wyciągnięcie rezerwacji w dół w zależności od czasu trwania
+    const hour_height = getComputedStyle(div)
+    let height = parseInt(hour_height.getPropertyValue('--res_height'));
+    let duration_end = parseInt(hour_height.getPropertyValue('--end'));
+
+    if (czas_h == '01') {
+        div.style.height = height + 91;
+        div.style.gridRowEnd = duration_end + 0;
+    }
+    else if (czas_h == '02') {
+        div.style.height = height + 192;
+        div.style.gridRowEnd = duration_end + 4;
+    }
+    else if (czas_h == '03') {
+        div.style.height = height + 293;
+        div.style.gridRowEnd = duration_end + 8;
+    }
+    else if (czas_h == '04') {
+        div.style.height = height + 394;
+        div.style.gridRowEnd = duration_end + 12;
+    }
+    else if (czas_h == '05') {
+        div.style.height = height + 495;
+        div.style.gridRowEnd = duration_end + 16;
+    }
+    else if (czas_h == '06') {
+        div.style.height = height + 596;
+        div.style.gridRowEnd = duration_end + 20;
+    }
+    else if (czas_h == '07') {
+        div.style.height = height + 697;
+        div.style.gridRowEnd = duration_end + 24;
+    }
+    else if (czas_h == '08') {
+        div.style.height = height + 798;
+        div.style.gridRowEnd = duration_end + 28;
+    }
+    else if (czas_h == '09') {
+        div.style.height = height + 899;
+        div.style.gridRowEnd = duration_end + 32;
+    }
+    else if (czas_h == '10') {
+        div.style.height = height + 1000;
+        div.style.gridRowEnd = duration_end + 36;
+    }
     })
+
+    const part_height = getComputedStyle(div)
+    let heightpart = parseInt(part_height.getPropertyValue('--res_height'));
+    let part_duration_end = parseInt(part_height.getPropertyValue('--end'));
+
+    if (czas_min == '00') {
+        div.style.height = heightpart + 0 + 'px';
+        div.style.gridRowEnd = part_duration_end;
+    }
+    else if (czas_min == '15') {
+        div.style.height = heightpart + 15 + 'px';
+        div.style.gridRowEnd = part_duration_end + 1;
+    }
+    else if (czas_min == '30') {
+        div.style.height = heightpart + 30 + 'px';
+        div.style.gridRowEnd = part_duration_end + 2;
+    }
+    else if (czas_min == '45') {
+        div.style.height = heightpart + 45 + 'px';
+        div.style.gridRowEnd = part_duration_end + 3;
+    }
 }
 
 // Podsumowanie

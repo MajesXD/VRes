@@ -11,7 +11,8 @@
 }
 
 .reservation {
-    --res_height: 0px;
+    --res_height: 0;
+    height: var(--res_height)px;
     margin-top: 5px;
     margin-right: 5px;
     border-radius: 30px;
@@ -85,13 +86,6 @@
         grid-column: span 8;
     }
 
-
-    /* .reservation-10clock {
-        margin-top: 5px;
-    }
-    .reservation-11clock {
-        margin-top: 5px;
-    } */
     .reservation-12clock {
         --start: 1;
         --end: 4;
@@ -154,96 +148,6 @@
         grid-row-end: var(--end);
     }
     
-    .reservation-00part {
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-
-    .reservation-15part {
-        grid-row-start: calc(var(--start) + 2);
-        grid-row-end: calc(var(--end) + 2);
-    }
-
-    .reservation-30part {
-        grid-row-start: calc(var(--start) + 2);
-        grid-row-end: calc(var(--end) + 2);
-    }
-
-    .reservation-45part {
-        grid-row-start: calc(var(--start) + 3);
-        grid-row-end: calc(var(--end) + 3);
-    }
-
-    .reservation-01h {
-        grid-row-end: calc(var(--end) + 0) ;
-        height: 91px;
-    }
-
-    .reservation-02h {
-        grid-row-end: calc(var(--end) + 3) ;
-        height: 192px;
-    }
-
-    .reservation-03h {
-        grid-row-end: calc(var(--end) + 6) ;
-        height: 293px;
-    }
-
-    .reservation-04h {
-        grid-row-end: calc(var(--end) + 9) ;
-        height: 394px;
-    }
-
-    .reservation-05h {
-        grid-row-end: calc(var(--end) + 12) ;
-        height: 495px;
-    }
-
-    .reservation-06h {
-        grid-row-end: calc(var(--end) + 15) ;
-        height: 596px;
-    }
-
-    .reservation-07h {
-        grid-row-end: calc(var(--end) + 18) ;
-        height: 697px;
-    }
-
-    .reservation-08h {
-        grid-row-end: calc(var(--end) + 21) ;
-        height: 798px;
-    }
-
-    .reservation-09h {
-        grid-row-end: calc(var(--end) + 24) ;
-        height: 899px;
-    }
-
-    .reservation-10h {
-        
-        grid-row-end: calc(var(--end) + 27) ;
-        height: 1000px;
-    }
-
-    .reservation-00min {
-        
-    }
-
-    .reservation-15min {
-        
-    }
-
-    .reservation-30min {
-
-    }
-
-    .reservation-45min {
-
-    }
-
-
-
-
 
 .reservation-full {
     height: 969px;
