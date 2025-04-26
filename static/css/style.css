@@ -170,9 +170,6 @@ footer {
     margin-right: 1%;
     position: absolute;
     align-self: flex-end;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 footer img {
@@ -184,6 +181,7 @@ footer img {
     height: 969px;
     width: 100%;
     background-color: rgba(48, 48, 48, 0.5);
+    display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
@@ -196,6 +194,7 @@ footer img {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
     
         .payment_summary {
