@@ -6,12 +6,14 @@
     flex-direction: row;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(30, 1fr);
+    grid-template-rows: repeat(40, 1fr);
     grid-auto-flow: row;
 }
 
 .reservation {
-    --res_height: 0;
+    --grid_height: 0;
+    --grid_start: 0;
+    --grid_end: 0;
     height: var(--res_height)px;
     margin-top: 5px;
     margin-right: 5px;
@@ -59,95 +61,7 @@
 
 .reservation:hover {
     cursor: pointer;
-}
-
-    .reservation-1x {
-        grid-column: span 1;
-    }
-    .reservation-2x {
-        grid-column: span 2;
-    }
-    .reservation-3x {
-        grid-column: span 3;
-    }
-    .reservation-4x {
-        grid-column: span 4;
-    }
-    .reservation-5x {
-        grid-column: span 5;
-    }
-    .reservation-6x {
-        grid-column: span 6;
-    }
-    .reservation-7x {
-        grid-column: span 7;
-    }
-    .reservation-8x, .reservation-100x {
-        grid-column: span 8;
-    }
-
-    .reservation-12clock {
-        --start: 1;
-        --end: 4;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-13clock {
-        --start: 4;
-        --end: 7;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-14clock {
-        --start: 7;
-        --end: 10;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-15clock {
-        --start: 10;
-        --end: 13;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-16clock {
-        --start: 13;
-        --end: 16;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-17clock {
-        --start: 16;
-        --end: 19;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-      
-    }
-    .reservation-18clock {
-        --start: 19;
-        --end: 22;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-19clock {
-        --start: 22;
-        --end: 25;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-20clock {
-        --start: 25;
-        --end: 28;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    .reservation-21clock {
-        --start: 28;
-        --end: 31;
-        grid-row-start: var(--start);
-        grid-row-end: var(--end);
-    }
-    
+}   
 
 .reservation-full {
     height: 969px;

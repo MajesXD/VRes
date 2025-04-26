@@ -1,12 +1,6 @@
 
 // Onclicki active
-function summary_active() {
-    document.getElementById('summary').classList.toggle('active');
-    document.getElementById('reservation_window').classList.remove('active')
-}
-
 function reservation_active() {
-    document.getElementById('summary').classList.remove('active');
     document.getElementById('reservation_window').classList.toggle('active')
 }
 
@@ -114,15 +108,12 @@ function showReservations(reservations) {
 
     reservations.forEach(r => {
         const div = document.createElement('div');
-        div.classList.add('reservation');
-        div.classList.add(`reservation-${r.rodzaj}`);
-        div.classList.add(`reservation-${r.ilosc_osob}x`);
         const godzina_h = r.godzina.split(':')[0];
         const godzina_min = r.godzina.split(':')[1];
         const czas_h = r.czas.split(':')[0];
         const czas_min = r.czas.split(':')[1];
-        div.classList.add(`reservation-${godzina_h}clock`);
-        div.classList.add(`reservation-${czas_h}h`)
+        div.classList.add('reservation');
+        div.classList.add(`reservation-${r.rodzaj}`);
 
         div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;
@@ -134,11 +125,8 @@ function showReservations(reservations) {
         div.dataset.rodzaj_platnosci = r.rodzaj_platnosci;
         div.dataset.notatka = r.notatka;
         div.dataset.zatwierdzony = r.zatwierdzony;
-
-        if (r.ilosc_osob > 8) {
-            r.ilosc_osob = ">8";
-        }
         
+        // Ikona płatności
         let rodzaj_platnosci ='';
         if (r.rodzaj_platnosci === 1) {
             rodzaj_platnosci = '/static/img/transfer-white.svg';
@@ -174,7 +162,8 @@ function showReservations(reservations) {
         else {
             symbol_platnosci = 'zł';
         }
-
+    
+        // Blok z rezerwacją
         div.innerHTML = `
             <div class="reservation">
                 <div class="reservation_info">
@@ -195,97 +184,112 @@ function showReservations(reservations) {
             </div>
     `;
 
+    // Dodawanie bloku i warunki jak ma wyglądać i gdzie ma być
     container.appendChild(div);
 
-    // Przesunięcie rezerwacji w dół w zależności od minuty zaczęcia
-    const part_move = getComputedStyle(div);
-    let start = parseInt(part_move.getPropertyValue('--start'));
-    let end = parseInt(part_move.getPropertyValue('--end'));
+    const reservation_styles = getComputedStyle(div);
+    let grid_start = parseInt(reservation_styles.getPropertyValue('--grid_start'));
+    let grid_end = parseInt(reservation_styles.getPropertyValue('--grid_end'));
+    let grid_height = parseInt(reservation_styles.getPropertyValue('--grid_height'));
 
+    //Umiejscowienie rezerwacji w zależności od godziny 
+    place_start = (godzina_h - 12) * 4 + 1;
+    place_end = (godzina_h - 12) * 4 + 5;
+    grid_start += place_start; 
+    grid_end += place_end;
+
+    // Przesunięcie rezerwacji w dół w zależności od minuty zaczęcia
     if (godzina_min == '00'){
-        div.style.gridRowStart = start + 0;
-        div.style.gridRowEnd = end + 0;
+        grid_start += 0;
+        grid_end += 0;
     }
     else if (godzina_min == '15'){
-        div.style.gridRowStart = start + 1;
-        div.style.gridRowEnd = end + 1;
+        grid_start += 1;
+        grid_end += 1;
     }
     else if (godzina_min == '30'){
-        div.style.gridRowStart = start + 2;
-        div.style.gridRowEnd = end + 2;
+        grid_start += 2;
+        grid_end += 2;
     }
     else if (godzina_min == '45'){
-        div.style.gridRowStart = start + 3;
-        div.style.gridRowEnd = end + 3;
+        grid_start += 3;
+        grid_end += 3;
     }
 
     // Wyciągnięcie rezerwacji w dół w zależności od czasu trwania
-    const hour_height = getComputedStyle(div)
-    let height = parseInt(hour_height.getPropertyValue('--res_height'));
-    let duration_end = parseInt(hour_height.getPropertyValue('--end'));
-
     if (czas_h == '01') {
-        div.style.height = height + 91;
-        div.style.gridRowEnd = duration_end + 0;
+        grid_height += 91;
+        grid_end += 0;
     }
     else if (czas_h == '02') {
-        div.style.height = height + 192;
-        div.style.gridRowEnd = duration_end + 4;
+        grid_height += 192;
+        grid_end += 4;
     }
     else if (czas_h == '03') {
-        div.style.height = height + 293;
-        div.style.gridRowEnd = duration_end + 8;
+        grid_height += 293;
+        grid_end += 8;
     }
     else if (czas_h == '04') {
-        div.style.height = height + 394;
-        div.style.gridRowEnd = duration_end + 12;
+        grid_height += 394;
+        grid_end += 12;
     }
     else if (czas_h == '05') {
-        div.style.height = height + 495;
-        div.style.gridRowEnd = duration_end + 16;
+        grid_height += 495;
+        grid_end += 16;
     }
     else if (czas_h == '06') {
-        div.style.height = height + 596;
-        div.style.gridRowEnd = duration_end + 20;
+        grid_height += 596;
+        grid_end += 20;
     }
     else if (czas_h == '07') {
-        div.style.height = height + 697;
-        div.style.gridRowEnd = duration_end + 24;
+        grid_height += 697;
+        grid_end += 24;
     }
     else if (czas_h == '08') {
-        div.style.height = height + 798;
-        div.style.gridRowEnd = duration_end + 28;
+        grid_height += 798;
+        grid_end += 28;
     }
     else if (czas_h == '09') {
-        div.style.height = height + 899;
-        div.style.gridRowEnd = duration_end + 32;
+        grid_height += 899;
+        grid_end += 32;
     }
     else if (czas_h == '10') {
-        div.style.height = height + 1000;
-        div.style.gridRowEnd = duration_end + 36;
+        grid_height += 1000;
+        grid_end += 36;
     }
-    })
-
-    const part_height = getComputedStyle(div)
-    let heightpart = parseInt(part_height.getPropertyValue('--res_height'));
-    let part_duration_end = parseInt(part_height.getPropertyValue('--end'));
-
+    
+    // Wyciągnięcie rezerwacji w dół w zależności od minut trwania
     if (czas_min == '00') {
-        div.style.height = heightpart + 0 + 'px';
-        div.style.gridRowEnd = part_duration_end;
+        grid_height += 0;
+        grid_end += 0;
     }
     else if (czas_min == '15') {
-        div.style.height = heightpart + 15 + 'px';
-        div.style.gridRowEnd = part_duration_end + 1;
+        grid_height += 26;
+        grid_end += 1;
     }
     else if (czas_min == '30') {
-        div.style.height = heightpart + 30 + 'px';
-        div.style.gridRowEnd = part_duration_end + 2;
+        grid_height += 51;
+        grid_end += 2;
     }
     else if (czas_min == '45') {
-        div.style.height = heightpart + 45 + 'px';
-        div.style.gridRowEnd = part_duration_end + 3;
+        grid_height += 76;
+        grid_end += 3;
     }
+
+    // Szerokość rezerwacji w zależności od liczby osób
+    let dlugosc = r.ilosc_osob;
+    if (dlugosc > 8) {
+        dlugosc = 8;
+    }
+    else {
+        dlugosc = dlugosc;
+    }
+
+    div.style.gridColumn = 'span ' + dlugosc;
+    div.style.height = grid_height + 'px';
+    div.style.gridRowStart = grid_start;
+    div.style.gridRowEnd = grid_end;
+    })
 }
 
 // Podsumowanie

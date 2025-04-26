@@ -170,17 +170,14 @@ footer {
     margin-right: 1%;
     position: absolute;
     align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer img {
     height: 20px;
     width: auto;
-}
-
-.vrkmmb_img {
-    height: 25px;
-    width: 150px;
-
 }
 
 .summary {
@@ -191,11 +188,6 @@ footer img {
     align-items: center;
     border-radius: 30px;
     color: #EE379F;
-    display: none;
-}
-
-.summary-active {
-    display: flex;
 }
 
     .summary_bottom {

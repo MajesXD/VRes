@@ -175,7 +175,7 @@
                     <div class="add_reservation_row-right">
                         <select class="select_godzina" name="czas_h" required>
                             <option value="00">0</option>
-                            <option value="01">1</option>
+                            <option value="01" selected>1</option>
                             <option value="02">2</option>
                             <option value="03">3</option>
                             <option value="04">4</option>
@@ -233,7 +233,7 @@
         </form>
     </section>
     <footer>
-        <section id="summary" class="summary">
+        <section class="summary">
             <div class="payment_summary">
                 <img src="{% static 'img/transfer-blue.svg' %}">
                 <p id="transfer_sum"></p>
@@ -268,9 +268,6 @@
                 <p class="note">Notka:</p>
                 <p class="note">asdsadsadsadsadada</p>
             </div>
-        </section>
-
-        <section class="reservation-full" id="reservation_window">
         </section>
     </footer>
 
