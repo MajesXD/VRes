@@ -63,15 +63,22 @@
     cursor: pointer;
 }   
 
-.reservation-full {
-    height: 969px;
-    width: 100%;
+.reservation-window {
+    position: fixed;
+    align-self: center;
+    margin-top: 120px;
+    z-index: 9999;
+    width: 800px;
+    height: 700px;
+    border: solid 5px;
+    border-color: #EE379F;
+    border-radius: 30px;
+    background-color: #0e0e0e;
+    color: #32BCE0;
     flex-direction: column;
     align-items: center;
-    border-radius: 30px;
-    color: #ffff;
     display: none;
-    background-color: #D72B2B;
+    animation: animacja 0.2s ease-in-out;
 }
 
 .active {

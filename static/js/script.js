@@ -1,7 +1,13 @@
 
 // Onclicki active
-function reservation_active() {
-    document.getElementById('reservation_window').classList.toggle('active')
+function reservation_active(event) {
+    document.getElementById('reservation-window').classList.add('active')
+    event.stopPropagation();
+    document.addEventListener('click', function(event) {
+        if (!document.getElementById('reservation-window').contains(event.target)) {
+            document.getElementById('reservation-window').classList.remove('active');
+        }
+    });
 }
 
 function add_reservation(event) {
@@ -114,7 +120,6 @@ function showReservations(reservations) {
         const czas_min = r.czas.split(':')[1];
         div.classList.add('reservation');
         div.classList.add(`reservation-${r.rodzaj}`);
-
         div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;
         div.dataset.osoba = r.osoba;
