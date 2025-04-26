@@ -35,10 +35,23 @@ img {
 
 header {
     width: 100%;
+    margin-right: 1%;
     height: 100px;
     background-color: rgba(48, 48, 48, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    position: fixed;
+    z-index: 9998;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 200px 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.header {
+    width: 99%;
+    margin-right: 1%;
+    height: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;

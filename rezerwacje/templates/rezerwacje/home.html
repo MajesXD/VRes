@@ -25,24 +25,26 @@
         <div class="separator"></div>
     </section>
     <header>
-        <section class="date clickable">
-            <img src="{% static 'img/arrow_left-pink.svg'%}" id="previous_day">
-            <input type="date" id="selected_day" value="{{ today|date:'Y-m-d' }}">
-            <img src="{% static 'img/arrow_right-pink.svg'%}" id="next_day">
-        </section>
+        <div class="header">
+            <section class="date clickable">
+                <img src="{% static 'img/arrow_left-pink.svg'%}" id="previous_day">
+                <input type="date" id="selected_day" value="{{ today|date:'Y-m-d' }}">
+                <img src="{% static 'img/arrow_right-pink.svg'%}" id="next_day">
+            </section>
 
-        <div class="add_reservation clickable" onclick="add_reservation(event)">
-            <img src="{% static '/img/plus-pink.svg' %}">
-            <p class="text-pink">Dodaj rezerwację</p>
+            <div class="add_reservation clickable" onclick="add_reservation(event)">
+                <img src="{% static '/img/plus-pink.svg' %}">
+                <p class="text-pink">Dodaj rezerwację</p>
+            </div>
+            <div class="add_note clickable" onclick="add_note(event)">
+                <img src="{% static '/img/plus-pink.svg' %}">
+                <p class="text-pink">Dodaj notatkę</p>
+            </div>
+            <section class="logo"><img class="logo-img" src="{% static 'img/logo.svg' %}"></section>
+            <section class="show_summary">
+                <img src="{% static 'img/equals-pink.svg' %}"><p>Podsumowanie</p> 
+            </section>
         </div>
-        <div class="add_note clickable" onclick="add_note(event)">
-            <img src="{% static '/img/plus-pink.svg' %}">
-            <p class="text-pink">Dodaj notatkę</p>
-        </div>
-        <section class="logo"><img class="logo-img" src="{% static 'img/logo.svg' %}"></section>
-        <section class="show_summary clickable" onclick="summary_active()">
-            <img src="{% static 'img/equals-pink.svg' %}"><p>Podsumowanie</p> 
-        </section>
     </header>
     <main>
         <section class="hours">
@@ -223,8 +225,6 @@
                         </select>
                     </div>
                 </div>
-
-
                 
             </div>
             <div class="add_reservation_window-bottom">
