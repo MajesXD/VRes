@@ -1,15 +1,5 @@
 
 // Onclicki active
-function reservation_active(event) {
-    document.getElementById('reservation-window').classList.add('active')
-    event.stopPropagation();
-    document.addEventListener('click', function(event) {
-        if (!document.getElementById('reservation-window').contains(event.target)) {
-            document.getElementById('reservation-window').classList.remove('active');
-        }
-    });
-}
-
 function add_reservation(event) {
     document.getElementById('add_reservation_window').classList.add('active');
     document.getElementById('add_note_window').classList.remove('active');
@@ -118,9 +108,9 @@ function showReservations(reservations) {
         const godzina_min = r.godzina.split(':')[1];
         const czas_h = r.czas.split(':')[0];
         const czas_min = r.czas.split(':')[1];
+        div.addEventListener('click', reservationFull);
         div.classList.add('reservation');
         div.classList.add(`reservation-${r.rodzaj}`);
-        div.setAttribute('onclick', 'reservation_active(this)');
         div.dataset.id = r.id;
         div.dataset.osoba = r.osoba;
         div.dataset.ilosc = r.ilosc_osob
@@ -297,4 +287,33 @@ function showReservations(reservations) {
     })
 }
 
+function reservationFull(event) {
+    const div = event.currentTarget;
+    const container_full = document.getElementById('reservation-full');
+
+     container_full.innerHTML = `
+        <div class="reservation">
+            <p>Kwota: ${div.dataset.kwota}</p>
+            <p>Osoba: ${div.dataset.osoba}</p>
+            <p>Godzina: ${div.dataset.godzina}</p>
+            <p>Czas: ${div.dataset.czas}</p>
+        </div>
+`;
+
+    container_full.classList.add('active');
+    document.removeEventListener('click', clickOutside);
+    setTimeout(() => {
+        document.addEventListener('click', clickOutside);
+    }, 0);
+
+    function clickOutside(event) {
+        const container_full = document.getElementById('reservation-full');
+    
+        if (!container_full.contains(event.target)) {
+            container_full.classList.remove('active');
+            document.removeEventListener('click', clickOutside);
+        }
+    }
+
+}
 // Podsumowanie
