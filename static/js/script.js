@@ -1,3 +1,10 @@
+const reservation_colors = {
+    vr: '#4F3EE3',
+    calendar: '#D72B2B',
+    street: '#0E733A',
+    block: 'white',
+};
+
 
 // Onclicki active
 function add_reservation(event) {
@@ -110,8 +117,9 @@ function showReservations(reservations) {
         const czas_min = r.czas.split(':')[1];
         div.addEventListener('click', reservationFull);
         div.classList.add('reservation');
-        div.classList.add(`reservation-${r.rodzaj}`);
+        div.style.backgroundColor = reservation_colors[r.rodzaj];
         div.dataset.id = r.id;
+        div.dataset.rodzaj = r.rodzaj;
         div.dataset.osoba = r.osoba;
         div.dataset.ilosc = r.ilosc_osob
         div.dataset.godzina = r.godzina;
@@ -291,14 +299,24 @@ function reservationFull(event) {
     const div = event.currentTarget;
     const container_full = document.getElementById('reservation-full');
 
+    // Pełna rezerwacja (kliknięta)
      container_full.innerHTML = `
-        <div class="reservation">
-            <p>Kwota: ${div.dataset.kwota}</p>
+        <div class="reservation_window">
+
+            <p>Rodzaj rezerwacji: ${div.dataset.rodzaj}</p>
             <p>Osoba: ${div.dataset.osoba}</p>
+            <p>Ilość osób: ${div.dataset.ilosc_osob}</p>
+            <p>Data: ${div.dataset.data}</p>
             <p>Godzina: ${div.dataset.godzina}</p>
             <p>Czas: ${div.dataset.czas}</p>
+            <p>Kwota: ${div.dataset.kwota}</p>
+            <p>rodzaj: ${div.dataset.rodzaj_platnosci}</p>
+            <p>notka: ${div.dataset.notatka}</p>
+            <p>zatw: ${div.dataset.zatwierdzony}</p>
+            
         </div>
 `;
+    div.style.borderColor = reservation_colors[div.dataset.rodzaj];
 
     container_full.classList.add('active');
     document.removeEventListener('click', clickOutside);

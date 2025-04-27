@@ -1,3 +1,20 @@
+.reservation-vr {
+    background-color: #4F3EE3;
+    border-color: #4F3EE3;
+}
+
+.reservation-calendar {
+    border-color: #D72B2B;
+}
+
+.reservation-street {
+    border-color: #0E733A;
+}
+
+.reservation-block  {
+    border-color: white;
+}
+
 .reservation_field {
     position: absolute;
     height: 1009px;
@@ -24,22 +41,6 @@
     font-size: 18px;
 }
 
-.reservation-vr {
-    background-color: #4F3EE3;
-}
-
-.reservation-calendar {
-    background-color: #D72B2B;
-}
-
-.reservation-street {
-    background-color: #0E733A;
-}
-
-.reservation-block  {
-    background-color: white;
-}
-
 .reservation img {
     height: 15px;
     width: auto;
@@ -63,7 +64,7 @@
     cursor: pointer;
 }   
 
-.reservation-window {
+.reservation_window {
     position: fixed;
     align-self: center;
     margin-top: 120px;
@@ -71,7 +72,6 @@
     width: 800px;
     height: 700px;
     border: solid 5px;
-    border-color: #EE379F;
     border-radius: 30px;
     background-color: #0e0e0e;
     color: #32BCE0;
@@ -80,6 +80,9 @@
     display: none;
     animation: animacja 0.2s ease-in-out;
 }
+    .reservation_window_row {
+        
+    }
 
 .active {
     display: flex;
