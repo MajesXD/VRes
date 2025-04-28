@@ -317,21 +317,27 @@ function reservationFull(event) {
         </div>
 `;
     div.style.borderColor = reservation_colors[div.dataset.rodzaj];
-
+    document.getElementById('add_reservation_window').classList.remove('active');
+    document.getElementById('add_note_window').classList.remove('active');
     container_full.classList.add('active');
-    document.removeEventListener('click', clickOutside);
-    setTimeout(() => {
-        document.addEventListener('click', clickOutside);
-    }, 0);
-
-    function clickOutside(event) {
-        const container_full = document.getElementById('reservation-full');
-    
+    event.stopPropagation();
+    document.addEventListener(cancelIdleCallback, function(event) {
         if (!container_full.contains(event.target)) {
             container_full.classList.remove('active');
-            document.removeEventListener('click', clickOutside);
         }
-    }
+    })
+    // document.removeEventListener('click', clickOutside);
+    // setTimeout(() => {
+    //     document.addEventListener('click', clickOutside);
+    // }, 0);
 
-}
+    // function clickOutside(event) {
+    //     const container_full = document.getElementById('reservation-full');
+    
+    //     if (!container_full.contains(event.target)) {
+    //         container_full.classList.remove('active');
+    //         document.removeEventListener('click', clickOutside);
+    //     }
+    // }
+}   
 // Podsumowanie
