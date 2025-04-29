@@ -171,9 +171,9 @@ function showReservations(reservations) {
             <div class="reservation">
                 <div class="reservation_info">
                     <img src="static/img/person-white.svg"}">
-                    <p>${r.ilosc_osob}</p>
-                    <img src="static/img/clock-white.svg" class="reservation_info-gap">
-                    <p>${r.czas}</p>
+                    <p class="reservation_icon-gap">${r.ilosc_osob}</p>
+                    <img src="static/img/hourglass-white.svg" class="reservation_info-gap">
+                    <p class="reservation_icon-gap">${r.czas}</p>
                 </div>
 
                 <div class="reservation_info">
@@ -181,7 +181,7 @@ function showReservations(reservations) {
                 </div>
                 <div class="reservation_info">
                     <img src="${rodzaj_platnosci}">
-                    <p class="reservation_info-gap">${r.kwota}</p>
+                    <p class="reservation_icon-gap">${r.kwota}</p>
                     <p>${symbol_platnosci}</p>
                 </div>
             </div>
@@ -194,6 +194,21 @@ function showReservations(reservations) {
     let grid_start = parseInt(reservation_styles.getPropertyValue('--grid_start'));
     let grid_end = parseInt(reservation_styles.getPropertyValue('--grid_end'));
     let grid_height = parseInt(reservation_styles.getPropertyValue('--grid_height'));
+
+
+    if (czas_h == 0 && czas_min == 30) {
+        const info = div.querySelectorAll('.reservation_info');
+
+        info.forEach(element => {
+            element.style.fontSize = "12px";
+
+                const img = info.querySelectorAll('img');
+                img.forEach(element => {
+                    element.style.height = "6px";
+                });
+        });
+
+    }
 
     //Umiejscowienie rezerwacji w zależności od godziny 
     place_start = (godzina_h - 12) * 4 + 1;
@@ -296,48 +311,49 @@ function showReservations(reservations) {
 }
 
 function reservationFull(event) {
-    const div = event.currentTarget;
+    event.stopPropagation();
+    const active_reservation = event.currentTarget;
     const container_full = document.getElementById('reservation-full');
-
-    // Pełna rezerwacja (kliknięta)
-     container_full.innerHTML = `
-        <div class="reservation_window">
-
-            <p>Rodzaj rezerwacji: ${div.dataset.rodzaj}</p>
-            <p>Osoba: ${div.dataset.osoba}</p>
-            <p>Ilość osób: ${div.dataset.ilosc_osob}</p>
-            <p>Data: ${div.dataset.data}</p>
-            <p>Godzina: ${div.dataset.godzina}</p>
-            <p>Czas: ${div.dataset.czas}</p>
-            <p>Kwota: ${div.dataset.kwota}</p>
-            <p>rodzaj: ${div.dataset.rodzaj_platnosci}</p>
-            <p>notka: ${div.dataset.notatka}</p>
-            <p>zatw: ${div.dataset.zatwierdzony}</p>
-            
-        </div>
-`;
-    div.style.borderColor = reservation_colors[div.dataset.rodzaj];
+    container_full.classList.toggle('active');
     document.getElementById('add_reservation_window').classList.remove('active');
     document.getElementById('add_note_window').classList.remove('active');
-    container_full.classList.add('active');
-    event.stopPropagation();
-    document.addEventListener(cancelIdleCallback, function(event) {
+    document.addEventListener('click', function (event) {
+        const container_full = document.getElementById('reservation-full');
         if (!container_full.contains(event.target)) {
             container_full.classList.remove('active');
         }
-    })
-    // document.removeEventListener('click', clickOutside);
-    // setTimeout(() => {
-    //     document.addEventListener('click', clickOutside);
-    // }, 0);
-
-    // function clickOutside(event) {
-    //     const container_full = document.getElementById('reservation-full');
+    });
+    container_full.style.borderColor = reservation_colors[active_reservation.dataset.rodzaj];
     
-    //     if (!container_full.contains(event.target)) {
-    //         container_full.classList.remove('active');
-    //         document.removeEventListener('click', clickOutside);
-    //     }
-    // }
-}   
+    
+    // Pełna rezerwacja (kliknięta)
+     container_full.innerHTML = `
+        <div class="reservation_window_inside" id="reservation_window_inside">
+
+            <p>Rodzaj rezerwacji: ${active_reservation.dataset.rodzaj}</p>
+            <p>Osoba: ${active_reservation.dataset.osoba}</p>
+            <p>Ilość osób: ${active_reservation.dataset.ilosc_osob}</p>
+            <p>Data: ${active_reservation.dataset.data}</p>
+            <p>Godzina: ${active_reservation.dataset.godzina}</p>
+            <p>Czas: ${active_reservation.dataset.czas}</p>
+            <p>Kwota: ${active_reservation.dataset.kwota}</p>
+            <p>rodzaj: ${active_reservation.dataset.rodzaj_platnosci}</p>
+            <p>notka: ${active_reservation.dataset.notatka}</p>
+            <p>zatw: ${active_reservation.dataset.zatwierdzony}</p>
+            
+        </div>
+`;
+
+
+
+
+
+
+
+
+
+
+        
+}
+
 // Podsumowanie

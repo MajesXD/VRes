@@ -1,19 +1,3 @@
-.reservation-vr {
-    background-color: #4F3EE3;
-    border-color: #4F3EE3;
-}
-
-.reservation-calendar {
-    border-color: #D72B2B;
-}
-
-.reservation-street {
-    border-color: #0E733A;
-}
-
-.reservation-block  {
-    border-color: white;
-}
 
 .reservation_field {
     position: absolute;
@@ -39,6 +23,7 @@
     flex-direction: column;
     color: white;
     font-size: 18px;
+    user-select: none;
 }
 
 .reservation img {
@@ -51,13 +36,16 @@
         flex-direction: row;
         align-items: center;
         width: 80%;
-        height: 20px;
+        height: 10px;
         margin-top: 5px;
         margin-left: 20px;
     }
 
     .reservation_info-gap {
-        margin-left: 10px;
+        margin-left: 15px;
+    }
+    .reservation_icon-gap {
+        margin-left: 4px;
     }
 
 .reservation:hover {
@@ -74,7 +62,7 @@
     border: solid 5px;
     border-radius: 30px;
     background-color: #0e0e0e;
-    color: #32BCE0;
+    color: white;
     flex-direction: column;
     align-items: center;
     display: none;
