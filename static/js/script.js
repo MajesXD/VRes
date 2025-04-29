@@ -200,6 +200,8 @@ function showReservations(reservations) {
         const info = div.querySelectorAll('.reservation_info');
 
         info.forEach(element => {
+            element.style.height = "10px";
+            element.style.marginTop = "1px";
             element.style.fontSize = "12px";
 
                 const img = info.querySelectorAll('img');
