@@ -109,6 +109,14 @@ function showReservations(reservations) {
     const container = document.getElementById('reservation_field');
     container.innerHTML = '';
 
+    reservations.sort((a, b) => {
+        const [ah, am] = a.czas.split(':').map(Number);
+        const [bh, bm] = b.czas.split(':').map(Number);
+        const aTotal = ah * 60 + am;
+        const bTotal = bh * 60 + bm;
+        return bTotal - aTotal; // malejąco
+    });
+
     reservations.forEach(r => {
         const div = document.createElement('div');
         const godzina_h = r.godzina.split(':')[0];
@@ -188,6 +196,7 @@ function showReservations(reservations) {
     `;
 
     // Dodawanie bloku i warunki jak ma wyglądać i gdzie ma być
+
     container.appendChild(div);
 
     const reservation_styles = getComputedStyle(div);
@@ -195,22 +204,6 @@ function showReservations(reservations) {
     let grid_end = parseInt(reservation_styles.getPropertyValue('--grid_end'));
     let grid_height = parseInt(reservation_styles.getPropertyValue('--grid_height'));
 
-
-    if (czas_h == 0 && czas_min == 30) {
-        const info = div.querySelectorAll('.reservation_info');
-
-        info.forEach(element => {
-            element.style.height = "10px";
-            element.style.marginTop = "1px";
-            element.style.fontSize = "12px";
-
-                const img = info.querySelectorAll('img');
-                img.forEach(element => {
-                    element.style.height = "6px";
-                });
-        });
-
-    }
 
     //Umiejscowienie rezerwacji w zależności od godziny 
     place_start = (godzina_h - 12) * 4 + 1;
@@ -296,6 +289,11 @@ function showReservations(reservations) {
         grid_end += 3;
     }
 
+
+    
+    if (czas_h == 0 && czas_min == 30 || czas_h == 0 && czas_min == 45) {
+        grid_height = 91;
+    }
     // Szerokość rezerwacji w zależności od liczby osób
     let dlugosc = r.ilosc_osob;
     if (dlugosc > 8) {
