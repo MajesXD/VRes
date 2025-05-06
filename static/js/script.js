@@ -147,7 +147,6 @@ function showReservations(reservations) {
         div.dataset.jager = r.jager;
         div.dataset.piwo = r.piwo;
         div.dataset.produkty_platnosc = r.produkty_platnosc;
-        div.dataset.suma_prod = r.suma_prod
 
         
         // Ikona płatności

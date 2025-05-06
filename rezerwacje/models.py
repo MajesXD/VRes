@@ -22,17 +22,3 @@ class rezerwacje(models.Model):
     jager = models.IntegerField(null=True, blank=True)
     piwo = models.IntegerField(null=True, blank=True)
     produkty_platnosc = models.IntegerField(null=True, blank=True)
-
-    # @property
-    # def suma_prod(self):
-    #     return (
-    #         self.woda * 7 +
-    #         self.cola * 10 +
-    #         self.trczyn * 8 +
-    #         self.tiger * 8 +
-    #         self.fuzetea * 10 +
-    #         self.zubr * 10 +
-    #         self.jack * 13 +
-    #         self.jager * 10 +
-    #         self.piwo * 18
-    #     )
