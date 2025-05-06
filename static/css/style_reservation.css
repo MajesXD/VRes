@@ -1,4 +1,5 @@
 
+
 .reservation_field {
     position: absolute;
     height: 1009px;
@@ -26,7 +27,7 @@
     user-select: none;
 }
 
-.reservation img {
+.reservation svg {
     height: 15px;
     width: auto;
 }
@@ -68,12 +69,23 @@
     display: none;
     animation: animacja 0.2s ease-in-out;
 }
-    .reservation_window_row {
-        
+
+    .reservation_window_top {
+        background-color: aqua;
     }
+
+    .reservation_window_bottom {
+        background-color: blue;
+    }
+
+    
+svg {
+    color: #0e0e0e;
+}
+
+
+
 
 .active {
     display: flex;
 }
-
-

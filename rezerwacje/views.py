@@ -116,6 +116,17 @@ def get_reservations(request):
         voucher_vr_sum = 0
 
         for r in reservations:
+            suma_prod = (
+                int(r.woda or 0) * 7 +
+                int(r.cola or 0) * 10 +
+                int(r.tarczyn or 0) * 8 +
+                int(r.fuzetea or 0) * 10 +
+                int(r.tiger or 0) * 8 +
+                int(r.zubr or 0) * 10 +
+                int(r.jack or 0) * 13 +
+                int(r.jager or 0) * 10 +
+                int(r.piwo or 0) * 18
+)
             result.append({
                 'id': r.id,
                 'osoba': r.osoba,
@@ -139,6 +150,7 @@ def get_reservations(request):
                 'jager': r.jager,
                 'piwo': r.piwo,
                 'produkty_platnosc': r.produkty_platnosc,
+                'suma_prod': suma_prod,
             })
 
 
@@ -158,6 +170,7 @@ def get_reservations(request):
                 transfer_sum = transfer_sum + r.kwota                
             elif r.rodzaj_platnosci == 8:
                 transfer_sum = transfer_sum + r.kwota  
+
         summary_sum = transfer_sum + card_sum + cash_sum + voucher_kmmb_sum
 
 
