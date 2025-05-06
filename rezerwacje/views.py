@@ -22,6 +22,17 @@ def dodaj_rezerwacje(request):
         czas_min = request.POST.get('czas_min')
         kwota = request.POST.get('kwota')
         rodzaj_platnosci = request.POST.get('rodzaj_platnosci')
+        notatka = request.POST.get('notatka')
+        woda = int(request.POST.get('woda') or 0)
+        cola = int(request.POST.get('cola') or 0)
+        tarczyn = int(request.POST.get('tarczyn') or 0)
+        fuzetea = int(request.POST.get('fuzetea') or 0)
+        tiger = int(request.POST.get('tiger') or 0)
+        zubr = int(request.POST.get('zubr') or 0)
+        jack = int(request.POST.get('jack') or 0)
+        jager = int(request.POST.get('jager') or 0)
+        piwo = int(request.POST.get('piwo') or 0)
+        produkty_platnosc = request.POST.get('produkty_platnosc')
 
         godzina = time(int(godzina_h), int(godzina_min))
         czas = time(int(czas_h), int(czas_min))
@@ -48,11 +59,6 @@ def dodaj_rezerwacje(request):
         
         elif timedelta(hours=int(godzina_h), minutes=int(godzina_min)) + timedelta(hours=int(czas_h), minutes=int(czas_min)) > timedelta(hours=22):
             messages.error(request, "Zbyt długa rezerwacja.")
-            print(godzina_h)
-            print(godzina_min)
-            print(czas_h)
-            print(czas_min)
-            print(timedelta(hours=int(godzina_h), minutes=int(godzina_min)) + timedelta(hours=int(czas_h), minutes=int(czas_min)))
             return redirect('home')
         elif timedelta(hours=int(czas_h)) == timedelta(hours=0) and timedelta(minutes=int(czas_min)) == timedelta(minutes=0) :
             messages.error(request, "Nie wybrano czasu rezerwacji.")
@@ -63,26 +69,31 @@ def dodaj_rezerwacje(request):
         else:
             rezerwacja = rezerwacje(
                 rodzaj_rezerwacji = rodzaj_rezerwacji,
-                osoba=osoba,
-                ilosc_osob=ilosc_osob,
-                data=data,
-                godzina=godzina,
-                czas=czas,
+                osoba = osoba,
+                ilosc_osob = ilosc_osob,
+                data = data,
+                godzina = godzina,
+                czas = czas,
                 kwota = kwota,
                 rodzaj_platnosci = rodzaj_platnosci,
+                notatka = notatka,
+                woda = woda,
+                cola = cola,
+                tarczyn = tarczyn,
+                fuzetea = fuzetea,
+                tiger = tiger,
+                zubr = zubr,
+                jack = jack,
+                jager = jager,
+                piwo = piwo,
+                produkty_platnosc = produkty_platnosc,
             )
+
             rezerwacja.save()
-            print(rodzaj_rezerwacji)
-            print(osoba)
-            print(ilosc_osob)
-            print(data)
-            print(godzina)
-            print(czas)
-            print(kwota)
-            print(rodzaj_platnosci)
+            print('Dodano rezerwacje')
             return redirect('home')
     else:
-        print("POST failed")
+        print("Błąd dodawania rezerwacji")
     return render(request, 'dodaj_rezerwacje.html')
 
 def get_reservations(request):
@@ -103,11 +114,13 @@ def get_reservations(request):
         cash_sum = 0
         voucher_kmmb_sum = 0
         voucher_vr_sum = 0
+
         for r in reservations:
             result.append({
                 'id': r.id,
                 'osoba': r.osoba,
                 'ilosc_osob': r.ilosc_osob,
+                'data': r.data,
                 'godzina': r.godzina.strftime('%H:%M'),
                 'czas': r.czas.strftime('%H:%M'),
                 'kwota': r.kwota,
@@ -115,7 +128,29 @@ def get_reservations(request):
                 'rodzaj': r.rodzaj_rezerwacji,
                 'notatka': r.notatka,
                 'zatwierdzony': r.zatwierdzony,
+
+                'woda': r.woda,
+                'cola': r.cola,
+                'tarczyn': r.tarczyn,
+                'fuzetea': r.fuzetea,
+                'tiger': r.tiger,
+                'zubr': r.zubr,
+                'jack': r.jack,
+                'jager': r.jager,
+                'piwo': r.piwo,
+                'produkty_platnosc': r.produkty_platnosc,
             })
+
+            suma_prod = (
+                int(r.woda or 0) * 7 +
+                int(r.cola or 0) * 10 +
+                int(r.tarczyn or 0) * 8 +
+                int(r.fuzetea or 0) * 10 +
+                int(r.tiger or 0) * 8 +
+                int(r.zubr or 0) * 10 +
+                int(r.jack or 0) * 13 +
+                int(r.jager or 0) * 10 +
+                int(r.piwo or 0) * 18)
 
             if r.rodzaj_platnosci == 1:
                 transfer_sum = transfer_sum + r.kwota
@@ -133,7 +168,10 @@ def get_reservations(request):
                 transfer_sum = transfer_sum + r.kwota                
             elif r.rodzaj_platnosci == 8:
                 transfer_sum = transfer_sum + r.kwota  
-        summary_sum = transfer_sum + card_sum + cash_sum + voucher_kmmb_sum                               
+        summary_sum = transfer_sum + card_sum + cash_sum + voucher_kmmb_sum
+
+        
+                                   
         return JsonResponse({
             'reservations': result,
             'transfer_sum': transfer_sum,
@@ -142,4 +180,5 @@ def get_reservations(request):
             'voucher_vr_sum': voucher_vr_sum,
             'voucher_kmmb_sum': voucher_kmmb_sum,
             'summary_sum': summary_sum,
+            'suma_prod': suma_prod,
             })

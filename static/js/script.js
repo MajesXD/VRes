@@ -129,13 +129,26 @@ function showReservations(reservations) {
         div.dataset.id = r.id;
         div.dataset.rodzaj = r.rodzaj;
         div.dataset.osoba = r.osoba;
-        div.dataset.ilosc = r.ilosc_osob
+        div.dataset.ilosc_osob = r.ilosc_osob;
+        div.dataset.data = r.data;
         div.dataset.godzina = r.godzina;
         div.dataset.czas = r.czas;
         div.dataset.kwota = r.kwota;
         div.dataset.rodzaj_platnosci = r.rodzaj_platnosci;
-        div.dataset.notatka = r.notatka;
         div.dataset.zatwierdzony = r.zatwierdzony;
+        div.dataset.notatka = r.notatka;
+        div.dataset.woda = r.woda;
+        div.dataset.cola = r.cola;
+        div.dataset.tarczyn = r.tarczyn;
+        div.dataset.fuzetea = r.fuzetea;
+        div.dataset.tiger = r.tiger;
+        div.dataset.zubr = r.zubr;
+        div.dataset.jack = r.jack;
+        div.dataset.jager = r.jager;
+        div.dataset.piwo = r.piwo;
+        div.dataset.produkty_platnosc = r.produkty_platnosc;
+        div.dataset.suma_prod = r.suma_prod
+
         
         // Ikona płatności
         let rodzaj_platnosci ='';
@@ -324,7 +337,7 @@ function reservationFull(event) {
         }
     });
     container_full.style.borderColor = reservation_colors[active_reservation.dataset.rodzaj];
-    
+
     
     // Pełna rezerwacja (kliknięta)
      container_full.innerHTML = `
@@ -340,6 +353,9 @@ function reservationFull(event) {
             <p>rodzaj: ${active_reservation.dataset.rodzaj_platnosci}</p>
             <p>notka: ${active_reservation.dataset.notatka}</p>
             <p>zatw: ${active_reservation.dataset.zatwierdzony}</p>
+            <p>zatw: ${active_reservation.dataset.cola}</p>
+            <p>zatw: ${active_reservation.dataset.woda}</p>
+            <p>xxx: ${suma_prod}</p>
             
         </div>
 `;
