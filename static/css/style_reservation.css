@@ -73,6 +73,11 @@
     animation: animacja 0.2s ease-in-out;
 }
 
+.reservation_window svg {
+    height: 26px;
+    width: auto;
+}
+
 .reservation_window_icon-gap {
     margin-left: 10px;
 }
@@ -107,7 +112,7 @@
         }
 
             .reseration_window_middle_left-row {
-                height: 20px;
+                height: 40px;
                 background-color: #a02a2a;
                 display: flex;
                 flex-direction: row;
