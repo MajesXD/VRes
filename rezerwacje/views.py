@@ -116,6 +116,9 @@ def get_reservations(request):
         voucher_vr_sum = 0
 
         for r in reservations:
+            start_time = datetime.combine(datetime.today(), r.godzina)
+            end_time = start_time + timedelta(hours=r.czas.hour, minutes=r.czas.minute)
+            godzina_end = end_time.strftime('%H:%M')
             suma_prod = (
                 int(r.woda or 0) * 7 +
                 int(r.cola or 0) * 10 +
@@ -126,13 +129,17 @@ def get_reservations(request):
                 int(r.jack or 0) * 13 +
                 int(r.jager or 0) * 10 +
                 int(r.piwo or 0) * 18
-)
+                )
+            
+
+                
             result.append({
                 'id': r.id,
                 'osoba': r.osoba,
                 'ilosc_osob': r.ilosc_osob,
                 'data': r.data,
                 'godzina': r.godzina.strftime('%H:%M'),
+                'godzina_end': godzina_end,
                 'czas': r.czas.strftime('%H:%M'),
                 'kwota': r.kwota,
                 'rodzaj_platnosci': r.rodzaj_platnosci,
