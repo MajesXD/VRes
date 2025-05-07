@@ -96,14 +96,14 @@
     }
 
 
-    .reseration_window_middle {
+    .reservation_window_middle {
         height: 530px;
         width: 730px;
         display: flex;
         flex-direction: row;
     }
 
-        .reseration_window_middle_left {
+        .reservation_window_middle_left {
             height: 530px;
             width: 500px;
             font-display: flex;
@@ -111,15 +111,15 @@
             background-color: aliceblue;
         }
 
-            .reseration_window_middle_left-row {
-                height: 40px;
+            .reservation_window_middle_left-row {
+                height: 50px;
                 background-color: #a02a2a;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
             }
 
-        .reseration_window_middle_right {
+        .reservation_window_middle_right {
             height: 530px;
             width: 250px;
             background-color: darkgoldenrod;
