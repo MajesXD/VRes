@@ -2,7 +2,7 @@ from django.db import models
 
 class rezerwacje(models.Model):
     rodzaj_rezerwacji = models.CharField(max_length=100, null=True, blank=True)
-    osoba = models.CharField(max_length=100)
+    osoba = models.CharField(max_length=100, null=False, blank=True)
     ilosc_osob = models.IntegerField(null=True, blank=True)
     data = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     godzina = models.TimeField(auto_now=False, auto_now_add=False)

@@ -395,6 +395,10 @@ function reservationFull(event) {
     container_full.style.color = `white`;
     container_full.style.webkitTextStroke = `0.4px ${active_color}`;
 
+    let notatka = active_reservation.dataset.notatka;
+    if (notatka==="null") {
+        notatka = "-";
+    }
 
     // Pełna rezerwacja (kliknięta)
      container_full.innerHTML = `
@@ -440,7 +444,7 @@ function reservationFull(event) {
                         <svg style="color: ${active_color}" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.58793 14.1617C2.02462 16.7251 0.40976 20.0843 0.00883107 23.6871L0.00736623 23.6984C-0.0756416 24.4445 0.554729 25.0753 1.30082 24.9928C4.90831 24.5945 8.27246 22.979 10.8389 20.4127L14.5205 16.7311L8.26957 10.4801L4.58793 14.1617ZM23.7061 1.29456C21.98 -0.431519 19.1812 -0.431519 17.4551 1.29456L16.3926 2.35706L14.6075 0.572388C13.8448 -0.190308 12.608 -0.190308 11.8457 0.572388L6.76176 5.65637C6.45659 5.96155 6.45659 6.45618 6.76176 6.76135L7.86625 7.86584C8.17143 8.17102 8.66606 8.17102 8.97123 7.86584L13.2266 3.61047L14.1831 4.56702L9.37455 9.37512L15.6255 15.6261L23.7061 7.54553C25.4322 5.81946 25.4322 3.02112 23.7061 1.29456Z"/>
                         </svg>
-                        <p class="reservation_window_icon-gap">${active_reservation.dataset.note}</p>
+                        <p class="reservation_window_icon-gap">${notatka}</p>
                     </div>
                 </div>
 
@@ -461,14 +465,6 @@ function reservationFull(event) {
             <p>Ilość osób: ${active_reservation.dataset.ilosc_osob}</p>
             
             
-            <p>Czas: ${active_reservation.dataset.czas}</p>
-            <p>Kwota: ${active_reservation.dataset.kwota}</p>
-            <p>rodzaj: ${active_reservation.dataset.rodzaj_platnosci}</p>
-            <p>notka: ${active_reservation.dataset.notatka}</p>
-            <p>zatw: ${active_reservation.dataset.zatwierdzony}</p>
-            <p>zatw: ${active_reservation.dataset.cola}</p>
-            <p>zatw: ${active_reservation.dataset.woda}</p>
-            <p>xxx: ${active_reservation.dataset.suma_prod}</p> -->
         </div>
 `;
 
