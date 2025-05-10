@@ -105,23 +105,66 @@
 
         .reservation_window_middle_left {
             height: 530px;
-            width: 500px;
+            width: 400px;
             font-display: flex;
             flex-direction: column;
-            background-color: aliceblue;
+
         }
         
             .reservation_window_middle_left-row {
                 height: 50px;
-                background-color: #a02a2a;
+                margin-top: 15px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
             }
 
+                .reservation_window_middle_left-row:nth-of-type(4){
+                    height: 200px;
+                    align-items: start;
+                }
+
+            .reservation_window_middle_icon {
+                height: 50px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+            }
+
+            .reservation_window_middle_text {
+                height: 50px;
+                width: 360px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .reservation_window_middle_text-note {
+                height: 200px;
+                width: 360px;
+                flex-wrap: wrap;
+                white-space: normal;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .reservation_window_middle_text-note p {
+                margin-top: 10px;
+            }
+
+            .add_note_button {
+                height: 50px;
+                width: 150px;
+                font-size: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                border-radius: 20px;
+            }
+
         .reservation_window_middle_right {
             height: 530px;
-            width: 250px;
+            width: 350px;
             background-color: darkgoldenrod;
         }
 
