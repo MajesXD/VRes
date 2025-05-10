@@ -177,8 +177,19 @@
         .reservation_window_middle_right {
             height: 530px;
             width: 350px;
+            display: flex;
+            flex-direction: column;
             background-color: darkgoldenrod;
         }
+
+
+            .reservation_window_middle_right-row {
+                height: 100px;
+                width: 350px;
+                display: flex;
+                flex-direction: row;
+                background-color: aliceblue;
+            }
 
     .reservation_window_bottom {
         height: 80px;
