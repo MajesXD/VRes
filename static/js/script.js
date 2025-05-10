@@ -423,12 +423,12 @@ function reservationFull(event) {
     container_full.style.color = `white`;
     container_full.style.webkitTextStroke = `0.4px ${active_color}`; 
 
-    const plusImg = `<svg style="color: ${active_color}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
+    const plusSvg = `<svg style="color: ${active_color}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
     <rect width="35" height="35" rx="10" fill="currentColor"/>
     <path d="M26.0714 15.3571H19.6429V8.92857C19.6429 8.13973 19.0031 7.5 18.2143 7.5H16.7857C15.9969 7.5 15.3571 8.13973 15.3571 8.92857V15.3571H8.92857C8.13973 15.3571 7.5 15.9969 7.5 16.7857V18.2143C7.5 19.0031 8.13973 19.6429 8.92857 19.6429H15.3571V26.0714C15.3571 26.8603 15.9969 27.5 16.7857 27.5H18.2143C19.0031 27.5 19.6429 26.8603 19.6429 26.0714V19.6429H26.0714C26.8603 19.6429 27.5 19.0031 27.5 18.2143V16.7857C27.5 15.9969 26.8603 15.3571 26.0714 15.3571Z" fill="black"/>
     </svg>`
 
-    const minusImg = `<svg style="color: ${active_color}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
+    const minusSvg = `<svg style="color: ${active_color}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
     <rect width="35" height="34.6875" rx="10" fill="currentColor"/>
     <path d="M27.3125 15H8.5625C7.69971 15 7 15.6997 7 16.5625V18.125C7 18.9878 7.69971 19.6875 8.5625 19.6875H27.3125C28.1753 19.6875 28.875 18.9878 28.875 18.125V16.5625C28.875 15.6997 28.1753 15 27.3125 15Z" fill="black"/>
     </svg>`
@@ -517,43 +517,43 @@ function reservationFull(event) {
                 <div class="reservation_window_middle_right">
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusImg} ${minusImg}
+                        ${plusSvg} ${minusSvg}
                     </div>
 
                 </div>
