@@ -191,3 +191,11 @@ def get_reservations(request):
             'voucher_kmmb_sum': voucher_kmmb_sum,
             'summary_sum': summary_sum,
             })
+
+def zapisz_notatke(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        reservation = rezerwacje.objects.get(id=data['id'])
+        reservation.notatka = data['notatka']
+        reservation.save()
+        return JsonResponse({'status': 'ok'})

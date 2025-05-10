@@ -366,6 +366,30 @@ function showReservations(reservations) {
     })
 }
 
+function saveNote(reservationId) {
+    const noteArea = document.getElementById('noteArea');
+    const note = noteArea.value;
+    fetch('/zapisz-notatke/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({
+            id: reservationId,
+            notatka: note
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Notatka zapisana!");
+            location.reload();
+        } else {
+            alert("Błąd przy zapisywaniu.");
+        }
+    });
+}
+
 function reservationFull(event) {
     event.stopPropagation();
     const active_reservation = event.currentTarget;
@@ -393,12 +417,14 @@ function reservationFull(event) {
     const active_color = reservation_colors[active_reservation.dataset.rodzaj];
     container_full.style.borderColor = active_color;
     container_full.style.color = `white`;
-    container_full.style.webkitTextStroke = `0.4px ${active_color}`;
+    container_full.style.webkitTextStroke = `0.4px ${active_color}`; 
 
     let notatka = active_reservation.dataset.notatka;
     if (notatka==="null") {
         notatka = "-";
     }
+
+
 
     // Pełna rezerwacja (kliknięta)
      container_full.innerHTML = `
@@ -416,7 +442,7 @@ function reservationFull(event) {
                     <path d="M10.9375 12.5C14.3896 12.5 17.1875 9.70215 17.1875 6.25C17.1875 2.79785 14.3896 0 10.9375 0C7.48535 0 4.6875 2.79785 4.6875 6.25C4.6875 9.70215 7.48535 12.5 10.9375 12.5ZM15.3125 14.0625H14.4971C13.4131 14.5605 12.207 14.8438 10.9375 14.8438C9.66797 14.8438 8.4668 14.5605 7.37793 14.0625H6.5625C2.93945 14.0625 0 17.002 0 20.625V22.6562C0 23.9502 1.0498 25 2.34375 25H19.5312C20.8252 25 21.875 23.9502 21.875 22.6562V20.625C21.875 17.002 18.9355 14.0625 15.3125 14.0625Z"/>
                 </svg>
                 <p class="reservation_window_icon-gap">${active_reservation.dataset.ilosc_osob}</p>
-                <svg class="exit" style="color: ${active_color}" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <svg class="exit clickable" style="color: ${active_color}" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.8516 8.59375L16.7378 3.70752C17.3374 3.10791 17.3374 2.13574 16.7378 1.53564L15.6519 0.449707C15.0522 -0.149902 14.0801 -0.149902 13.48 0.449707L8.59375 5.33594L3.70752 0.449707C3.10791 -0.149902 2.13574 -0.149902 1.53564 0.449707L0.449707 1.53564C-0.149902 2.13525 -0.149902 3.10742 0.449707 3.70752L5.33594 8.59375L0.449707 13.48C-0.149902 14.0796 -0.149902 15.0518 0.449707 15.6519L1.53564 16.7378C2.13525 17.3374 3.10791 17.3374 3.70752 16.7378L8.59375 11.8516L13.48 16.7378C14.0796 17.3374 15.0522 17.3374 15.6519 16.7378L16.7378 15.6519C17.3374 15.0522 17.3374 14.0801 16.7378 13.48L11.8516 8.59375Z"/>
                 </svg>
             </div>
@@ -463,16 +489,18 @@ function reservationFull(event) {
                             </svg>
                         </div>
                         <div class="reservation_window_middle_text-note">
-                            <p>${notatka}</p>
+                            <form>
+                                <textarea id="noteArea" class="reservation_window_middle_text-note" type="text">${notatka}</textarea>
+                            </form>
                         </div>
                     </div>
+                        <div class="button_div">
+                            <div onclick="saveNote(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${active_color};">
+                                Zapisz notkę
+                            </div>
+                        </div>
 
-                    <div class="reservation_window_middle_left-row add_note_button" style="background-color: ${active_color};">
-                        Zapisz notkę
-                    </div>
                 </div>
-
-
 
                 <div class="reservation_window_middle_right">
 
@@ -483,14 +511,18 @@ function reservationFull(event) {
 
             <div class="reservation_window_bottom">
                 
-            </div>
-            <!-- <p>Rodzaj rezerwacji: ${active_reservation.dataset.rodzaj}</p>
-            <p>Osoba: ${active_reservation.dataset.osoba}</p>
-            <p>Ilość osób: ${active_reservation.dataset.ilosc_osob}</p>
-            
-            
+            </div>    
         </div>
 `;
+
+    const textareastyle = container_full.querySelector('textarea');
+    textareastyle.style.border = `solid 1px ${active_color}`;   
+    
+    const exit = container_full.querySelector('.exit');
+    exit.addEventListener('click', function (e) {
+        e.stopPropagation();
+        container_full.classList.remove('active');
+    });
 
 
 
