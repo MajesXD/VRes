@@ -108,11 +108,11 @@
             width: 400px;
             font-display: flex;
             flex-direction: column;
-
         }
         
             .reservation_window_middle_left-row {
                 height: 50px;
+                width: 380px;
                 margin-top: 15px;
                 display: flex;
                 flex-direction: row;
@@ -120,7 +120,7 @@
             }
 
                 .reservation_window_middle_left-row:nth-of-type(4){
-                    height: 200px;
+                    height: 320px;
                     align-items: start;
                 }
 
@@ -133,20 +133,20 @@
 
             .reservation_window_middle_text {
                 height: 50px;
-                width: 360px;
+                width: 50px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
             }
             .reservation_window_middle_text-note {
-                height: 200px;
+                height: 300px;
                 width: 360px;
                 display: flex;
             }
 
             .reservation_window_middle_text-note textarea {
-                width: 350px;
-                height: 190px;
+                width: 320px;
+                height: 300px;
                 font-size: 20px;
                 margin-top: 10px;
                 color: white;
@@ -154,24 +154,6 @@
                 border-radius: 20px;
                 padding: 5px;
                 resize: none;
-            }
-
-            .button_div {
-                width: 390px;
-                display: flex;
-                justify-content: end;
-            }
-
-            .add_note_button {
-                height: 40px;
-                width: 120px;
-                font-size: 18px;
-                -webkit-text-stroke-width: 0px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: none;
-                border-radius: 20px;
             }
 
         .reservation_window_middle_right {
@@ -193,18 +175,17 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: end;
-                /* background-color: rgb(60, 73, 54); */
             }
 
             .reservation_window_middle_right-payment_row {
                 height: 40px;
                 width: 330px;
+                margin-top: 20px;
                 gap: 10px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: end;
-                /* background-color: rgb(60, 73, 54); */
             }
 
             .reservation_window_middle_right-row p {
@@ -212,18 +193,24 @@
                 text-align: start;
             }
 
-            .reservation_window_middle_right-payment_row select {
+            .reservation_window select {
                 width: 120px;
                 background-color: #0e0e0e;
                 color: white;
+                padding: 5px;
                 border-radius: 15px;
+            }
+
+            .reservation_window_middle_left-row select {
+                width: 240px;
+                margin-left: 30px;
             }
 
             .svg_pay {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 50px;
+                width: 40px;
             }
 
             .svg_pay svg {
@@ -244,10 +231,22 @@
     .reservation_window_bottom {
         height: 80px;
         width: 730px;
-        background-color: blue;
+        display: flex;
+        align-items: center;
+        justify-content: end;
     }
 
-
+        .add_note_button {
+            height: 40px;
+            width: 180px;
+            font-size: 20px;
+            -webkit-text-stroke-width: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 15px;
+        }
 
 
 
