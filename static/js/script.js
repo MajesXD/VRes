@@ -411,6 +411,8 @@ function reservationFull(event) {
     let rodzaj_platnosci_svg = ikonaPlatnosciSvg(parseInt(active_reservation.dataset.rodzaj_platnosci));
     let rodzaj_platnosci_path = ikonaPlatnosciPath(parseInt(active_reservation.dataset.rodzaj_platnosci));
     let symbol_platnosci = '';
+    let produkty_platnosc_svg = ikonaPlatnosciSvg(parseInt(active_reservation.dataset.produkty_platnosc));
+    let produkty_platnosc_path = ikonaPlatnosciPath(parseInt(active_reservation.dataset.produkty_platnosc));
     if (parseInt(active_reservation.dataset.rodzaj_platnosci) === 4) {
         symbol_platnosci = 'x';
     }
@@ -435,7 +437,7 @@ function reservationFull(event) {
 
     let notatka = active_reservation.dataset.notatka;
     if (notatka==="null") {
-        notatka = "-";
+        notatka = "";
     }
 
     // Pełna rezerwacja (kliknięta)
@@ -517,43 +519,77 @@ function reservationFull(event) {
                 <div class="reservation_window_middle_right">
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Woda</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.woda}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Cola</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.cola}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Tarczyn</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.tarczyn}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>FuzeTea</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.fuzetea}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Tiger</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.tiger}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Żubr</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.zubr}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Jack Daniel's</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.jack}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Jagermeister</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.jager}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                        <p>Piwo</p>
+                        <div class="svg_square">${plusSvg}</div>
+                        <div class="svg_square">${minusSvg}</div>
+                        <div>${active_reservation.dataset.piwo}x</div>
                     </div>
 
-                    <div class="reservation_window_middle_right-row">
-                        ${plusSvg} ${minusSvg}
+                    <div class="reservation_window_middle_right-payment_row">
+                        <select style="border: solid 2px ${active_color}">
+                            <option>Karta</option>
+                            <option>Gotówka</option>
+                        </select>
+                        <div class="svg_pay">
+                            <svg style="color: ${active_color}" ${produkty_platnosc_svg}>${produkty_platnosc_path}</svg>
+                        </div>   
+                        <div>${active_reservation.dataset.suma_prod}zł</div>
                     </div>
 
                 </div>

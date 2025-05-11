@@ -177,18 +177,68 @@
         .reservation_window_middle_right {
             height: 530px;
             width: 350px;
+            gap: 10px;
             display: flex;
             flex-direction: column;
-            background-color: darkgoldenrod;
+            justify-content: center;
+            /* background-color: darkgoldenrod; */
         }
 
 
             .reservation_window_middle_right-row {
-                height: 100px;
-                width: 350px;
+                height: 40px;
+                width: 330px;
+                gap: 10px;
                 display: flex;
                 flex-direction: row;
-                background-color: aliceblue;
+                align-items: center;
+                justify-content: end;
+                /* background-color: rgb(60, 73, 54); */
+            }
+
+            .reservation_window_middle_right-payment_row {
+                height: 40px;
+                width: 330px;
+                gap: 10px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: end;
+                /* background-color: rgb(60, 73, 54); */
+            }
+
+            .reservation_window_middle_right-row p {
+                width: 150px;
+                text-align: center;
+            }
+
+            .reservation_window_middle_right-payment_row select {
+                width: 120px;
+                background-color: #0e0e0e;
+                color: white;
+                border-radius: 15px;
+            }
+
+            .svg_pay {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+            }
+
+            .svg_pay svg {
+                height: 26px;
+            }
+
+            .svg_square {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .svg_square svg {
+                height: 34px;
+                width: auto;
+                background-color: #0e0e0e;
             }
 
     .reservation_window_bottom {
