@@ -233,7 +233,7 @@
         width: 730px;
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: space-between;
     }
 
         .add_note_button {

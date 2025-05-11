@@ -604,9 +604,13 @@ function reservationFull(event) {
                 
 
             <div class="reservation_window_bottom">
+                <div onclick="" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: red;">
+                Usuń rezerwację
+                </div>
                 <div onclick="saveNote(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${active_color};">
                 Zapisz rezerwację
                 </div>
+
             </div>    
         </form>
 `;
