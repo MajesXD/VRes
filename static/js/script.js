@@ -583,8 +583,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-payment_row">
                         <select style="border: solid 2px ${active_color}">
-                            <option>Karta</option>
-                            <option>Gotówka</option>
+                            <option value="2">Karta</option>
+                            <option value="3">Gotówka</option>
                         </select>
                         <div class="svg_pay">
                             <svg style="color: ${active_color}" ${produkty_platnosc_svg}>${produkty_platnosc_path}</svg>

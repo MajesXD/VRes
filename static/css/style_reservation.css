@@ -209,7 +209,7 @@
 
             .reservation_window_middle_right-row p {
                 width: 150px;
-                text-align: center;
+                text-align: start;
             }
 
             .reservation_window_middle_right-payment_row select {
