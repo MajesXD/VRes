@@ -32,7 +32,7 @@ def dodaj_rezerwacje(request):
         jack = int(request.POST.get('jack') or 0)
         jager = int(request.POST.get('jager') or 0)
         piwo = int(request.POST.get('piwo') or 0)
-        produkty_platnosc = request.POST.get('produkty_platnosc')
+        produkty_platnosc = request.POST.get('produkty_platnosc') or 0
 
         godzina = time(int(godzina_h), int(godzina_min))
         czas = time(int(czas_h), int(czas_min))
@@ -197,7 +197,7 @@ def saveReservationChanges(request):
         data = json.loads(request.body)
         reservation = rezerwacje.objects.get(id=data['id'])
         reservation.notatka = data['notatka']
-        reservation.kwota = data['kwota_new']
+        reservation.kwota = float(data['kwota_new'])
         reservation.rodzaj_platnosci = data['rodzaj_platnosci_new']
         reservation.produkty_platnosc = data['produkty_platnosc_new']
 

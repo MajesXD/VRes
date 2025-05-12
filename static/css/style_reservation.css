@@ -157,16 +157,20 @@
             }
 
             .kwota_input {
-                width: 100px;
+                width: 50px;
                 height: 40px;
-                font-size: 20px;
+                font-size: 24px;
+                border: none;
                 color: white;
                 background-color: #0e0e0e;
-                border-radius: 20px;
                 padding: 5px;
             }
 
-            .kwota_input::-webkit-outer-spin-button, .kwota_input::-webkit-inner-spin-button {
+            .kwota_input:focus {
+                width: 100px;
+            }
+
+            .kwota_input::-webkit-outer-spin-button, .kwota_input::-webkit-inner-spin-button, .add_kwota_input::-webkit-outer-spin-button, .add_kwota_input::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
             }
