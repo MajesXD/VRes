@@ -366,10 +366,46 @@ function showReservations(reservations) {
     })
 }
 
-function saveNote(reservationId) {
+function saveReservationChanges(reservationId) {
     const noteArea = document.getElementById('noteArea');
     const note = noteArea.value;
-    fetch('/zapisz-notatke/', {
+
+    // const rodzaj_platnosci_new = document.getElementById('rodzaj_platnosci_new');
+    // const rodzaj_platnosci = rodzaj_platnosci_new.value;
+    // const kwota_new = document.getElementById('kwota_new');
+    // const kwota = kwota_new.value;
+    // const produkty_platnosc_new = document.getElementById('produkty_platnosc_new');
+    // const produkty_platnosc = produkty_platnosc_new.value;
+
+    const rodzaj_platnosci_new = document.getElementById('rodzaj_platnosci_new');
+    if (rodzaj_platnosci_new == 0) {
+        const rodzaj_platnosci = active_reservation.dataset.rodzaj_platnosci;
+    }
+    else {
+        const rodzaj_platnosci = rodzaj_platnosci_new.value;
+    }
+
+    const kwota_new = document.getElementById('kwota_new');
+    const kwota = '';
+    if (kwota_new == null) {
+        kwota = active_reservation.dataset.kwota;
+    }
+
+    else {
+        kwota = kwota_new.value;
+    }
+
+    const produkty_platnosc_new = document.getElementById('produkty_platnosc_new');
+    const produkty_platnosc = '';
+    if (produkty_platnosc_new == 0) {
+        produkty_platnosc = active_reservation.dataset.produkty_platnosc;
+    }
+    else {
+        const produkty_platnosc = produkty_platnosc_new.value;
+    }
+    
+
+    fetch('/save-reservation-changes/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -377,12 +413,15 @@ function saveNote(reservationId) {
         },
         body: JSON.stringify({
             id: reservationId,
-            notatka: note
+            notatka: note,
+            kwota_new: kwota,
+            rodzaj_platnosci_new: rodzaj_platnosci,
+            produkty_platnosc_new: produkty_platnosc
         })
     })
     .then(response => {
         if (response.ok) {
-            alert("Notatka zapisana!");
+            alert("Zapisano zmiany.");
             location.reload();
         } else {
             alert("Błąd przy zapisywaniu.");
@@ -491,10 +530,10 @@ function reservationFull(event) {
                             <svg style="color: ${active_color}" ${rodzaj_platnosci_svg}>${rodzaj_platnosci_path}</svg>
                         </div>
                         <div class="reservation_window_middle_text">
-                            <p>${active_reservation.dataset.kwota}</p>
-                            <p>${symbol_platnosci}</p>
+                            <input id="kwota_new" style="border: solid 1px ${active_color};" min="0" class="kwota_input" type="number" placeholder="${active_reservation.dataset.kwota}">
+                            <p style="margin-left: 5px;">${symbol_platnosci}</p>
                         </div>
-                        <select style="border: solid 2px ${active_color};">
+                        <select style="border: solid 2px ${active_color}" id="rodzaj_platnosci_new">
                             <option value="0"></option>
                             <option value="1">Przelew</option>
                             <option value="2">Karta</option>
@@ -514,9 +553,7 @@ function reservationFull(event) {
                             </svg>
                         </div>
                         <div class="reservation_window_middle_text-note">
-                            <form>
-                                <textarea id="noteArea" class="reservation_window_middle_text-note" type="text">${notatka}</textarea>
-                            </form>
+                            <textarea id="noteArea" class="reservation_window_middle_text-note" type="text">${notatka}</textarea>
                         </div>
                     </div>
                 </div>
@@ -525,69 +562,69 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Woda</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.woda}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Cola</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>                        
                         <div>${active_reservation.dataset.cola}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Tarczyn</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.tarczyn}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>FuzeTea</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.fuzetea}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Tiger</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.tiger}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Żubr</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.zubr}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Jack Daniel's</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.jack}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Jagermeister</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.jager}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Piwo</p>
-                        <div class="svg_square">${plusSvg}</div>
                         <div class="svg_square">${minusSvg}</div>
+                        <div class="svg_square">${plusSvg}</div>
                         <div>${active_reservation.dataset.piwo}x</div>
                     </div>
 
                     <div class="reservation_window_middle_right-payment_row">
-                        <select style="border: solid 2px ${active_color}">
+                        <select id="produkty_platnosc_new" style="border: solid 2px ${active_color}">
                             <option value="0"></option>
                             <option value="2">Karta</option>
                             <option value="3">Gotówka</option>
@@ -607,7 +644,7 @@ function reservationFull(event) {
                 <div onclick="" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: red;">
                 Usuń rezerwację
                 </div>
-                <div onclick="saveNote(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${active_color};">
+                <div onclick="saveReservationChanges(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${active_color};">
                 Zapisz rezerwację
                 </div>
 

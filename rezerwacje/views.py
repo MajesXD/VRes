@@ -192,10 +192,14 @@ def get_reservations(request):
             'summary_sum': summary_sum,
             })
 
-def zapisz_notatke(request):
+def saveReservationChanges(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         reservation = rezerwacje.objects.get(id=data['id'])
         reservation.notatka = data['notatka']
+        reservation.kwota = data['kwota_new']
+        reservation.rodzaj_platnosci = data['rodzaj_platnosci_new']
+        reservation.produkty_platnosc = data['produkty_platnosc_new']
+
         reservation.save()
         return JsonResponse({'status': 'ok'})

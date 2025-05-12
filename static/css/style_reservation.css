@@ -156,6 +156,21 @@
                 resize: none;
             }
 
+            .kwota_input {
+                width: 100px;
+                height: 40px;
+                font-size: 20px;
+                color: white;
+                background-color: #0e0e0e;
+                border-radius: 20px;
+                padding: 5px;
+            }
+
+            .kwota_input::-webkit-outer-spin-button, .kwota_input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
         .reservation_window_middle_right {
             height: 530px;
             width: 350px;
@@ -202,8 +217,8 @@
             }
 
             .reservation_window_middle_left-row select {
-                width: 240px;
-                margin-left: 30px;
+                width: 150px;
+                margin-left: 100px;
             }
 
             .svg_pay {
@@ -238,7 +253,7 @@
 
         .add_note_button {
             height: 40px;
-            width: 180px;
+            width: 160px;
             font-size: 20px;
             -webkit-text-stroke-width: 0px;
             display: flex;

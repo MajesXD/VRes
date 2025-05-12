@@ -107,146 +107,152 @@
         </div>
         <form method="POST" action="{% url 'dodaj_rezerwacje' %}">
             {% csrf_token %}
-            <div class="add_reservation_window-mid">
+            <section class="add_reservation_window-mid">
+                <div class="add_reservation_window-left">
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Rodzaj rezerwacji</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <select id="typ_rezerwacji" name="rodzaj_rezerwacji" required>
+                            <option value="vr">VR Warsaw</option>
+                            <option value="calendar">Kalendarz Google</option>
+                            <option value="street">Spontaniczna</option>
+                            <option value="block">Blok</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Rezerwujący</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <input name="osoba">
+                        </div>
+                    </div>
 
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Rodzaj rezerwacji</p>
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Ilość osób</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <select class="select_godzina" name="ilosc_osob" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="100">>8</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="add_reservation_row-right">
-                        <select id="typ_rezerwacji" name="rodzaj_rezerwacji" required>
-                          <option value="vr">VR Warsaw</option>
-                          <option value="calendar">Kalendarz Google</option>
-                          <option value="street">Spontaniczna</option>
-                          <option value="block">Blok</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Rezerwujący</p>
-                    </div>
-                    <div class="add_reservation_row-right">
-                        <input name="osoba">
-                    </div>
-                </div>
 
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Ilość osób</p>
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Data</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <input id="reservation_add_date" name="data" type="date" required>
+                        </div>
                     </div>
-                    <div class="add_reservation_row-right">
-                        <select class="select_godzina" name="ilosc_osob" required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="100">>8</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Data</p>
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Godzina</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <select class="select_godzina" name="godzina_h" required>
+                                <!-- <option value="10">10</option>
+                                <option value="11">11</option> -->
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15" selected>15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <!-- <option value="22">22</option> -->
+                            </select>
+                            <p class="text-white">:</p>
+                            <select name="godzina_min" class="select_godzina" required>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="add_reservation_row-right">
-                        <input id="reservation_add_date" name="data" type="date" required>
-                    </div>
-                </div>
 
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Godzina</p>
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Czas</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <select class="select_godzina" name="czas_h" required>
+                                <option value="00">0</option>
+                                <option value="01" selected>1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                            </select>
+                            <p class="text-white">h</p>
+                            <select class="select_godzina" name="czas_min" required>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+                            <p class="text-white">min</p>
+                        </div>
                     </div>
-                    <div class="add_reservation_row-right">
-                        <select class="select_godzina" name="godzina_h" required>
-                            <!-- <option value="10">10</option>
-                            <option value="11">11</option> -->
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15" selected>15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <!-- <option value="22">22</option> -->
-                        </select>
-                        <p class="text-white">:</p>
-                        <select name="godzina_min" class="select_godzina" required>
-                            <option value="00">00</option>
-                            <option value="15">15</option>
-                            <option value="30">30</option>
-                            <option value="45">45</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Czas</p>
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Kwota</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <input name="kwota" type="number" value="0">
+                        </div>
                     </div>
-                    <div class="add_reservation_row-right">
-                        <select class="select_godzina" name="czas_h" required>
-                            <option value="00">0</option>
-                            <option value="01" selected>1</option>
-                            <option value="02">2</option>
-                            <option value="03">3</option>
-                            <option value="04">4</option>
-                            <option value="05">5</option>
-                            <option value="06">6</option>
-                            <option value="07">7</option>
-                            <option value="08">8</option>
-                            <option value="09">9</option>
-                            <option value="10">10</option>
-                        </select>
-                        <p class="text-white">h</p>
-                        <select class="select_godzina" name="czas_min" required>
-                            <option value="00">00</option>
-                            <option value="15">15</option>
-                            <option value="30">30</option>
-                            <option value="45">45</option>
-                        </select>
-                        <p class="text-white">min</p>
-                    </div>
-                </div>
 
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Kwota</p>
+                    <div class="add_reservation_row">
+                        <div class="add_reservation_row-left">
+                            <p>Płatność</p>
+                        </div>
+                        <div class="add_reservation_row-right">
+                            <select name="rodzaj_platnosci">
+                                <option value="1">Przelew</option>
+                                <option value="2">Karta</option>
+                                <option value="3">Gotówka</option>
+                                <option value="4">Voucher VR</option>
+                                <option value="5">Voucher MyBenefit</option>
+                                <option value="6">Voucher Katalog Marzeń</option>
+                                <option value="7">Voucher Katalog Prezentów</option>
+                                <option value="8">Voucher Super Prezenty</option>
+                                <option value="0"></option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="add_reservation_row-right">
-                        <input name="kwota" type="number" value="0">
-                    </div>
+                    
                 </div>
-
-                <div class="add_reservation_row">
-                    <div class="add_reservation_row-left">
-                        <p>Płatność</p>
-                    </div>
-                    <div class="add_reservation_row-right">
-                        <select name="rodzaj_platnosci">
-                            <option value="1">Przelew</option>
-                            <option value="2">Karta</option>
-                            <option value="3">Gotówka</option>
-                            <option value="4">Voucher VR</option>
-                            <option value="5">Voucher MyBenefit</option>
-                            <option value="6">Voucher Katalog Marzeń</option>
-                            <option value="7">Voucher Katalog Prezentów</option>
-                            <option value="8">Voucher Super Prezenty</option>
-                        </select>
-                    </div>
+                <div class="add_reservation_window-right">
+                    <p>Notatka:</p>
+                    <textarea name="notatka" class="add_note_textarea" type="text"></textarea>
                 </div>
-                
-            </div>
+            </section>
             <div class="add_reservation_window-bottom">
                 <button class="submit_button clickable" type="submit">Dodaj</button>
             </div>

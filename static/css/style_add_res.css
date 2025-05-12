@@ -37,7 +37,7 @@
     color: #32BCE0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     display: none;
     animation: animacja 0.2s ease-in-out;
 }
@@ -59,7 +59,7 @@
 
  .add_reservation_window-top {
     height: 80px;
-    width: 500px;
+    width: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,14 +68,42 @@
  }
 
  .add_reservation_window-mid {
+   display: flex;
+   flex-direction: row;
+   height: 500px;
+   width: 790px;
+ }
+
+ .add_reservation_window-left {
     height: 500px;
-    width: 500px;
+    width: 480px;
     display: flex;
     flex-direction: column;
     justify-content: center;
  }
 
- .add_reservation_window-mid input, select {
+  .add_reservation_window-right {
+    height: 480px;
+    width: 300px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+ }
+
+   .add_note_textarea {
+      width: 280px;
+      height: 200px;
+      font-size: 20px;
+      margin-top: 10px;
+      color: black;
+      background-color: white;
+      border-radius: 20px;
+      padding: 5px;
+      resize: none;
+   }
+
+ .add_reservation_window-left input, select {
     height: 40px;
     width: 200px;
     font-size: 20px;
@@ -108,7 +136,7 @@
 
  .add_reservation_window-bottom {
     height: 100px;
-    width: 500px;
+    width: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
