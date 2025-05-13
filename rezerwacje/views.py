@@ -203,3 +203,10 @@ def saveReservationChanges(request):
 
         reservation.save()
         return JsonResponse({'status': 'ok'})
+    
+def deleteReservation(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        reservation = rezerwacje.objects.get(id=data['id'])
+        reservation.delete()
+        return JsonResponse({'status': 'ok'})

@@ -37,6 +37,14 @@ function add_note(event) {
     });
 }
 
+function deleteReservationStep() {
+    document.getElementById('delete_reservation_step').classList.add('active');
+}
+
+function deleteReservationStepClose() {
+    document.getElementById('delete_reservation_step').classList.remove('active');
+}
+
 // Wyśiwetlanie obecnej daty w inputach z datą
 const today = new Date().toISOString().split('T')[0];
 
@@ -222,6 +230,8 @@ function showReservations(reservations) {
         let rodzaj_platnosci_svg = ikonaPlatnosciSvg(r.rodzaj_platnosci);
         let rodzaj_platnosci_path = ikonaPlatnosciPath(r.rodzaj_platnosci);
         let symbol_platnosci = '';
+        let produkty_platnosc_svg = ikonaPlatnosciSvg(r.produkty_platnosc);
+        let produkty_platnosc_path = ikonaPlatnosciPath(r.produkty_platnosc);
         if (r.rodzaj_platnosci === 4) {
             symbol_platnosci = 'x';
         }
@@ -261,9 +271,17 @@ function showReservations(reservations) {
                         <p class="reservation_icon-gap">${r.osoba}</p>
                     </div>
                     <div class="reservation_info">
-                        <svg class="text-white" ${rodzaj_platnosci_svg}> ${rodzaj_platnosci_path}</svg>
-                        <p class="reservation_icon-gap">${r.kwota}</p>
-                        <p>${symbol_platnosci}</p>
+                        <div class="reservation_info_extra">
+                            <svg class="text-white" ${rodzaj_platnosci_svg}> ${rodzaj_platnosci_path}</svg>
+                            <p class="reservation_icon-gap">${r.kwota}</p>
+                            <p>${symbol_platnosci}</p>
+                        </div>
+                        <div class="reservation_info_extra" style="margin-left: 50px; color: #B9B9B9">
+                            <p style="font-weight: 600; font-size: 22px">+</p>
+                            <svg style="color: #B9B9B9" class="reservation_icon-gap" ${produkty_platnosc_svg}> ${produkty_platnosc_path}</svg>
+                            <p class="reservation_icon-gap">${r.suma_prod}</p>
+                            <p>zł</p>
+                        </div>
                     </div>
                 </div>
         `;           
@@ -421,9 +439,96 @@ function saveReservationChanges(reservationId) {
     });
 }
 
+function deleteReservation(reservationId) {
+    fetch('/delete-reservation/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({
+            id: reservationId,
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Usunięto rezerwację.");
+            location.reload();
+        }})
+};
 
+// DODAWANIE PRODUKTOW
+function sumaWoda(amount) {
+    const input = document.getElementById('woda_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
 
+function sumaCola(amount) {
+    const input = document.getElementById('cola_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
 
+function sumaTarczyn(amount) {
+    const input = document.getElementById('tarczyn_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
+
+function sumaTiger(amount) {
+    const input = document.getElementById('tiger_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
+
+function sumaFuzetea(amount) {
+    const input = document.getElementById('fuzetea_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
+
+function sumaZubr(amount) {
+    const input = document.getElementById('zubr_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
+
+function sumaJack(amount) {
+    const input = document.getElementById('jack_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
+
+function sumaJager(amount) {
+    const input = document.getElementById('jager_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
+
+function sumaPiwo(amount) {
+    const input = document.getElementById('piwo_ilosc');
+    let current = parseInt(input.value) || 0;
+    current += amount;
+    if (current < 0) current = 0;
+    input.value = current;
+    }
 
 function reservationFull(event) {
     event.stopPropagation();
@@ -438,6 +543,7 @@ function reservationFull(event) {
             container_full.classList.remove('active');
         }
     });
+    
     
     let rodzaj_platnosci_svg = ikonaPlatnosciSvg(parseInt(active_reservation.dataset.rodzaj_platnosci));
     let rodzaj_platnosci_path = ikonaPlatnosciPath(parseInt(active_reservation.dataset.rodzaj_platnosci));
@@ -507,6 +613,13 @@ function reservationFull(event) {
             </div>
 
             <div class="reservation_window_middle">
+                <section id="delete_reservation_step" class="delete_reservation">
+                    <svg onclick="deleteReservationStepClose()" class="exit clickable" viewBox="0 0 18 18" fill="#EE379F" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8516 8.59375L16.7378 3.70752C17.3374 3.10791 17.3374 2.13574 16.7378 1.53564L15.6519 0.449707C15.0522 -0.149902 14.0801 -0.149902 13.48 0.449707L8.59375 5.33594L3.70752 0.449707C3.10791 -0.149902 2.13574 -0.149902 1.53564 0.449707L0.449707 1.53564C-0.149902 2.13525 -0.149902 3.10742 0.449707 3.70752L5.33594 8.59375L0.449707 13.48C-0.149902 14.0796 -0.149902 15.0518 0.449707 15.6519L1.53564 16.7378C2.13525 17.3374 3.10791 17.3374 3.70752 16.7378L8.59375 11.8516L13.48 16.7378C14.0796 17.3374 15.0522 17.3374 15.6519 16.7378L16.7378 15.6519C17.3374 15.0522 17.3374 14.0801 16.7378 13.48L11.8516 8.59375Z"/>
+                    </svg>
+                    <p>Na pewno?</p>
+                    <div class="add_note_button clickable" style="background-color: #EE379F" onclick="deleteReservation(${active_reservation.dataset.id})">Usuń</div>
+                </section>
                 <div class="reservation_window_middle_left">
 
                     <div class="reservation_window_middle_left-row">
@@ -569,65 +682,92 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Woda</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.woda}x</div>
+                        <div id="woda_minus" class="svg_square clickable" onclick="sumaWoda(-1)">${minusSvg}</div>
+                        <div id="woda_plus" class="svg_square clickable" onclick="sumaWoda(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="woda_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.woda}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Cola</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>                        
-                        <div>${active_reservation.dataset.cola}x</div>
+                        <div id="cola_minus" class="svg_square clickable" onclick="sumaCola(-1)">${minusSvg}</div>
+                        <div id="cola_plus" class="svg_square clickable" onclick="sumaCola(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="cola_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.cola}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Tarczyn</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.tarczyn}x</div>
+                        <div id="tarczyn_minus" class="svg_square clickable" onclick="sumaTarczyn(-1)">${minusSvg}</div>
+                        <div id="tarczyn_plus" class="svg_square clickable" onclick="sumaTarczyn(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="tarczyn_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.tarczyn}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>FuzeTea</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.fuzetea}x</div>
+                        <div id="fuzetea_minus" class="svg_square clickable" onclick="sumaFuzetea(-1)">${minusSvg}</div>
+                        <div id="fuzetea_plus" class="svg_square clickable" onclick="sumaFuzetea(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="fuzetea_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.fuzetea}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Tiger</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.tiger}x</div>
+                        <div id="tiger_minus" class="svg_square clickable" onclick="sumaTiger(-1)">${minusSvg}</div>
+                        <div id="tiger_plus" class="svg_square clickable" onclick="sumaTiger(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="tiger_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.tiger}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Żubr</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.zubr}x</div>
+                        <div id="zubr_minus" class="svg_square clickable" onclick="sumaZubr(-1)">${minusSvg}</div>
+                        <div id="zubr_plus" class="svg_square clickable" onclick="sumaZubr(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="zubr_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.zubr}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Jack Daniel's</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.jack}x</div>
+                        <div id="jack_minus" class="svg_square clickable" onclick="sumaJack(-1)">${minusSvg}</div>
+                        <div id="jack_plus" class="svg_square clickable" onclick="sumaJack(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="jack_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.jack}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Jagermeister</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.jager}x</div>
+                        <div id="jager_minus" class="svg_square clickable" onclick="sumaJager(-1)">${minusSvg}</div>
+                        <div id="jager_plus" class="svg_square clickable" onclick="sumaJager(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="jager_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.jager}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-row">
                         <p>Piwo</p>
-                        <div class="svg_square">${minusSvg}</div>
-                        <div class="svg_square">${plusSvg}</div>
-                        <div>${active_reservation.dataset.piwo}x</div>
+                        <div id="piwo_minus" class="svg_square clickable" onclick="sumaPiwo(-1)">${minusSvg}</div>
+                        <div id="piwo_plus" class="svg_square clickable" onclick="sumaPiwo(1)">${plusSvg}</div>
+                        <div class="produkt_ilosc_div">
+                            <input id="piwo_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.piwo}">
+                            <p class="produkt_ilosc_x">x</p>
+                        </div>
                     </div>
 
                     <div class="reservation_window_middle_right-payment_row">
@@ -649,7 +789,7 @@ function reservationFull(event) {
                 
 
             <div class="reservation_window_bottom">
-                <div onclick="" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: red;">
+                <div onclick="deleteReservationStep()" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: #953636;">
                 Usuń rezerwację
                 </div>
                 <div onclick="saveReservationChanges(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${active_color};">
@@ -659,7 +799,7 @@ function reservationFull(event) {
             </div>    
         </form>
 `;
-
+    
     const textareastyle = container_full.querySelector('textarea');
     textareastyle.style.border = `solid 1px ${active_color}`;   
     
