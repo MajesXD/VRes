@@ -404,15 +404,19 @@ function showReservations(reservations) {
 }
 
 function saveReservationChanges(reservationId) {
-    const noteArea = document.getElementById('noteArea');
-    const note = noteArea.value;
-
-    const rodzaj_platnosci_new = document.getElementById('rodzaj_platnosci_new');
-    const rodzaj_platnosci = rodzaj_platnosci_new.value;
-    const kwota_new = document.getElementById('kwota_new');
-    const kwota = kwota_new.value;
-    const produkty_platnosc_new = document.getElementById('produkty_platnosc_new');
-    const produkty_platnosc = produkty_platnosc_new.value;
+    const note = document.getElementById('noteArea').value;
+    const rodzaj_platnosci = document.getElementById('rodzaj_platnosci_new').value;
+    const kwota = document.getElementById('kwota_new').value;
+    const produkty_platnosc = document.getElementById('produkty_platnosc_new').value;
+    const woda_ilosc = document.getElementById("woda_ilosc").value;
+    const cola_ilosc = document.getElementById("cola_ilosc").value;
+    const tarczyn_ilosc = document.getElementById("tarczyn_ilosc").value;
+    const fuzetea_ilosc = document.getElementById("fuzetea_ilosc").value;
+    const tiger_ilosc = document.getElementById("tiger_ilosc").value;
+    const zubr_ilosc = document.getElementById("zubr_ilosc").value;
+    const jack_ilosc = document.getElementById("jack_ilosc").value;
+    const jager_ilosc = document.getElementById("jager_ilosc").value;
+    const piwo_ilosc = document.getElementById("piwo_ilosc").value;
     
 
     fetch('/save-reservation-changes/', {
@@ -426,7 +430,16 @@ function saveReservationChanges(reservationId) {
             notatka: note,
             kwota_new: kwota,
             rodzaj_platnosci_new: rodzaj_platnosci,
-            produkty_platnosc_new: produkty_platnosc
+            woda_new: woda_ilosc,
+            cola_new: cola_ilosc,
+            tarczyn_new: tarczyn_ilosc,
+            fuzetea_new: fuzetea_ilosc,
+            tiger_new: tiger_ilosc,
+            zubr_new: zubr_ilosc,
+            jack_new: jack_ilosc,
+            jager_new: jager_ilosc,
+            piwo_new: piwo_ilosc,
+            produkty_platnosc_new: produkty_platnosc,
         })
     })
     .then(response => {
@@ -682,8 +695,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Woda</p>
-                        <div id="woda_minus" class="svg_square clickable" onclick="sumaWoda(-1)">${minusSvg}</div>
-                        <div id="woda_plus" class="svg_square clickable" onclick="sumaWoda(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaWoda(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaWoda(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="woda_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.woda}">
                             <p class="produkt_ilosc_x">x</p>
@@ -692,8 +705,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Cola</p>
-                        <div id="cola_minus" class="svg_square clickable" onclick="sumaCola(-1)">${minusSvg}</div>
-                        <div id="cola_plus" class="svg_square clickable" onclick="sumaCola(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaCola(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaCola(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="cola_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.cola}">
                             <p class="produkt_ilosc_x">x</p>
@@ -702,8 +715,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Tarczyn</p>
-                        <div id="tarczyn_minus" class="svg_square clickable" onclick="sumaTarczyn(-1)">${minusSvg}</div>
-                        <div id="tarczyn_plus" class="svg_square clickable" onclick="sumaTarczyn(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaTarczyn(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaTarczyn(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="tarczyn_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.tarczyn}">
                             <p class="produkt_ilosc_x">x</p>
@@ -712,8 +725,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>FuzeTea</p>
-                        <div id="fuzetea_minus" class="svg_square clickable" onclick="sumaFuzetea(-1)">${minusSvg}</div>
-                        <div id="fuzetea_plus" class="svg_square clickable" onclick="sumaFuzetea(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaFuzetea(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaFuzetea(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="fuzetea_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.fuzetea}">
                             <p class="produkt_ilosc_x">x</p>
@@ -722,8 +735,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Tiger</p>
-                        <div id="tiger_minus" class="svg_square clickable" onclick="sumaTiger(-1)">${minusSvg}</div>
-                        <div id="tiger_plus" class="svg_square clickable" onclick="sumaTiger(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaTiger(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaTiger(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="tiger_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.tiger}">
                             <p class="produkt_ilosc_x">x</p>
@@ -732,8 +745,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Żubr</p>
-                        <div id="zubr_minus" class="svg_square clickable" onclick="sumaZubr(-1)">${minusSvg}</div>
-                        <div id="zubr_plus" class="svg_square clickable" onclick="sumaZubr(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaZubr(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaZubr(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="zubr_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.zubr}">
                             <p class="produkt_ilosc_x">x</p>
@@ -742,8 +755,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Jack Daniel's</p>
-                        <div id="jack_minus" class="svg_square clickable" onclick="sumaJack(-1)">${minusSvg}</div>
-                        <div id="jack_plus" class="svg_square clickable" onclick="sumaJack(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaJack(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaJack(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="jack_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.jack}">
                             <p class="produkt_ilosc_x">x</p>
@@ -752,8 +765,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Jagermeister</p>
-                        <div id="jager_minus" class="svg_square clickable" onclick="sumaJager(-1)">${minusSvg}</div>
-                        <div id="jager_plus" class="svg_square clickable" onclick="sumaJager(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaJager(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaJager(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="jager_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.jager}">
                             <p class="produkt_ilosc_x">x</p>
@@ -762,8 +775,8 @@ function reservationFull(event) {
 
                     <div class="reservation_window_middle_right-row">
                         <p>Piwo</p>
-                        <div id="piwo_minus" class="svg_square clickable" onclick="sumaPiwo(-1)">${minusSvg}</div>
-                        <div id="piwo_plus" class="svg_square clickable" onclick="sumaPiwo(1)">${plusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaPiwo(-1)">${minusSvg}</div>
+                        <div class="svg_square clickable" onclick="sumaPiwo(1)">${plusSvg}</div>
                         <div class="produkt_ilosc_div">
                             <input id="piwo_ilosc" readonly class="produkt_input" type="number" value="${active_reservation.dataset.piwo}">
                             <p class="produkt_ilosc_x">x</p>

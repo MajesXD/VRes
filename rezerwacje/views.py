@@ -176,7 +176,12 @@ def get_reservations(request):
             elif r.rodzaj_platnosci == 7:
                 transfer_sum = transfer_sum + r.kwota                
             elif r.rodzaj_platnosci == 8:
-                transfer_sum = transfer_sum + r.kwota  
+                transfer_sum = transfer_sum + r.kwota 
+
+            if r.produkty_platnosc == 2:
+                card_sum = card_sum + suma_prod
+            elif r.produkty_platnosc == 3:
+                cash_sum = cash_sum + suma_prod 
 
         summary_sum = transfer_sum + card_sum + cash_sum + voucher_kmmb_sum
 
@@ -199,6 +204,15 @@ def saveReservationChanges(request):
         reservation.notatka = data['notatka']
         reservation.kwota = float(data['kwota_new'])
         reservation.rodzaj_platnosci = data['rodzaj_platnosci_new']
+        reservation.woda = int(data['woda_new'])
+        reservation.cola = int(data['cola_new'])
+        reservation.tarczyn = int(data['tarczyn_new'])
+        reservation.fuzetea = int(data['fuzetea_new'])
+        reservation.tiger = int(data['tiger_new'])
+        reservation.zubr = int(data['zubr_new'])
+        reservation.jack = int(data['jack_new'])
+        reservation.jager = int(data['jager_new'])
+        reservation.piwo = int(data['piwo_new'])
         reservation.produkty_platnosc = data['produkty_platnosc_new']
 
         reservation.save()
