@@ -1,0 +1,152 @@
+.add_note_window {
+   position: fixed;
+   align-self: center;
+   margin-top: 150px;
+   z-index: 9999;
+   width: 800px;
+   height: 300px;
+   border: solid 5px;
+   border-color: #EE379F;
+   border-radius: 30px;
+   background-color: #0e0e0e;
+   color: #32BCE0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   display: none;
+   animation: animacja 0.2s ease-in-out;
+}
+
+   #add_note-text {
+      width: 600px;
+      height: 140px;
+      font-size: 28px;
+   }
+
+.add_reservation_window {
+    position: fixed;
+    align-self: center;
+    margin-top: 120px;
+    z-index: 9999;
+    width: 800px;
+    height: 700px;
+    border: solid 5px;
+    border-color: #EE379F;
+    border-radius: 30px;
+    background-color: #0e0e0e;
+    color: #32BCE0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    display: none;
+    animation: animacja 0.2s ease-in-out;
+}
+
+@keyframes animacja {
+   from{opacity: 0; transform: translateY(-20px);}
+   to{opacity: 1; transform: translateY(0px);}
+}
+
+.active {
+    display: flex;
+}
+
+.exit {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+ .add_reservation_window-top {
+    height: 80px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 500;
+ }
+
+ .add_reservation_window-mid {
+   display: flex;
+   flex-direction: row;
+   height: 500px;
+   width: 790px;
+ }
+
+ .add_reservation_window-left {
+    height: 500px;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+
+  .add_reservation_window-right {
+    height: 480px;
+    width: 300px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+ }
+
+   .add_note_textarea {
+      width: 280px;
+      height: 200px;
+      font-size: 20px;
+      padding: 10px;
+      margin-top: 10px;
+      color: black;
+      background-color: white;
+      border-radius: 20px;
+      resize: none;
+   }
+
+ .add_reservation_window-left input, select {
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+ }
+
+    .add_reservation_row {
+        height: 50px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
+
+        .add_reservation_row-left {
+        width: 200px;
+
+        }
+
+        .add_reservation_row-right {
+            width: 200px;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+
+ .select_godzina {
+    width: 50px;
+ }
+
+ .add_reservation_window-bottom {
+    height: 100px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .submit_button {
+    height: 50px;
+    width: 150px;
+    font-size: 22px;
+    background-color: #EE379F;
+    border: none;
+    border-radius: 20px;
+ }

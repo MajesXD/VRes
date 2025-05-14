@@ -10,9 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #0e0e0e;
-}
-
-p {
     font-size: 26px;
 }
 
@@ -24,14 +21,12 @@ p {
     color: #32BCE0;
 }
 
-img {
-    width: 20px;
+.text-white {
+    color: white;
 }
 
-.voucher-img {
-    width: auto;
-    height: 24px;
-    width: 50px;
+svg {
+    width: 20px;
 }
 
 .clickable {
@@ -41,39 +36,83 @@ img {
 
 header {
     width: 100%;
+    margin-right: 1%;
     height: 100px;
     background-color: rgba(48, 48, 48, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    position: fixed;
+    z-index: 9998;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 200px 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.header {
+    width: 99%;
+    margin-right: 1%;
+    height: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 1%;
     position: fixed;
     z-index: 9998;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 200px 1fr 1fr 1fr;
+    gap: 20px;
 }
 
+
+header input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(36%) sepia(99%) saturate(746%) hue-rotate(297deg) brightness(96%) contrast(93%);
+  }
+  
     .date {
-        width: 190px;
+        width: 220px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         color: #32BCE0;
+        grid-column: 1;
     }
+
+        #selected_day {
+            background-color: transparent;
+            color: #32BCE0;
+            border: 0;
+            font-size: 26px;
+            width: 155px;
+            font-family: serif;
+        }
 
     .add_reservation {
         width: 215px;
-        margin-left: 2%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         color: #EE379F;
+        grid-column: 2;
+    }
+
+    .add_note {
+        width: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: #EE379F;
+        grid-column: 3;
     }
 
     .logo {
-        margin-left: 25%;
+        grid-column: 4;
+        display: flex;
+        justify-content: center;
     }
     
     .logo-img {
@@ -81,15 +120,14 @@ header {
     }
 
     .show_summary {
-        width: 12%;
-        margin-right: 2%;
-        right: 0;
+        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
-        position: absolute;
-        justify-content: space-evenly;
+        justify-content: center;
         color: #EE379F;
+        gap: 10px;
+        grid-column: 7;
     }
 
 main {
@@ -144,18 +182,24 @@ footer {
     margin-top: 120px;
     width: 14%;
     margin-right: 1%;
-    background-color: rgba(48, 48, 48, 0.5);
     position: absolute;
     align-self: flex-end;
+}
+
+footer svg {
+    height: 20px;
+    width: auto;
+}
+
+.summary {
+    height: 969px;
+    width: 100%;
+    background-color: rgba(48, 48, 48, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
     color: #EE379F;
-}
-
-.summary-active {
-    display: none;
 }
 
     .summary_bottom {
@@ -164,9 +208,9 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        justify-content: center;
     }
-
+    
         .payment_summary {
             height: 60px;
             width: 60%;
