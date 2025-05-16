@@ -43,6 +43,7 @@
     }
     .reservation_info:nth-of-type(2){
         height: 35px;
+        font-size: 16px;
         line-height: 0.6;
     }
 
@@ -53,7 +54,7 @@
     }
 
     .reservation_info_extra:nth-of-type(2){
-        margin-left: 45px;
+        margin-left: 10px;
         color: #B9B9B9;
     }
 
