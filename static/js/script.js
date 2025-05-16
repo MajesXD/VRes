@@ -1,8 +1,8 @@
 const reservation_colors = {
     vr: '#4F3EE3',
-    calendar: '#D72B2B',
+    calendar: '#a02424',
     street: '#0E733A',
-    block: '#EE379F',
+    block: '#454545',
 };
 
 
@@ -276,7 +276,7 @@ function showReservations(reservations) {
                             <p class="reservation_icon-gap">${r.kwota}</p>
                             <p>${symbol_platnosci}</p>
                         </div>
-                        <div class="reservation_info_extra" style="margin-left: 50px; color: #B9B9B9">
+                        <div class="reservation_info_extra">
                             <p style="font-weight: 600; font-size: 22px">+</p>
                             <svg style="color: #B9B9B9" class="reservation_icon-gap" ${produkty_platnosc_svg}> ${produkty_platnosc_path}</svg>
                             <p class="reservation_icon-gap">${r.suma_prod}</p>
@@ -802,7 +802,7 @@ function reservationFull(event) {
                 
 
             <div class="reservation_window_bottom">
-                <div onclick="deleteReservationStep()" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: #953636;">
+                <div onclick="deleteReservationStep()" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: #a02424;">
                 Usuń rezerwację
                 </div>
                 <div onclick="saveReservationChanges(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${active_color};">
