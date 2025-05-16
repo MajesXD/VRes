@@ -89,6 +89,13 @@
     animation: animacja 0.2s ease-in-out;
 }
 
+.reservation_window_inside input {
+    background-color: #0e0e0e;
+    font-size: 24px;
+    color: white;
+    border: none;
+}
+
 .reservation_window svg {
     height: 26px;
     width: auto;

@@ -404,6 +404,11 @@ function showReservations(reservations) {
 }
 
 function saveReservationChanges(reservationId) {
+    const data = document.getElementById('data_new').value;
+    const godzina = document.getElementById('godzina_new').value;
+    const czas = document.getElementById('czas_new').value;
+    const ilosc_osob = document.getElementById('ilosc_osob_new').value;
+    const osoba = document.getElementById('osoba_new').value;
     const note = document.getElementById('noteArea').value;
     const rodzaj_platnosci = document.getElementById('rodzaj_platnosci_new').value;
     const kwota = document.getElementById('kwota_new').value;
@@ -427,6 +432,11 @@ function saveReservationChanges(reservationId) {
         },
         body: JSON.stringify({
             id: reservationId,
+            data: data,
+            godzina: godzina,
+            czas: czas,
+            ilosc_osob: ilosc_osob,
+            osoba: osoba,
             notatka: note,
             kwota_new: kwota,
             rodzaj_platnosci_new: rodzaj_platnosci,
@@ -611,15 +621,15 @@ function reservationFull(event) {
                 <svg style="color: ${active_color}" viewBox="0 0 22 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 22.6562C0 23.9502 1.0498 25 2.34375 25H19.5312C20.8252 25 21.875 23.9502 21.875 22.6562V9.375H0V22.6562ZM15.625 13.0859C15.625 12.7637 15.8887 12.5 16.2109 12.5H18.1641C18.4863 12.5 18.75 12.7637 18.75 13.0859V15.0391C18.75 15.3613 18.4863 15.625 18.1641 15.625H16.2109C15.8887 15.625 15.625 15.3613 15.625 15.0391V13.0859ZM15.625 19.3359C15.625 19.0137 15.8887 18.75 16.2109 18.75H18.1641C18.4863 18.75 18.75 19.0137 18.75 19.3359V21.2891C18.75 21.6113 18.4863 21.875 18.1641 21.875H16.2109C15.8887 21.875 15.625 21.6113 15.625 21.2891V19.3359ZM9.375 13.0859C9.375 12.7637 9.63867 12.5 9.96094 12.5H11.9141C12.2363 12.5 12.5 12.7637 12.5 13.0859V15.0391C12.5 15.3613 12.2363 15.625 11.9141 15.625H9.96094C9.63867 15.625 9.375 15.3613 9.375 15.0391V13.0859ZM9.375 19.3359C9.375 19.0137 9.63867 18.75 9.96094 18.75H11.9141C12.2363 18.75 12.5 19.0137 12.5 19.3359V21.2891C12.5 21.6113 12.2363 21.875 11.9141 21.875H9.96094C9.63867 21.875 9.375 21.6113 9.375 21.2891V19.3359ZM3.125 13.0859C3.125 12.7637 3.38867 12.5 3.71094 12.5H5.66406C5.98633 12.5 6.25 12.7637 6.25 13.0859V15.0391C6.25 15.3613 5.98633 15.625 5.66406 15.625H3.71094C3.38867 15.625 3.125 15.3613 3.125 15.0391V13.0859ZM3.125 19.3359C3.125 19.0137 3.38867 18.75 3.71094 18.75H5.66406C5.98633 18.75 6.25 19.0137 6.25 19.3359V21.2891C6.25 21.6113 5.98633 21.875 5.66406 21.875H3.71094C3.38867 21.875 3.125 21.6113 3.125 21.2891V19.3359ZM19.5312 3.125H17.1875V0.78125C17.1875 0.351562 16.8359 0 16.4062 0H14.8438C14.4141 0 14.0625 0.351562 14.0625 0.78125V3.125H7.8125V0.78125C7.8125 0.351562 7.46094 0 7.03125 0H5.46875C5.03906 0 4.6875 0.351562 4.6875 0.78125V3.125H2.34375C1.0498 3.125 0 4.1748 0 5.46875V7.8125H21.875V5.46875C21.875 4.1748 20.8252 3.125 19.5312 3.125Z"/>
                 </svg>
-                <p class="reservation_window_icon-gap">${active_reservation.dataset.data}</p>
+                <input id="data_new" class="reservation_window_icon-gap" value="${active_reservation.dataset.data}" style="width: 130px;">
                 <svg style="color: ${active_color}" class="reservation_window_info-gap" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.1094 0C5.41992 0 0 5.41992 0 12.1094C0 18.7988 5.41992 24.2188 12.1094 24.2188C18.7988 24.2188 24.2188 18.7988 24.2188 12.1094C24.2188 5.41992 18.7988 0 12.1094 0ZM14.8975 17.0947L10.5908 13.9648C10.4395 13.8525 10.3516 13.6768 10.3516 13.4912V5.27344C10.3516 4.95117 10.6152 4.6875 10.9375 4.6875H13.2812C13.6035 4.6875 13.8672 4.95117 13.8672 5.27344V11.9971L16.9678 14.2529C17.2314 14.4434 17.2852 14.8096 17.0947 15.0732L15.7178 16.9678C15.5273 17.2266 15.1611 17.2852 14.8975 17.0947Z"/>
                 </svg>
-                <p class="reservation_window_icon-gap">${active_reservation.dataset.godzina} - ${active_reservation.dataset.godzina_end}</p>
+                <input id="godzina_new" style="width: 67px;" class="reservation_window_icon-gap" value="${active_reservation.dataset.godzina}"><p> - ${active_reservation.dataset.godzina_end}</p>
                 <svg style="color: ${active_color}" class="reservation_window_info-gap" viewBox="0 0 22 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.9375 12.5C14.3896 12.5 17.1875 9.70215 17.1875 6.25C17.1875 2.79785 14.3896 0 10.9375 0C7.48535 0 4.6875 2.79785 4.6875 6.25C4.6875 9.70215 7.48535 12.5 10.9375 12.5ZM15.3125 14.0625H14.4971C13.4131 14.5605 12.207 14.8438 10.9375 14.8438C9.66797 14.8438 8.4668 14.5605 7.37793 14.0625H6.5625C2.93945 14.0625 0 17.002 0 20.625V22.6562C0 23.9502 1.0498 25 2.34375 25H19.5312C20.8252 25 21.875 23.9502 21.875 22.6562V20.625C21.875 17.002 18.9355 14.0625 15.3125 14.0625Z"/>
                 </svg>
-                <p class="reservation_window_icon-gap">${active_reservation.dataset.ilosc_osob}</p>
+                <input id="ilosc_osob_new" class="reservation_window_icon-gap" value="${active_reservation.dataset.ilosc_osob}" style="width: 30px;">
                 <svg class="exit clickable" style="color: ${active_color}" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.8516 8.59375L16.7378 3.70752C17.3374 3.10791 17.3374 2.13574 16.7378 1.53564L15.6519 0.449707C15.0522 -0.149902 14.0801 -0.149902 13.48 0.449707L8.59375 5.33594L3.70752 0.449707C3.10791 -0.149902 2.13574 -0.149902 1.53564 0.449707L0.449707 1.53564C-0.149902 2.13525 -0.149902 3.10742 0.449707 3.70752L5.33594 8.59375L0.449707 13.48C-0.149902 14.0796 -0.149902 15.0518 0.449707 15.6519L1.53564 16.7378C2.13525 17.3374 3.10791 17.3374 3.70752 16.7378L8.59375 11.8516L13.48 16.7378C14.0796 17.3374 15.0522 17.3374 15.6519 16.7378L16.7378 15.6519C17.3374 15.0522 17.3374 14.0801 16.7378 13.48L11.8516 8.59375Z"/>
                 </svg>
@@ -633,6 +643,7 @@ function reservationFull(event) {
                     <p>Na pewno?</p>
                     <div class="add_note_button clickable" style="background-color: #EE379F" onclick="deleteReservation(${active_reservation.dataset.id})">Usuń</div>
                 </section>
+
                 <div class="reservation_window_middle_left">
 
                     <div class="reservation_window_middle_left-row">
@@ -642,7 +653,7 @@ function reservationFull(event) {
                             </svg>
                         </div>
                         <div class="reservation_window_middle_text">
-                            <p>${active_reservation.dataset.osoba}</p>
+                            <input id="osoba_new" class="reservation_window_icon-gap" value="${active_reservation.dataset.osoba}" width="200px">
                         </div>
                     </div>
 
@@ -653,7 +664,7 @@ function reservationFull(event) {
                             </svg>
                         </div>
                         <div class="reservation_window_middle_text">
-                            <p>${active_reservation.dataset.czas}</p>
+                            <input id="czas_new" value="${active_reservation.dataset.czas}" style="width: 65px;">
                         </div>
                     </div>
 

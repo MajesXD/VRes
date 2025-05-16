@@ -53,7 +53,7 @@ def dodaj_rezerwacje(request):
             if (res_start < r_end) and (res_end > r_start):
                 sum_osob += r.ilosc_osob
 
-        if sum_osob + ilosc_osob > 8 and (sum_osob + ilosc_osob < 100 or sum_osob + ilosc_osob > 100):
+        if sum_osob + ilosc_osob > 8 and sum_osob > 0:
             messages.error(request, "Za dużo osób na jedną godzinę.")
             return redirect('home') 
         
@@ -202,6 +202,11 @@ def saveReservationChanges(request):
         data = json.loads(request.body)
         reservation = rezerwacje.objects.get(id=data['id'])
         reservation.notatka = data['notatka']
+        reservation.data = datetime.strptime(data['data'], "%Y-%m-%d").date()
+        reservation.godzina = datetime.strptime(data['godzina'], "%H:%M").time()
+        reservation.czas = datetime.strptime(data['czas'], "%H:%M").time()
+        reservation.ilosc_osob = int(data['ilosc_osob'])
+        reservation.osoba = str(data['osoba'])
         reservation.kwota = float(data['kwota_new'])
         reservation.rodzaj_platnosci = data['rodzaj_platnosci_new']
         reservation.woda = int(data['woda_new'])
