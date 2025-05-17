@@ -172,7 +172,7 @@ def get_reservations(request):
             elif r.rodzaj_platnosci == 5:
                 voucher_kmmb_sum = voucher_kmmb_sum + r.kwota
             elif r.rodzaj_platnosci == 6:
-                voucher_kmmb_sum = voucher_kmmb_sum + r.kwota * 1.23
+                voucher_kmmb_sum = round(voucher_kmmb_sum + r.kwota * 1.23, 2)
             elif r.rodzaj_platnosci == 7:
                 transfer_sum = transfer_sum + r.kwota                
             elif r.rodzaj_platnosci == 8:
