@@ -1,3 +1,4 @@
 # VReservations
 Do zmiany:
-Edycja całej rezerwacji z widoku rezerwacji
+Ogarnac co sie dzieje z czesciami godzin
+dodac zatwierdzanie
