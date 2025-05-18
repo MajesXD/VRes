@@ -613,6 +613,7 @@ function reservationFull(event) {
     }
     
     const rodzaj_platnosci_text = platnosci[active_reservation.dataset.rodzaj_platnosci]
+    const produkty_platnosc_text = platnosci[active_reservation.dataset.produkty_platnosc]
 
     // Pełna rezerwacja (kliknięta)
      container_full.innerHTML = `
@@ -799,7 +800,7 @@ function reservationFull(event) {
                             <option value="2">Karta</option>
                             <option value="3">Gotówka</option>
                             <option value="0">?</option>
-                            <option style="display: none;" selected value="${active_reservation.dataset.produkty_platnosc}">${rodzaj_platnosci_text}</option>
+                            <option style="display: none;" selected value="${active_reservation.dataset.produkty_platnosc}">${produkty_platnosc_text}</option>
                         </select>
                         <div class="svg_pay">
                             <svg style="color: ${active_color}" ${produkty_platnosc_svg}>${produkty_platnosc_path}</svg>
