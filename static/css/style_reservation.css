@@ -17,7 +17,7 @@
     height: var(--res_height)px;
     margin-top: 5px;
     margin-right: 5px;
-    border-radius: 30px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     color: white;

@@ -1,7 +1,6 @@
 # VReservations
 Do zmiany:
-Ogarnac co sie dzieje z czesciami godzin
-dodac zatwierdzanie
-poprawic zaznaczona platnosc produktow
-zmiana rodzaju rezerwacji
-zaokraglenie km
+-Dodac zatwierdzanie
+-Zmiana rodzaju rezerwacji
+-Notatka default value
+-Dodanie diva do krótszych rezerwacji
