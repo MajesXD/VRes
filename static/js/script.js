@@ -365,19 +365,19 @@ function showReservations(reservations) {
     }
     
     // Wyciągnięcie rezerwacji w dół w zależności od minut trwania
-    if (czas_min == '00') {
+    if (czas_min == '00' && czas_h != '00') {
         grid_height += 0;
         grid_end += 0;
     }
-    else if (czas_min == '15') {
+    else if (czas_min == '15' && czas_h != '00') {
         grid_height += 26;
         grid_end += 1;
     }
-    else if (czas_min == '30') {
+    else if (czas_min == '30' && czas_h != '00') {
         grid_height += 51;
         grid_end += 2;
     }
-    else if (czas_min == '45') {
+    else if (czas_min == '45' && czas_h != '00') {
         grid_height += 76;
         grid_end += 3;
     }
@@ -389,11 +389,11 @@ function showReservations(reservations) {
     }
     // Szerokość rezerwacji w zależności od liczby osób
     let dlugosc = r.ilosc_osob;
-    if (dlugosc > 8) {
+    if (r.ilosc_osob > 8) {
         dlugosc = 8;
     }
     else {
-        dlugosc = dlugosc;
+        dlugosc = r.ilosc_osob;
     }
 
     div.style.gridColumn = 'span ' + dlugosc;
