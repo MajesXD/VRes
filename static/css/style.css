@@ -110,16 +110,6 @@ header input[type="date"]::-webkit-calendar-picker-indicator {
         grid-column: 3;
     }
 
-    .logo {
-        grid-column: 4;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .logo-img {
-        width: 150px;
-    }
-
     .show_summary {
         width: 100%;
         display: flex;

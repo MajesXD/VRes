@@ -183,6 +183,7 @@ function fetchReservations(date) {
     .catch(err => console.error('Błąd pobierania rezerwacji:', err));
 }
 
+// Wyświetlanie rezerwacji
 function showReservations(reservations) {
     const container = document.getElementById('reservation_field');
     container.innerHTML = '';
@@ -239,6 +240,7 @@ function showReservations(reservations) {
             symbol_platnosci = 'zł';
         }
         // Blok z rezerwacją
+        // Blokada miejsc
         if (r.rodzaj === 'block') {
             div.innerHTML = `
                 <div class="reservation" style="height: 99px; display: flex; flex-direction: row; align-items: center; justify-content: center;">
@@ -249,6 +251,7 @@ function showReservations(reservations) {
                 </div>
         `;
         }     
+        // Normalna rezerwacja
         else {
             div.innerHTML = `
                 <div class="reservation" title="${r.notatka}">
@@ -286,7 +289,7 @@ function showReservations(reservations) {
                 </div>
         `;           
         }  
-    // Dodawanie bloku i warunki jak ma wyglądać i gdzie ma być
+    // Dodawanie bloku i warunki jak ma wyglądać i gdzie ma być oparte na siatce (grid)
 
     container.appendChild(div);
 
@@ -383,7 +386,7 @@ function showReservations(reservations) {
     }
 
 
-    
+    // Zapobieganie bugowaniu nakladania się rezerwacji przy niecałej godzinie
     if (czas_h == 0 && czas_min == 30 || czas_h == 0 && czas_min == 45) {
         grid_height = 91;
     }
@@ -403,6 +406,7 @@ function showReservations(reservations) {
     })
 }
 
+// Aktualizacja rezerwacji po zapisaniu zmian w oknie rezerwacji
 function saveReservationChanges(reservationId) {
     const data = document.getElementById('data_new').value;
     const godzina = document.getElementById('godzina_new').value;
@@ -462,6 +466,7 @@ function saveReservationChanges(reservationId) {
     });
 }
 
+// Usuwanie rezerwacji w oknie rezerwacji
 function deleteReservation(reservationId) {
     fetch('/delete-reservation/', {
         method: 'POST',
@@ -480,7 +485,7 @@ function deleteReservation(reservationId) {
         }})
 };
 
-// DODAWANIE PRODUKTOW
+// Dodawanie produktów za pomocą ikonek + i -
 function sumaWoda(amount) {
     const input = document.getElementById('woda_ilosc');
     let current = parseInt(input.value) || 0;
@@ -553,6 +558,7 @@ function sumaPiwo(amount) {
     input.value = current;
     }
 
+// Po kliknięciu na rezerwacje
 function reservationFull(event) {
     event.stopPropagation();
     const active_reservation = event.currentTarget;
@@ -567,12 +573,12 @@ function reservationFull(event) {
         }
     });
     
-    
     let rodzaj_platnosci_svg = ikonaPlatnosciSvg(parseInt(active_reservation.dataset.rodzaj_platnosci));
     let rodzaj_platnosci_path = ikonaPlatnosciPath(parseInt(active_reservation.dataset.rodzaj_platnosci));
     let symbol_platnosci = '';
     let produkty_platnosc_svg = ikonaPlatnosciSvg(parseInt(active_reservation.dataset.produkty_platnosc));
     let produkty_platnosc_path = ikonaPlatnosciPath(parseInt(active_reservation.dataset.produkty_platnosc));
+    // Dla vouchera VRWarsaw wartość w ilości zamiast złotówkach
     if (parseInt(active_reservation.dataset.rodzaj_platnosci) === 4) {
         symbol_platnosci = 'x';
     }
@@ -827,7 +833,7 @@ function reservationFull(event) {
     
     const textareastyle = container_full.querySelector('textarea');
     textareastyle.style.border = `solid 1px ${active_color}`;   
-    
+    // zamykanie okna x-em
     const exit = container_full.querySelector('.exit');
     exit.addEventListener('click', function (e) {
         e.stopPropagation();
