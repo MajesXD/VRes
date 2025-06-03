@@ -9,6 +9,7 @@ from django.contrib import messages
 def home(request):
     return render(request, 'rezerwacje/home.html')
 
+#Dodawanie rezerwacji
 def dodaj_rezerwacje(request):
     print("Widok dodaj_rezerwacje został wywołany.")
     if request.method == 'POST':
@@ -38,6 +39,7 @@ def dodaj_rezerwacje(request):
         czas = time(int(czas_h), int(czas_min))
         data = datetime.strptime(data, "%Y-%m-%d").date()
 
+        #Zapobieganie dodaniu rezerwacji w tym samym czasie
         res_start = datetime.combine(data, godzina)
         res_duration = timedelta(hours=czas.hour, minutes=czas.minute)
         res_end = res_start + res_duration
@@ -56,7 +58,7 @@ def dodaj_rezerwacje(request):
         if sum_osob + ilosc_osob > 8 and sum_osob > 0:
             messages.error(request, "Za dużo osób na jedną godzinę.")
             return redirect('home') 
-        
+        #Obsługa błędów
         elif timedelta(hours=int(godzina_h), minutes=int(godzina_min)) + timedelta(hours=int(czas_h), minutes=int(czas_min)) > timedelta(hours=22):
             messages.error(request, "Zbyt długa rezerwacja.")
             return redirect('home')
@@ -96,6 +98,7 @@ def dodaj_rezerwacje(request):
         print("Błąd dodawania rezerwacji")
     return render(request, 'dodaj_rezerwacje.html')
 
+#Pobieranie rezerwacji z bazy
 def get_reservations(request):
     if request.method == "POST":
         body = json.loads(request.body)
@@ -115,6 +118,7 @@ def get_reservations(request):
         voucher_kmmb_sum = 0
         voucher_vr_sum = 0
 
+        #Wyliczenia godziny, czasu trwania i sumy produktów
         for r in reservations:
             start_time = datetime.combine(datetime.today(), r.godzina)
             end_time = start_time + timedelta(hours=r.czas.hour, minutes=r.czas.minute)
@@ -160,7 +164,7 @@ def get_reservations(request):
                 'suma_prod': suma_prod,
             })
 
-
+            #Sumowanie dla podsumowania dnia. Dla vouchera katalog marzeń kwota x 1.23, dla katalogu prezentów i superprezentów jako przelew
             if r.rodzaj_platnosci == 1:
                 transfer_sum = transfer_sum + r.kwota
             elif r.rodzaj_platnosci == 2:
@@ -178,14 +182,13 @@ def get_reservations(request):
             elif r.rodzaj_platnosci == 8:
                 transfer_sum = transfer_sum + r.kwota 
 
+            #Dodawnie sumy produktów do podsumowania dnia
             if r.produkty_platnosc == 2:
                 card_sum = card_sum + suma_prod
             elif r.produkty_platnosc == 3:
                 cash_sum = cash_sum + suma_prod 
 
         summary_sum = transfer_sum + card_sum + cash_sum + voucher_kmmb_sum
-
-
 
         return JsonResponse({
             'reservations': result,
@@ -196,7 +199,8 @@ def get_reservations(request):
             'voucher_kmmb_sum': voucher_kmmb_sum,
             'summary_sum': summary_sum,
             })
-
+    
+#Zapisywanie zmian rezerwacji w otwartej rezerwacji
 def saveReservationChanges(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -224,6 +228,7 @@ def saveReservationChanges(request):
         reservation.save()
         return JsonResponse({'status': 'ok'})
     
+#Usuwanie rezerwacji w otwartej rezerwacji
 def deleteReservation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
