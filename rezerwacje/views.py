@@ -145,7 +145,7 @@ def get_reservations(request):
                 'rodzaj_platnosci': r.rodzaj_platnosci,
                 'rodzaj': r.rodzaj_rezerwacji,
                 'notatka': r.notatka,
-                'zatwierdzony': r.zatwierdzony,
+                'zatwierdzono': r.zatwierdzono,
 
                 'woda': r.woda,
                 'cola': r.cola,
@@ -209,6 +209,7 @@ def saveReservationChanges(request):
         reservation.osoba = str(data['osoba'])
         reservation.kwota = float(data['kwota_new'])
         reservation.rodzaj_platnosci = data['rodzaj_platnosci_new']
+        reservation.zatwierdzono = bool(data['zatwierdzono_new'])
         reservation.woda = int(data['woda_new'])
         reservation.cola = int(data['cola_new'])
         reservation.tarczyn = int(data['tarczyn_new'])

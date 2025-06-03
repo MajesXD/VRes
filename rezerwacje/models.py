@@ -10,7 +10,7 @@ class rezerwacje(models.Model):
     kwota = models.FloatField(default=0)
     rodzaj_platnosci = models.IntegerField(default=0)
     notatka = models.CharField(max_length=200, null=True, blank=True)
-    zatwierdzony = models.BooleanField(default=False)
+    zatwierdzono = models.BooleanField(default=False)
 
     woda = models.IntegerField(default=0)
     cola = models.IntegerField(default=0)
