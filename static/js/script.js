@@ -1,7 +1,7 @@
 const reservation_colors = {
     vr: '#4F3EE3',
-    calendar: '#CB6F1E',
-    street: '#0E733A',
+    calendar: '#0E733A',
+    street: '#CB6F1E',
     block: '#454545',
 };
 

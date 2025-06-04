@@ -13,6 +13,18 @@ body {
     font-size: 26px;
 }
 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+   -webkit-appearance: none;
+   margin: 0;
+
+}
+.kwota_input::-webkit-outer-spin-button, .kwota_input::-webkit-inner-spin-button, .add_kwota_input::-webkit-outer-spin-button, .add_kwota_input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input{
+    -moz-appearance: textfield;
+}
 .text-pink {
     color: #EE379F;
 }
@@ -72,7 +84,7 @@ header input[type="date"]::-webkit-calendar-picker-indicator {
   }
   
     .date {
-        width: 220px;
+        width: 220px;   
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -80,7 +92,18 @@ header input[type="date"]::-webkit-calendar-picker-indicator {
         color: #32BCE0;
         grid-column: 1;
     }
+        @supports (-moz-appearance: none) {
+        .date {
+            width: 230px;
+        }
+        }
+        @supports (-moz-appearance: none) {
+        #selected_day {
+            width: 164px !important;
+        }
+        }
 
+        
         #selected_day {
             background-color: transparent;
             color: #32BCE0;
