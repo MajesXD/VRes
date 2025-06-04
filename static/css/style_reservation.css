@@ -163,14 +163,14 @@
                 align-items: center;
             }
             .reservation_window_middle_text-note {
-                height: 200px;
+                height: 240px;
                 width: 360px;
                 display: flex;
             }
 
             .reservation_window_middle_text-note textarea {
                 width: 320px;
-                height: 200px;
+                height: 240px;
                 font-size: 20px;
                 margin-top: 10px;
                 color: white;
@@ -308,15 +308,6 @@
         display: flex;
         align-items: center;
     }
-
-
-        .reservation_window_bottom-change_type {
-            display: flex;
-            flex-direction: row;
-            align-items: end;
-            justify-content: center;
-        }   
-
 
         .add_note_button {
             height: 40px;

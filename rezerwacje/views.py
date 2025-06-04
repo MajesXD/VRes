@@ -147,7 +147,7 @@ def get_reservations(request):
                 'czas': r.czas.strftime('%H:%M'),
                 'kwota': r.kwota,
                 'rodzaj_platnosci': r.rodzaj_platnosci,
-                'rodzaj': r.rodzaj_rezerwacji,
+                'rodzaj_rezerwacji': r.rodzaj_rezerwacji,
                 'notatka': r.notatka,
                 'zatwierdzono': r.zatwierdzono,
 
@@ -224,6 +224,7 @@ def saveReservationChanges(request):
         reservation.jager = int(data['jager_new'])
         reservation.piwo = int(data['piwo_new'])
         reservation.produkty_platnosc = data['produkty_platnosc_new']
+        reservation.rodzaj_rezerwacji = str(data['rodzaj_rezerwacji_new'])
 
         reservation.save()
         return JsonResponse({'status': 'ok'})

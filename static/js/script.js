@@ -205,9 +205,9 @@ function showReservations(reservations) {
         const czas_min = r.czas.split(':')[1];
         div.addEventListener('click', reservationFull);
         div.classList.add('reservation');
-        div.style.backgroundColor = reservation_colors[r.rodzaj];
+        div.style.backgroundColor = reservation_colors[r.rodzaj_rezerwacji];
         div.dataset.id = r.id;
-        div.dataset.rodzaj = r.rodzaj;
+        div.dataset.rodzaj_rezerwacji = r.rodzaj_rezerwacji;
         div.dataset.osoba = r.osoba;
         div.dataset.ilosc_osob = r.ilosc_osob;
         div.dataset.data = r.data;
@@ -241,7 +241,7 @@ function showReservations(reservations) {
             symbol_platnosci = 'zł';
         }
         // Blok z rezerwacją
-        if (r.rodzaj === 'block') {
+        if (r.rodzaj_rezerwacji === 'block') {
             div.innerHTML = `
                 <div class="reservation" style="height: 99px; display: flex; flex-direction: row; align-items: center; justify-content: center;">
                         <svg class="text-white" viewBox="0 0 22 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -425,6 +425,7 @@ function saveReservationChanges(reservationId) {
     const jager_ilosc = document.getElementById("jager_ilosc").value;
     const piwo_ilosc = document.getElementById("piwo_ilosc").value;
     const zatwierdzono = document.getElementById('zatwierdzono_check').checked;
+    const rodzaj_rezerwacji = document.getElementById('rodzaj_rezerwacji_new').value;
     
 
     fetch('/save-reservation-changes/', {
@@ -454,6 +455,7 @@ function saveReservationChanges(reservationId) {
             jager_new: jager_ilosc,
             piwo_new: piwo_ilosc,
             produkty_platnosc_new: produkty_platnosc,
+            rodzaj_rezerwacji_new: rodzaj_rezerwacji,
         })
     })
     .then(response => {
@@ -584,17 +586,17 @@ function reservationFull(event) {
         symbol_platnosci = 'zł';
     }
 
-    const active_color = reservation_colors[active_reservation.dataset.rodzaj];
+    const active_color = reservation_colors[active_reservation.dataset.rodzaj_rezerwacji];
     container_full.style.borderColor = active_color;
     container_full.style.color = `white`;
     container_full.style.webkitTextStroke = `0.4px ${active_color}`; 
 
-    const plusSvg = `<svg style="color: ${pink}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
+    const plusSvg = `<svg style="color: ${active_color}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
     <rect width="35" height="35" rx="10" fill="currentColor"/>
     <path d="M26.0714 15.3571H19.6429V8.92857C19.6429 8.13973 19.0031 7.5 18.2143 7.5H16.7857C15.9969 7.5 15.3571 8.13973 15.3571 8.92857V15.3571H8.92857C8.13973 15.3571 7.5 15.9969 7.5 16.7857V18.2143C7.5 19.0031 8.13973 19.6429 8.92857 19.6429H15.3571V26.0714C15.3571 26.8603 15.9969 27.5 16.7857 27.5H18.2143C19.0031 27.5 19.6429 26.8603 19.6429 26.0714V19.6429H26.0714C26.8603 19.6429 27.5 19.0031 27.5 18.2143V16.7857C27.5 15.9969 26.8603 15.3571 26.0714 15.3571Z" fill="black"/>
     </svg>`
 
-    const minusSvg = `<svg style="color: ${aqua}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
+    const minusSvg = `<svg style="color: ${active_color}" width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
     <rect width="35" height="34.6875" rx="10" fill="currentColor"/>
     <path d="M27.3125 15H8.5625C7.69971 15 7 15.6997 7 16.5625V18.125C7 18.9878 7.69971 19.6875 8.5625 19.6875H27.3125C28.1753 19.6875 28.875 18.9878 28.875 18.125V16.5625C28.875 15.6997 28.1753 15 27.3125 15Z" fill="black"/>
     </svg>`
@@ -605,7 +607,7 @@ function reservationFull(event) {
     }
 
     const platnosci = {
-        0 : "?",
+        0: "?",
         1: "Przelew",
         2: "Karta",
         3: "Gotówka",
@@ -615,9 +617,18 @@ function reservationFull(event) {
         7: "V Katalog Prezentów",
         8: "V Super Prezenty"
     }
-    
+
     const rodzaj_platnosci_text = platnosci[active_reservation.dataset.rodzaj_platnosci]
     const produkty_platnosc_text = platnosci[active_reservation.dataset.produkty_platnosc]
+    const rodzaje = {
+        vr: 'VR',
+        calendar: 'Kalendarz',
+        street: 'Spontan',
+        block: 'Blok',
+    }
+
+    const rodzaj_rezerwacji_text = rodzaje[active_reservation.dataset.rodzaj_rezerwacji]
+
     let ifchecked = "";
 
     // Zmienna do zaznaczania checkboxa zatwierdź
@@ -713,6 +724,16 @@ function reservationFull(event) {
                         <div class="reservation_window_middle_text-note">
                             <textarea id="noteArea" class="reservation_window_middle_text-note" type="text">${notatka}</textarea>
                         </div>
+                    </div>
+                    <div class="reservation_window_middle_left-row" style="margin-top: 100px; font-size: 18px;">
+                        <p>Rodzaj rezerwacji</p>
+                        <select id="rodzaj_rezerwacji_new" style="margin-left: 10px; height: 30px; width: 100px; font-size: 14px;">
+                            <option value="vr">VR</option>
+                            <option value="calendar">Kalendarz</option>
+                            <option value="street">Spontan</option>
+                            <option value="block">Blok</option>
+                            <option style="display: none;" selected value="${active_reservation.dataset.rodzaj_rezerwacji}">${rodzaj_rezerwacji_text}</option>
+                        </select>
                     </div>
                 </div>
 
@@ -825,20 +846,11 @@ function reservationFull(event) {
             </div> 
 
             <div class="reservation_window_bottom">
-                <div title="Usuń" onclick="deleteReservationStep()" class="reservation_window_middle_left-row add_note_button clickable" style="width: 40px;">
-                    <svg width="27" height="31" viewBox="0 0 27 31" fill="#a02424" xmlns="http://www.w3.org/2000/svg">
+                <div title="Usuń" onclick="deleteReservationStep()" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: #a02424; width: 120px; gap: 10px;">
+                    <svg width="27" height="31" viewBox="0 0 27 31" fill="white" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.92857 28.0938C1.92857 28.8645 2.23335 29.6038 2.77587 30.1488C3.31839 30.6938 4.0542 31 4.82143 31H22.1786C22.9458 31 23.6816 30.6938 24.2241 30.1488C24.7666 29.6038 25.0714 28.8645 25.0714 28.0938V7.75001H1.92857V28.0938ZM18.3214 12.5938C18.3214 12.3368 18.423 12.0904 18.6039 11.9087C18.7847 11.7271 19.03 11.625 19.2857 11.625C19.5415 11.625 19.7867 11.7271 19.9676 11.9087C20.1484 12.0904 20.25 12.3368 20.25 12.5938V26.1563C20.25 26.4132 20.1484 26.6596 19.9676 26.8413C19.7867 27.0229 19.5415 27.125 19.2857 27.125C19.03 27.125 18.7847 27.0229 18.6039 26.8413C18.423 26.6596 18.3214 26.4132 18.3214 26.1563V12.5938ZM12.5357 12.5938C12.5357 12.3368 12.6373 12.0904 12.8181 11.9087C12.999 11.7271 13.2443 11.625 13.5 11.625C13.7557 11.625 14.001 11.7271 14.1819 11.9087C14.3627 12.0904 14.4643 12.3368 14.4643 12.5938V26.1563C14.4643 26.4132 14.3627 26.6596 14.1819 26.8413C14.001 27.0229 13.7557 27.125 13.5 27.125C13.2443 27.125 12.999 27.0229 12.8181 26.8413C12.6373 26.6596 12.5357 26.4132 12.5357 26.1563V12.5938ZM6.75 12.5938C6.75 12.3368 6.85159 12.0904 7.03243 11.9087C7.21327 11.7271 7.45854 11.625 7.71429 11.625C7.97003 11.625 8.2153 11.7271 8.39614 11.9087C8.57698 12.0904 8.67857 12.3368 8.67857 12.5938V26.1563C8.67857 26.4132 8.57698 26.6596 8.39614 26.8413C8.2153 27.0229 7.97003 27.125 7.71429 27.125C7.45854 27.125 7.21327 27.0229 7.03243 26.8413C6.85159 26.6596 6.75 26.4132 6.75 26.1563V12.5938ZM26.0357 1.93751H18.8036L18.2371 0.805284C18.117 0.563226 17.9322 0.359612 17.7033 0.217349C17.4744 0.0750852 17.2105 -0.000183334 16.9413 1.06155e-05H10.0527C9.78411 -0.00102658 9.52069 0.0739613 9.29258 0.216383C9.06448 0.358805 8.88092 0.562899 8.76295 0.805284L8.19643 1.93751H0.964286C0.708541 1.93751 0.463271 2.03957 0.282433 2.22125C0.101594 2.40293 0 2.64933 0 2.90626L0 4.84376C0 5.10069 0.101594 5.34709 0.282433 5.52877C0.463271 5.71044 0.708541 5.81251 0.964286 5.81251H26.0357C26.2915 5.81251 26.5367 5.71044 26.7176 5.52877C26.8984 5.34709 27 5.10069 27 4.84376V2.90626C27 2.64933 26.8984 2.40293 26.7176 2.22125C26.5367 2.03957 26.2915 1.93751 26.0357 1.93751Z"/>
                     </svg>
-                </div>
-
-                <div class="reservation_window_bottom-change_type">
-                    <p>Rodzaj rez.</p>
-                    <select>
-                        <option>VR</option>
-                        <option>Kalendarz</option>
-                        <option>Spontan</option>
-                        <option>Blok</option>
-                    </select>
+                    <p>Usuń</p>
                 </div>
 
                 <div class="reservation_window_bottom-zatwierdz">
@@ -846,17 +858,17 @@ function reservationFull(event) {
                     <input id="zatwierdzono_check" type="checkbox" ${ifchecked} style="margin-left: 10px; height: 20px; width: 20px;">
                 </div>     
 
-                <div title="Zapisz" onclick="saveReservationChanges(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="width: 40px;">
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="${pink}" xmlns="http://www.w3.org/2000/svg">
+                <div title="Zapisz" onclick="saveReservationChanges(${active_reservation.dataset.id})" class="reservation_window_middle_left-row add_note_button clickable" style="background-color: ${pink}; width: 120px; gap: 10px">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="white" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21.1885 4.78228L17.0927 0.686475C16.6532 0.246935 16.057 3.25037e-06 15.4354 0H2.34375C1.04932 0 0 1.04932 0 2.34375V19.5312C0 20.8257 1.04932 21.875 2.34375 21.875H19.5312C20.8257 21.875 21.875 20.8257 21.875 19.5312V6.43955C21.875 5.81795 21.6281 5.22181 21.1885 4.78228ZM10.9375 18.75C9.21162 18.75 7.8125 17.3509 7.8125 15.625C7.8125 13.8991 9.21162 12.5 10.9375 12.5C12.6634 12.5 14.0625 13.8991 14.0625 15.625C14.0625 17.3509 12.6634 18.75 10.9375 18.75ZM15.625 3.88086V8.78906C15.625 9.11265 15.3626 9.375 15.0391 9.375H3.71094C3.38735 9.375 3.125 9.11265 3.125 8.78906V3.71094C3.125 3.38735 3.38735 3.125 3.71094 3.125H14.8691C15.0246 3.125 15.1736 3.18672 15.2834 3.29663L15.4534 3.46655C15.5078 3.52095 15.551 3.58554 15.5804 3.65663C15.6099 3.72772 15.625 3.80391 15.625 3.88086Z"/>
                     </svg>
+                    <p>Zapisz</p>
                 </div>
 
             </div>    
         </form>
 `;
-
-
+    console.log('Rodzaj rezerwacji z dataset:', active_reservation.dataset.rodzaj_rezerwacji);
     const textareastyle = container_full.querySelector('textarea');
     textareastyle.style.border = `solid 1px ${active_color}`;   
     
